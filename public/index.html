@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario Ricette</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Inventario Ricette di Cucina</h1>
+  <div id="main-layout">
+    <aside id="sidebar">
+      <h2>Ricette</h2>
+      <div id="sidebar-list"></div>
+    </aside>
+    <section id="content">
+      <input id="search-input" type="text" placeholder="Cerca ricetta..." style="width:100%;margin-bottom:1em;">
+      <div id="app">
+        <button onclick="showForm()">Aggiungi Ricetta</button>
+        <div id="form-container" style="display:none;"></div>
+        <ul id="ricette-list"></ul>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

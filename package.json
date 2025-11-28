@@ -1,0 +1,17 @@
+{
+  "name": "inventario-ricette",
+  "version": "1.0.0",
+  "description": "Inventario di ricette di cucina con backend Node.js e generazione pagine statiche.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build-static": "node static-generator.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "fs-extra": "^11.2.0"
+  }
+}

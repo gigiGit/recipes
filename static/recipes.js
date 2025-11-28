@@ -1,0 +1,1672 @@
+const recipes=[
+  {
+    "Nome": "Torta di pane grattuggiato",
+    "Ingredienti": [
+      "1 etto di pane grattugiato",
+      "2 etti di amaretti",
+      "3 uova",
+      "2 etti di panna",
+      "1 etto di cioccolata fondente a pezzettini",
+      "1 etto di zucchero",
+      "Mezzo cucchiaino di lievito in polvere"
+    ],
+    "Istruzioni": "Mescolare tutti gli ingredienti e mettere in forno per 30 minuti a 170 gradi. Provare con lo stuzzicadente se la cottura è completa.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 15,
+    "TempoCottura": 30,
+    "Quantita": 6,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Moscato d'Asti"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Spaghetti alla Carbonara",
+    "Ingredienti": [
+      "320 g di spaghetti",
+      "150 g di guanciale",
+      "4 tuorli d'uovo",
+      "1 uovo intero",
+      "100 g di pecorino romano",
+      "Pepe nero q.b."
+    ],
+    "Istruzioni": "Cuocere gli spaghetti. Rosolare il guanciale a listarelle. Sbattere i tuorli con l'uovo intero e il pecorino. Scolare la pasta, unire il guanciale e condire con la crema di uova e pecorino fuori dal fuoco. Servire con pepe nero.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Frascati Superiore DOCG"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Tiramisù",
+    "Ingredienti": [
+      "300 g di savoiardi",
+      "4 uova",
+      "500 g di mascarpone",
+      "100 g di zucchero",
+      "Caffè q.b.",
+      "Cacao amaro q.b."
+    ],
+    "Istruzioni": "Preparare il caffè e lasciarlo raffreddare. Montare i tuorli con lo zucchero, aggiungere il mascarpone e infine gli albumi montati a neve. Inzuppare i savoiardi nel caffè, alternarli a strati di crema. Spolverare con cacao e lasciare in frigo.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 0,
+    "Quantita": 8,
+    "MetodoCottura": "Nessuna",
+    "VinoPreferibile": [
+      "Marsala secco"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Lasagne alla Bolognese",
+    "Ingredienti": [
+      "250 g di lasagne all'uovo",
+      "500 g di ragù alla bolognese",
+      "500 ml di besciamella",
+      "100 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b."
+    ],
+    "Istruzioni": "Preparare il ragù e la besciamella. In una teglia alternare strati di lasagne, ragù, besciamella e parmigiano. Cuocere in forno a 180°C per 30-40 minuti.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "Medio",
+    "Costo": "medio",
+    "TempoPreparazione": 40,
+    "TempoCottura": 40,
+    "Quantita": 6,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Sangiovese di Romagna DOC"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Torta di mele",
+    "Ingredienti": [
+      "3 mele",
+      "200 g di farina 00",
+      "150 g di zucchero",
+      "100 g di burro",
+      "2 uova",
+      "1 bustina di lievito per dolci",
+      "Latte q.b.",
+      "Scorza di limone"
+    ],
+    "Istruzioni": "Sbucciare e tagliare le mele. Montare uova e zucchero, aggiungere burro fuso, farina, lievito, latte e scorza di limone. Unire le mele, versare in una tortiera e cuocere a 180°C per 40 minuti.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 40,
+    "Quantita": 8,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Moscato d'Asti"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Focaccia alla genovese",
+    "Ingredienti": [
+      "500 g di farina 00",
+      "300 ml di acqua",
+      "25 g di lievito di birra fresco",
+      "10 g di sale",
+      "50 ml di olio extravergine d'oliva",
+      "Sale grosso q.b."
+    ],
+    "Istruzioni": "Sciogliere il lievito in poca acqua. Unire alla farina, aggiungere acqua, olio e sale. Impastare e far lievitare. Stendere l'impasto, fare i classici buchi, spennellare con acqua e olio, cospargere di sale grosso. Cuocere a 220°C per 20-25 minuti.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 25,
+    "Quantita": 8,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Vermentino Ligure"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Polpette di zucca",
+    "Ingredienti": [
+      "500 g di zucca",
+      "100 g di parmigiano grattugiato",
+      "100 g di pangrattato",
+      "1 uovo",
+      "Sale e pepe q.b.",
+      "Olio per friggere"
+    ],
+    "Istruzioni": "Cuocere la zucca, schiacciarla e mescolare con parmigiano, pangrattato, uovo, sale e pepe. Formare polpette e friggerle in olio caldo fino a doratura.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 25,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Friggitrice",
+    "VinoPreferibile": [
+      "Chardonnay"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Involtini primavera",
+    "Ingredienti": [
+      "12 fogli di pasta fillo",
+      "200 g di cavolo cappuccio",
+      "2 carote",
+      "100 g di germogli di soia",
+      "1 cipollotto",
+      "Salsa di soia q.b.",
+      "Olio di semi per friggere"
+    ],
+    "Istruzioni": "Saltare le verdure tagliate a julienne con salsa di soia. Farcire i fogli di pasta fillo, arrotolare e friggere in olio caldo fino a doratura.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Friggitrice",
+    "VinoPreferibile": [
+      "Gewürztraminer"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Hummus",
+    "Ingredienti": [
+      "400 g di ceci cotti",
+      "2 cucchiai di tahina",
+      "1 spicchio d'aglio",
+      "Succo di 1 limone",
+      "2 cucchiai di olio extravergine d'oliva",
+      "Sale q.b.",
+      "Paprika q.b."
+    ],
+    "Istruzioni": "Frullare tutti gli ingredienti fino a ottenere una crema liscia. Servire con un filo d'olio e paprika.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 10,
+    "TempoCottura": 0,
+    "Quantita": 4,
+    "MetodoCottura": "Nessuna",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Farinata di ceci",
+    "Ingredienti": [
+      "300 g di farina di ceci",
+      "900 ml di acqua",
+      "80 ml di olio extravergine d'oliva",
+      "10 g di sale"
+    ],
+    "Istruzioni": "Mescolare farina di ceci, acqua e sale. Lasciare riposare, poi versare in teglia unta e cuocere a 220°C per 30-40 minuti.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 10,
+    "TempoCottura": 40,
+    "Quantita": 6,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Pigato"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Panzerotti fritti",
+    "Ingredienti": [
+      "500 g di farina 00",
+      "250 ml di acqua",
+      "25 g di lievito di birra fresco",
+      "10 g di sale",
+      "200 g di mozzarella",
+      "200 g di passata di pomodoro",
+      "Olio per friggere"
+    ],
+    "Istruzioni": "Preparare l'impasto con farina, acqua, lievito e sale. Farcire con mozzarella e pomodoro. Chiudere a mezzaluna e friggere in olio caldo.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "medio",
+    "Costo": "economico",
+    "TempoPreparazione": 30,
+    "TempoCottura": 10,
+    "Quantita": 8,
+    "MetodoCottura": "Friggitrice",
+    "VinoPreferibile": [
+      "Primitivo"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Arancini di riso",
+    "Ingredienti": [
+      "400 g di riso",
+      "100 g di ragù di carne",
+      "100 g di piselli",
+      "100 g di mozzarella",
+      "2 uova",
+      "Pangrattato q.b.",
+      "Olio per friggere"
+    ],
+    "Istruzioni": "Cuocere il riso, mescolare con ragù, piselli e mozzarella. Formare palle, passare nell'uovo e pangrattato, friggere in olio caldo.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 40,
+    "TempoCottura": 15,
+    "Quantita": 8,
+    "MetodoCottura": "Friggitrice",
+    "VinoPreferibile": [
+      "Nero d'Avola"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Patate al forno",
+    "Ingredienti": [
+      "1 kg di patate",
+      "Rosmarino q.b.",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Tagliare le patate a spicchi, condire con olio, sale, pepe e rosmarino. Cuocere in forno a 200°C per 40 minuti, girando a metà cottura.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 10,
+    "TempoCottura": 40,
+    "Quantita": 6,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Greco di Tufo"
+    ],
+    "TipoPiatto": "Contorno"
+  },
+  {
+    "Nome": "Polpette al sugo",
+    "Ingredienti": [
+      "400 g di carne macinata mista",
+      "2 uova",
+      "50 g di parmigiano grattugiato",
+      "100 g di pangrattato",
+      "400 ml di passata di pomodoro",
+      "1 spicchio d'aglio",
+      "Prezzemolo q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Mescolare carne, uova, parmigiano, pangrattato, sale e pepe. Formare polpette, rosolare in padella con aglio, aggiungere la passata e cuocere per 20 minuti.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Chianti"
+    ],
+    "TipoPiatto": "Secondo"
+  },
+  {
+    "Nome": "Risotto alla zucca",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "400 g di zucca",
+      "1 cipolla",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere la zucca a cubetti, poi il riso. Cuocere aggiungendo brodo poco per volta. Mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-27",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Soave Classico"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta alla Norma",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "2 melanzane",
+      "400 g di pomodori pelati",
+      "100 g di ricotta salata",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Basilico fresco",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Tagliare le melanzane a cubetti e friggerle. Preparare un sugo con aglio, pomodori e basilico. Cuocere la pasta, condire con il sugo, le melanzane e ricotta salata grattugiata.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Siciliane",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 30,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Nero d'Avola"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Caponata siciliana",
+    "Ingredienti": [
+      "2 melanzane",
+      "2 coste di sedano",
+      "1 cipolla",
+      "100 g di olive verdi",
+      "30 g di capperi",
+      "400 g di pomodori pelati",
+      "2 cucchiai di aceto",
+      "1 cucchiaio di zucchero",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Tagliare le verdure a cubetti, friggere le melanzane. Soffriggere cipolla, sedano, olive, capperi, aggiungere pomodori, zucchero e aceto. Unire le melanzane e cuocere ancora 10 minuti.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Siciliane",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 40,
+    "Quantita": 6,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Cerasuolo di Vittoria"
+    ],
+    "TipoPiatto": "Contorno"
+  },
+  {
+    "Nome": "Pasta e fagioli",
+    "Ingredienti": [
+      "300 g di pasta corta",
+      "250 g di fagioli borlotti secchi",
+      "1 cipolla",
+      "1 carota",
+      "1 costa di sedano",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Rosmarino"
+    ],
+    "Istruzioni": "Cuocere i fagioli ammollati con sedano, carota, cipolla e aglio. Frullare parte dei fagioli, aggiungere la pasta e cuocere. Condire con olio e rosmarino.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Regionali",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 90,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Lambrusco"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta e ceci",
+    "Ingredienti": [
+      "300 g di pasta corta",
+      "250 g di ceci secchi",
+      "1 cipolla",
+      "1 carota",
+      "1 costa di sedano",
+      "1 spicchio d'aglio",
+      "Rosmarino",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Cuocere i ceci ammollati con sedano, carota, cipolla e aglio. Frullare parte dei ceci, aggiungere la pasta e cuocere. Condire con olio e rosmarino.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Regionali",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 90,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Verdicchio"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta e patate",
+    "Ingredienti": [
+      "300 g di pasta mista",
+      "500 g di patate",
+      "1 cipolla",
+      "1 carota",
+      "1 costa di sedano",
+      "100 g di provola affumicata",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Rosmarino"
+    ],
+    "Istruzioni": "Soffriggere cipolla, carota e sedano, aggiungere le patate a cubetti, coprire con acqua e cuocere. Unire la pasta, a fine cottura aggiungere la provola e il rosmarino.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Napoletane",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 40,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta al pesto genovese",
+    "Ingredienti": [
+      "400 g di trofie",
+      "100 g di basilico fresco",
+      "50 g di pinoli",
+      "2 spicchi d'aglio",
+      "100 g di parmigiano grattugiato",
+      "100 g di pecorino",
+      "Olio extravergine d'oliva q.b.",
+      "Sale grosso"
+    ],
+    "Istruzioni": "Preparare il pesto frullando basilico, pinoli, aglio, parmigiano, pecorino, olio e sale. Cuocere la pasta e condire con il pesto.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Liguri",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Vermentino"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta alla puttanesca",
+    "Ingredienti": [
+      "400 g di spaghetti",
+      "100 g di olive nere",
+      "30 g di capperi",
+      "4 filetti di acciuga",
+      "400 g di pomodori pelati",
+      "1 spicchio d'aglio",
+      "Peperoncino",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere aglio, acciughe e peperoncino, aggiungere pomodori, olive e capperi. Cuocere la pasta e condire con il sugo, completare con prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Napoletane",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Aglianico"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta alla gricia",
+    "Ingredienti": [
+      "400 g di rigatoni",
+      "150 g di guanciale",
+      "100 g di pecorino romano",
+      "Pepe nero q.b."
+    ],
+    "Istruzioni": "Rosolare il guanciale, cuocere la pasta, mantecare con il guanciale, pecorino e pepe.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Romane",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 15,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Frascati"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta cacio e pepe",
+    "Ingredienti": [
+      "400 g di tonnarelli",
+      "100 g di pecorino romano",
+      "Pepe nero q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Cuocere la pasta, mantecare con acqua di cottura, pecorino e abbondante pepe nero.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Romane",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Frascati"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta alla amatriciana",
+    "Ingredienti": [
+      "400 g di bucatini",
+      "150 g di guanciale",
+      "400 g di pomodori pelati",
+      "100 g di pecorino romano",
+      "Peperoncino",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Rosolare il guanciale, aggiungere pomodori e peperoncino. Cuocere la pasta, mantecare con il sugo e pecorino.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Romane",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Cesanese"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta e lenticchie",
+    "Ingredienti": [
+      "300 g di pasta corta",
+      "200 g di lenticchie secche",
+      "1 cipolla",
+      "1 carota",
+      "1 costa di sedano",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Rosmarino"
+    ],
+    "Istruzioni": "Cuocere le lenticchie ammollate con sedano, carota, cipolla e aglio. Aggiungere la pasta e cuocere. Condire con olio e rosmarino.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Regionali",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 60,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Montepulciano d'Abruzzo"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con le sarde",
+    "Ingredienti": [
+      "400 g di bucatini",
+      "300 g di sarde fresche",
+      "1 finocchietto selvatico",
+      "30 g di uvetta",
+      "30 g di pinoli",
+      "1 cipolla",
+      "4 filetti di acciuga",
+      "Zafferano",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere cipolla, acciughe, pinoli e uvetta. Aggiungere le sarde pulite, il finocchietto lessato e lo zafferano. Cuocere la pasta e mantecare con il condimento.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Siciliane",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 30,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Inzolia"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con i broccoli",
+    "Ingredienti": [
+      "400 g di orecchiette",
+      "500 g di broccoli",
+      "2 spicchi d'aglio",
+      "Peperoncino",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b.",
+      "Pecorino grattugiato"
+    ],
+    "Istruzioni": "Lessare i broccoli, soffriggere aglio e peperoncino, aggiungere i broccoli e saltare. Cuocere la pasta, mantecare con i broccoli e pecorino.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Pugliesi",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Fiano"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con i tenerumi",
+    "Ingredienti": [
+      "400 g di spaghetti spezzati",
+      "500 g di tenerumi",
+      "2 zucchine",
+      "1 cipolla",
+      "400 g di pomodori pelati",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere cipolla, aggiungere zucchine e tenerumi, poi i pomodori. Cuocere la pasta e mantecare con il condimento.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Siciliane",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 30,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Grillo"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con zucchine e gamberetti",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "300 g di gamberetti sgusciati",
+      "2 zucchine",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere zucchine a rondelle, poi i gamberetti. Cuocere la pasta e mantecare con il condimento e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 15,
+    "TempoCottura": 15,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Vermentino"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con le cozze",
+    "Ingredienti": [
+      "400 g di spaghetti",
+      "1 kg di cozze",
+      "2 spicchi d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Peperoncino",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Pulire le cozze, soffriggere aglio e peperoncino, aggiungere le cozze e farle aprire. Cuocere la pasta e mantecare con le cozze e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette di Mare",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 15,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con vongole",
+    "Ingredienti": [
+      "400 g di spaghetti",
+      "1 kg di vongole veraci",
+      "2 spicchi d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Peperoncino",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Spurgare le vongole, soffriggere aglio e peperoncino, aggiungere le vongole e farle aprire. Cuocere la pasta e mantecare con le vongole e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette di Mare",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 15,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con le sarde e finocchietto",
+    "Ingredienti": [
+      "400 g di bucatini",
+      "300 g di sarde fresche",
+      "1 finocchietto selvatico",
+      "30 g di uvetta",
+      "30 g di pinoli",
+      "1 cipolla",
+      "4 filetti di acciuga",
+      "Zafferano",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere cipolla, acciughe, pinoli e uvetta. Aggiungere le sarde pulite, il finocchietto lessato e lo zafferano. Cuocere la pasta e mantecare con il condimento.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Siciliane",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 30,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Inzolia"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con i carciofi",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "4 carciofi",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Pulire i carciofi, tagliarli a fettine e saltarli in padella con aglio e olio. Cuocere la pasta, mantecare con i carciofi, prezzemolo e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Primaverili",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Verdicchio"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con i piselli",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "300 g di piselli freschi o surgelati",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere i piselli e cuocere. Cuocere la pasta, mantecare con i piselli e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Primaverili",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Pinot Grigio"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con la zucca",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "400 g di zucca",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere la zucca a cubetti e cuocere. Cuocere la pasta, mantecare con la zucca e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Autunnali",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Soave"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con i funghi porcini",
+    "Ingredienti": [
+      "400 g di tagliatelle",
+      "300 g di funghi porcini freschi o surgelati",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere i funghi e cuocere. Cuocere la pasta, mantecare con i funghi, prezzemolo e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Autunnali",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Barbera"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con le zucchine",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "3 zucchine",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere le zucchine a rondelle e cuocere. Cuocere la pasta, mantecare con le zucchine e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 15,
+    "TempoCottura": 15,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Vermentino"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con i peperoni",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "2 peperoni",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere i peperoni a listarelle e cuocere. Cuocere la pasta, mantecare con i peperoni e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 15,
+    "TempoCottura": 15,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Chardonnay"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con la ricotta",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "250 g di ricotta fresca",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere la ricotta e scioglierla con poca acqua di cottura. Cuocere la pasta, mantecare con la ricotta, prezzemolo e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Primaverili",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 10,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Greco di Tufo"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con la panna e prosciutto",
+    "Ingredienti": [
+      "400 g di penne",
+      "150 g di prosciutto cotto",
+      "200 ml di panna da cucina",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Parmigiano grattugiato"
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere il prosciutto a dadini, unire la panna. Cuocere la pasta, mantecare con il condimento e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Veloci",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Pinot Bianco"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con il tonno",
+    "Ingredienti": [
+      "400 g di spaghetti",
+      "200 g di tonno sott'olio",
+      "2 spicchi d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere il tonno sgocciolato, cuocere la pasta e mantecare con il tonno e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Veloci",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 10,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Verdicchio"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con il salmone",
+    "Ingredienti": [
+      "400 g di penne",
+      "200 g di salmone affumicato",
+      "200 ml di panna da cucina",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b.",
+      "Prezzemolo"
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere il salmone a striscioline, unire la panna. Cuocere la pasta, mantecare con il condimento e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Veloci",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Chardonnay"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con la bottarga",
+    "Ingredienti": [
+      "400 g di spaghetti",
+      "50 g di bottarga di muggine",
+      "2 spicchi d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere la bottarga grattugiata, cuocere la pasta e mantecare con il condimento e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Sarde",
+    "Difficolta": "facile",
+    "Costo": "costoso",
+    "TempoPreparazione": 10,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Vermentino di Sardegna"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con le noci",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "100 g di noci sgusciate",
+      "100 ml di latte",
+      "50 g di parmigiano grattugiato",
+      "1 spicchio d'aglio",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Frullare le noci con latte, parmigiano, aglio e olio. Cuocere la pasta, mantecare con la salsa di noci.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Liguri",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 15,
+    "TempoCottura": 10,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Pigato"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Pasta con i ceci e gamberi",
+    "Ingredienti": [
+      "400 g di pasta corta",
+      "200 g di ceci cotti",
+      "200 g di gamberi sgusciati",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere i ceci e i gamberi, cuocere la pasta e mantecare con il condimento e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 15,
+    "TempoCottura": 15,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto alla milanese",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "1 bustina di zafferano",
+      "1 l di brodo di carne",
+      "50 g di burro",
+      "1 cipolla",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, sfumare con brodo, aggiungere zafferano e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Lombarde",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Bonarda"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto ai funghi porcini",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "300 g di funghi porcini",
+      "1 cipolla",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere i funghi, tostare il riso, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Autunnali",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Barbera"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto agli asparagi",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "300 g di asparagi",
+      "1 cipolla",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere gli asparagi a rondelle, tostare il riso, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Primaverili",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Pinot Grigio"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto ai frutti di mare",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "500 g di frutti di mare misti",
+      "1 spicchio d'aglio",
+      "1 l di brodo di pesce",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere i frutti di mare, tostare il riso, cuocere con brodo di pesce e mantecare con prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette di Mare",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 25,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al radicchio",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "1 cespo di radicchio",
+      "1 cipolla",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere il radicchio a striscioline, tostare il riso, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Venete",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 15,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Raboso"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al limone",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "1 limone non trattato",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "50 g di parmigiano grattugiato",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, aggiungere scorza e succo di limone, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Greco di Tufo"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al nero di seppia",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "2 seppie con nero",
+      "1 spicchio d'aglio",
+      "1 l di brodo di pesce",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere le seppie tagliate, tostare il riso, cuocere con brodo di pesce e mantecare con il nero e prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette di Mare",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 25,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto alla pescatora",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "500 g di pesce misto da zuppa",
+      "1 spicchio d'aglio",
+      "1 l di brodo di pesce",
+      "Olio extravergine d'oliva q.b.",
+      "Prezzemolo",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Soffriggere aglio, aggiungere il pesce, tostare il riso, cuocere con brodo di pesce e mantecare con prezzemolo.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette di Mare",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 25,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Verdicchio"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto alla parmigiana",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "50 g di parmigiano grattugiato",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Emiliane",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Lambrusco"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al gorgonzola e noci",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "100 g di gorgonzola",
+      "50 g di noci sgusciate",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, cuocere con brodo, aggiungere gorgonzola e noci e mantecare con burro.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Invernali",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Bonarda"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al taleggio e pere",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "100 g di taleggio",
+      "1 pera",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, cuocere con brodo, aggiungere taleggio e pere a dadini e mantecare con burro.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Autunnali",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Chardonnay"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al Barolo",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "1 bicchiere di Barolo",
+      "1 l di brodo di carne",
+      "50 g di burro",
+      "1 cipolla",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, sfumare con Barolo, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Piemontesi",
+    "Difficolta": "facile",
+    "Costo": "costoso",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Barolo"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al prosecco",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "1 bicchiere di prosecco",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "1 cipolla",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, sfumare con prosecco, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Venete",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Prosecco"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto al limone e gamberi",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "1 limone non trattato",
+      "200 g di gamberi sgusciati",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, tostare il riso, aggiungere scorza e succo di limone, unire i gamberi, cuocere con brodo e mantecare con burro.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Falanghina"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto con salsiccia e zafferano",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "200 g di salsiccia",
+      "1 bustina di zafferano",
+      "1 l di brodo di carne",
+      "50 g di burro",
+      "1 cipolla",
+      "50 g di parmigiano grattugiato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere la salsiccia sbriciolata, tostare il riso, aggiungere zafferano, cuocere con brodo e mantecare con burro e parmigiano.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Invernali",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Barbera"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Risotto con zucchine e speck",
+    "Ingredienti": [
+      "320 g di riso Carnaroli",
+      "2 zucchine",
+      "100 g di speck",
+      "1 l di brodo vegetale",
+      "50 g di burro",
+      "1 cipolla",
+      "Olio extravergine d'oliva q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Soffriggere la cipolla, aggiungere le zucchine a rondelle e lo speck a listarelle, tostare il riso, cuocere con brodo e mantecare con burro.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 10,
+    "TempoCottura": 20,
+    "Quantita": 4,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Pinot Nero"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Supplì al telefono",
+    "Ingredienti": [
+      "300 g di riso Arborio",
+      "100 g di mozzarella",
+      "100 g di ragù di carne",
+      "2 uova",
+      "Pangrattato q.b.",
+      "Olio per friggere",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Cuocere il riso, condirlo con ragù, formare delle palline con un cuore di mozzarella, passare nell'uovo e pangrattato, friggere.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Romane",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 15,
+    "Quantita": 6,
+    "MetodoCottura": "Friggitrice",
+    "VinoPreferibile": [
+      "Frascati"
+    ],
+    "TipoPiatto": "Antipasto"
+  },
+  {
+    "Nome": "Timballo di riso",
+    "Ingredienti": [
+      "400 g di riso Arborio",
+      "200 g di piselli",
+      "200 g di prosciutto cotto",
+      "200 g di mozzarella",
+      "100 g di parmigiano grattugiato",
+      "2 uova",
+      "400 ml di besciamella",
+      "Burro q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Cuocere il riso, mescolare con piselli, prosciutto, mozzarella, uova e besciamella. Versare in uno stampo imburrato, spolverare con parmigiano e cuocere in forno.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Regionali",
+    "Difficolta": "medio",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 40,
+    "Quantita": 6,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Greco di Tufo"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Insalata di riso",
+    "Ingredienti": [
+      "400 g di riso parboiled",
+      "200 g di piselli",
+      "200 g di prosciutto cotto",
+      "200 g di formaggio a cubetti",
+      "100 g di olive verdi",
+      "100 g di mais",
+      "2 uova sode",
+      "Pomodorini",
+      "Olio extravergine d'oliva q.b.",
+      "Sale e pepe q.b."
+    ],
+    "Istruzioni": "Cuocere il riso, raffreddare e mescolare con tutti gli ingredienti tagliati a cubetti. Condire con olio, sale e pepe.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Estive",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 15,
+    "Quantita": 6,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Pinot Grigio"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Torta di riso dolce",
+    "Ingredienti": [
+      "200 g di riso Arborio",
+      "1 l di latte",
+      "150 g di zucchero",
+      "3 uova",
+      "Scorza di limone",
+      "Burro q.b.",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Cuocere il riso nel latte con zucchero e scorza di limone. Far raffreddare, aggiungere uova, versare in una tortiera imburrata e cuocere in forno.",
+    "DataInserimento": "2025-11-28",
+    "Autore": "Ricette Dolci",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 40,
+    "Quantita": 8,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Moscato d'Asti"
+    ],
+    "TipoPiatto": "Dolce"
+  }
+];

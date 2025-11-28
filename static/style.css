@@ -1,0 +1,17 @@
+body { font-family: sans-serif; background: #f8f8f8; margin: 0; padding: 2em; }
+h1 { color: #2c3e50; }
+#main-layout { display: flex; max-width: 1100px; margin: auto; }
+#sidebar { width: 260px; background: #f0f0f0; padding: 1em; border-radius: 8px; margin-right: 2em; height: fit-content; min-height: 400px; }
+#sidebar h2 { margin-top: 0; }
+#sidebar-list ul { list-style: none; padding-left: 1em; margin-bottom: 0.5em; }
+#sidebar-list li { margin-bottom: 0.15em; }
+#sidebar-list .tipo-header { font-weight: bold; cursor: pointer; margin-top: 0.5em; }
+#sidebar-list .ricetta-link { cursor: pointer; color: #2c3e50; text-decoration: underline; margin-left: 1em; }
+#content { flex: 1; }
+#app { background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
+button { margin: 0.5em 0; }
+input, textarea, select { width: 100%; margin-bottom: 1em; }
+ul { list-style: none; padding: 0; }
+li { background: #f0f0f0; margin-bottom: 1em;  border-radius: 6px; }
+li ul.ingredienti-list { margin: 0.5em 0 0.5em 1.2em; padding: 0; }
+li ul.ingredienti-list li { margin-bottom: 0.2em; padding: 0; background: none; border-radius: 0; }
