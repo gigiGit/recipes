@@ -67,8 +67,8 @@ call gradlew.bat clean
 echo.
 
 REM [3/3] Build APK
-echo [3/3] Assemblaggio APK Release...
-call gradlew.bat assembleRelease
+echo [3/3] Assemblaggio APK Debug...
+call gradlew.bat assembleDebug
 
 if %ERRORLEVEL% EQU 0 (
     echo.
@@ -77,20 +77,20 @@ if %ERRORLEVEL% EQU 0 (
     echo ========================================
     echo.
     echo APK creato in:
-    echo app\build\outputs\apk\release\app-release-unsigned.apk
+    echo app\build\outputs\apk\debug\app-debug.apk
     echo.
     
     REM Copia APK nella root recipes
-    if exist "app\build\outputs\apk\release\app-release-unsigned.apk" (
-        copy /Y "app\build\outputs\apk\release\app-release-unsigned.apk" "..\recipes-android.apk" >nul
+    if exist "app\build\outputs\apk\debug\app-debug.apk" (
+        copy /Y "app\build\outputs\apk\debug\app-debug.apk" "..\recipes-android.apk" >nul
         echo Copiato anche in: recipes-android.apk
         
         REM Mostra dimensione
-        for %%A in ("recipes-android.apk") do (
+        for %%A in ("..\recipes-android.apk") do (
             set size=%%~zA
             set /a sizeMB=%%~zA/1048576
+            echo Dimensione: !sizeMB! MB
         )
-        echo Dimensione: !sizeMB! MB
         echo.
     )
     

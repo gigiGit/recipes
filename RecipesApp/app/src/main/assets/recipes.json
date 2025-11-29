@@ -1,122 +1,48 @@
 [
   {
-    "Nome": "Torta di pane grattuggiato",
+    "Nome": "Dolce Mattonella",
     "Ingredienti": [
-      "1 etto di pane grattugiato",
-      "2 etti di amaretti",
-      "3 uova",
-      "2 etti di panna",
-      "1 etto di cioccolata fondente a pezzettini",
-      "1 etto di zucchero",
-      "Mezzo cucchiaino di lievito in polvere"
+      "300 g di biscotti secchi tipo Oro Saiwa",
+      "150 g di burro a temperatura ambiente",
+      "100 g di zucchero",
+      "4 uova (tuorli e albumi separati)",
+      "400 ml di caffè espresso (freddo)",
+      "4 cucchiai di cacao amaro in polvere"
     ],
-    "Istruzioni": "Mescolare tutti gli ingredienti e mettere in forno per 30 minuti a 170 gradi. Provare con lo stuzzicadente se la cottura è completa.",
-    "DataInserimento": "2025-11-27",
-    "Autore": "Nonna Gio'",
-    "Difficolta": "facile",
-    "Costo": "economico",
-    "TempoPreparazione": 15,
-    "TempoCottura": 30,
-    "Quantita": 6,
-    "MetodoCottura": "Forno",
-    "VinoPreferibile": [
-      "Moscato d'Asti"
-    ],
-    "TipoPiatto": "Dolce"
-  },
-  {
-    "Nome": "Tortellini Emiliani",
-    "Ingredienti": [
-      "Per il ripieno",
-      "1 etto manzo",
-      "1 etto maiale",
-      "1 etto prosciutto",
-      "80 grammi mortadella",
-      "150 grammi parmigiano reggiano 30 mesi.",
-      "Per la sfoglia",
-      "4 uova",
-      "1 chilo tra farina e semola (poca semola)"
-    ],
-    "Istruzioni": "Togliere il grasso al prosciutto, macinare le carni tutte in insieme 2 volte.\naggiungere parmigiano reggiano all'impasto ottenuto\naggiungere noce moscata (a piacere)\naggiungere sale qb\n",
-    "DataInserimento": "2025-11-29",
-    "Autore": "Nonna Gio'",
-    "Difficolta": "Medio",
-    "Costo": "",
-    "TempoPreparazione": 300,
-    "TempoCottura": 300,
-    "Quantita": 12,
-    "MetodoCottura": "Fornello",
-    "VinoPreferibile": [
-      "Lambrusco secco, Grasparossa castelvetro, Lambruscone"
-    ],
-    "TipoPiatto": "Primo"
-  },
-  {
-    "Nome": "Torta Tenera",
-    "Ingredienti": [
-      "7 uova",
-      "2 etti burro",
-      "500 Kg zucchero",
-      "1 Kg farina",
-      "buccia di limone (fatta tenera)",
-      "4 etti farina",
-      "3 etti zucchero",
-      "3 uova",
-      "2 cucchiai caffe",
-      "1 limone",
-      "1 bicchiere latte",
-      "1 bicchiere olio",
-      "50 grammi cioccolata"
-    ],
-    "Istruzioni": "non ci sono istruzioni, si deve desumere",
+    "Istruzioni": "Montare il burro ammorbidito con lo zucchero fino a ottenere una crema spumosa. \nAggiungere i tuorli uno alla volta continuando a mescolare fino a incorporarli completamente. \nA parte, montare gli albumi a neve ben ferma. \nPreparare il caffè e lasciarlo raffreddare. \nInzuppare velocemente i biscotti nel caffè freddo. \nIn una pirofila rettangolare disporre un primo strato di biscotti inzuppati. \nSpalmare sopra uno strato di crema al burro. \nSpolverare con cacao amaro. \nRipetere gli strati (biscotti, crema, cacao) fino a esaurimento degli ingredienti, terminando con uno strato di biscotti. \nIncorporare delicatamente gli albumi montati alla crema rimasta e distribuirla come ultimo strato. \nSpolverare abbondantemente con cacao. \nLasciare riposare in frigorifero per almeno 4 ore (meglio una notte) prima di servire.",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
     "Costo": "economico",
     "TempoPreparazione": 30,
-    "TempoCottura": 40,
+    "TempoCottura": null,
     "Quantita": 8,
-    "MetodoCottura": "Forno",
+    "MetodoCottura": "Senza cottura",
     "VinoPreferibile": [
-      "..."
+      "Moscato",
+      "Passito"
     ],
     "TipoPiatto": "Dolce"
   },
   {
-    "Nome": "Torta di tagliatelle dolce",
+    "Nome": "Limoncello",
     "Ingredienti": [
-      "Per le tagliatelle:",
-      "300 g di farina 00",
-      "3 uova",
-      "Per il ripieno:",
-      "500 ml di latte",
-      "3 tuorli d'uovo",
-      "150 g di zucchero",
-      "50 g di farina 00",
-      "Scorza di 1 limone",
-      "200 g di mandorle tritate",
-      "100 g di amaretti sbriciolati",
-      "100 g di cioccolato fondente a scaglie",
-      "50 g di pinoli",
-      "50 g di uvetta ammollata",
-      "100 ml di Marsala o Alchermes",
-      "Burro e zucchero per la tortiera"
+      "10 limoni biologici non trattati",
+      "1 litro di alcool puro a 95°",
+      "1 kg di zucchero",
+      "1 litro di acqua"
     ],
-    "Istruzioni": "Preparare le tagliatelle con farina e uova, stenderle sottili e tagliarle a strisce. Lessarle brevemente in acqua bollente salata, scolarle e condirle con poco burro. Preparare una crema pasticcera con latte, tuorli, zucchero, farina e scorza di limone. Mescolare le tagliatelle raffreddate con la crema, mandorle, amaretti, cioccolato, pinoli, uvetta e Marsala. Imburrare e inzuccherare una tortiera, versare il composto e livellare. Cuocere in forno preriscaldato a 180°C per 45-50 minuti fino a doratura. Lasciare raffreddare prima di servire, spolverare con zucchero a velo.",
+    "Istruzioni": "Lavare accuratamente i limoni e asciugarli. Con un pelapatate o un coltellino prelevare solo la parte gialla della scorza, evitando la parte bianca che è amara. Mettere le scorze in un contenitore di vetro con l'alcool, chiudere ermeticamente e lasciare macerare in luogo fresco e buio per 15 giorni, agitando il contenitore ogni giorno. Trascorso questo periodo, preparare uno sciroppo portando a bollore l'acqua con lo zucchero, mescolando fino a completo scioglimento. Lasciare raffreddare completamente lo sciroppo. Filtrare l'alcool aromatizzato eliminando le scorze, unirlo allo sciroppo freddo e mescolare bene. Imbottigliare il limoncello in bottiglie di vetro scuro. Lasciare riposare per almeno 30 giorni prima di consumare. Conservare in freezer e servire ghiacciato in bicchierini freddi.",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
-    "Difficolta": "Medio",
-    "Costo": "medio",
-    "TempoPreparazione": 60,
-    "TempoCottura": 50,
-    "Quantita": 10,
-    "MetodoCottura": "Forno",
-    "VinoPreferibile": [
-      "Recioto di Soave",
-      "Passito di Pantelleria",
-      "Moscato d'Asti"
-    ],
-    "TipoPiatto": "Dolce"
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 30,
+    "TempoCottura": null,
+    "Quantita": 2000,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [],
+    "TipoPiatto": "Liquore"
   },
   {
     "Nome": "Tiramisù",
@@ -174,47 +100,94 @@
     "TipoPiatto": "Dolce"
   },
   {
-    "Nome": "Limoncello",
+    "Nome": "Torta di pane grattuggiato",
     "Ingredienti": [
-      "10 limoni biologici non trattati",
-      "1 litro di alcool puro a 95°",
-      "1 kg di zucchero",
-      "1 litro di acqua"
+      "1 etto di pane grattugiato",
+      "2 etti di amaretti",
+      "3 uova",
+      "2 etti di panna",
+      "1 etto di cioccolata fondente a pezzettini",
+      "1 etto di zucchero",
+      "Mezzo cucchiaino di lievito in polvere"
     ],
-    "Istruzioni": "Lavare accuratamente i limoni e asciugarli. Con un pelapatate o un coltellino prelevare solo la parte gialla della scorza, evitando la parte bianca che è amara. Mettere le scorze in un contenitore di vetro con l'alcool, chiudere ermeticamente e lasciare macerare in luogo fresco e buio per 15 giorni, agitando il contenitore ogni giorno. Trascorso questo periodo, preparare uno sciroppo portando a bollore l'acqua con lo zucchero, mescolando fino a completo scioglimento. Lasciare raffreddare completamente lo sciroppo. Filtrare l'alcool aromatizzato eliminando le scorze, unirlo allo sciroppo freddo e mescolare bene. Imbottigliare il limoncello in bottiglie di vetro scuro. Lasciare riposare per almeno 30 giorni prima di consumare. Conservare in freezer e servire ghiacciato in bicchierini freddi.",
-    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Mescolare tutti gli ingredienti e mettere in forno per 30 minuti a 170 gradi. Provare con lo stuzzicadente se la cottura è completa.",
+    "DataInserimento": "2025-11-27",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
     "Costo": "economico",
-    "TempoPreparazione": 30,
-    "TempoCottura": null,
-    "Quantita": 2000,
-    "MetodoCottura": "Fornello",
-    "VinoPreferibile": [],
-    "TipoPiatto": "Liquore"
+    "TempoPreparazione": 15,
+    "TempoCottura": 30,
+    "Quantita": 6,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Moscato d'Asti"
+    ],
+    "TipoPiatto": "Dolce"
   },
   {
-    "Nome": "Dolce Mattonella",
+    "Nome": "Torta di tagliatelle dolce",
     "Ingredienti": [
-      "300 g di biscotti secchi tipo Oro Saiwa",
-      "150 g di burro a temperatura ambiente",
-      "100 g di zucchero",
-      "4 uova (tuorli e albumi separati)",
-      "400 ml di caffè espresso (freddo)",
-      "4 cucchiai di cacao amaro in polvere"
+      "Per le tagliatelle:",
+      "300 g di farina 00",
+      "3 uova",
+      "Per il ripieno:",
+      "500 ml di latte",
+      "3 tuorli d'uovo",
+      "150 g di zucchero",
+      "50 g di farina 00",
+      "Scorza di 1 limone",
+      "200 g di mandorle tritate",
+      "100 g di amaretti sbriciolati",
+      "100 g di cioccolato fondente a scaglie",
+      "50 g di pinoli",
+      "50 g di uvetta ammollata",
+      "100 ml di Marsala o Alchermes",
+      "Burro e zucchero per la tortiera"
     ],
-    "Istruzioni": "Montare il burro ammorbidito con lo zucchero fino a ottenere una crema spumosa. \nAggiungere i tuorli uno alla volta continuando a mescolare fino a incorporarli completamente. \nA parte, montare gli albumi a neve ben ferma. \nPreparare il caffè e lasciarlo raffreddare. \nInzuppare velocemente i biscotti nel caffè freddo. \nIn una pirofila rettangolare disporre un primo strato di biscotti inzuppati. \nSpalmare sopra uno strato di crema al burro. \nSpolverare con cacao amaro. \nRipetere gli strati (biscotti, crema, cacao) fino a esaurimento degli ingredienti, terminando con uno strato di biscotti. \nIncorporare delicatamente gli albumi montati alla crema rimasta e distribuirla come ultimo strato. \nSpolverare abbondantemente con cacao. \nLasciare riposare in frigorifero per almeno 4 ore (meglio una notte) prima di servire.",
+    "Istruzioni": "Preparare le tagliatelle con farina e uova, stenderle sottili e tagliarle a strisce. Lessarle brevemente in acqua bollente salata, scolarle e condirle con poco burro. Preparare una crema pasticcera con latte, tuorli, zucchero, farina e scorza di limone. Mescolare le tagliatelle raffreddate con la crema, mandorle, amaretti, cioccolato, pinoli, uvetta e Marsala. Imburrare e inzuccherare una tortiera, versare il composto e livellare. Cuocere in forno preriscaldato a 180°C per 45-50 minuti fino a doratura. Lasciare raffreddare prima di servire, spolverare con zucchero a velo.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "Medio",
+    "Costo": "medio",
+    "TempoPreparazione": 60,
+    "TempoCottura": 50,
+    "Quantita": 10,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Recioto di Soave",
+      "Passito di Pantelleria",
+      "Moscato d'Asti"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Torta Tenera",
+    "Ingredienti": [
+      "7 uova",
+      "2 etti burro",
+      "500 Kg zucchero",
+      "1 Kg farina",
+      "buccia di limone (fatta tenera)",
+      "4 etti farina",
+      "3 etti zucchero",
+      "3 uova",
+      "2 cucchiai caffe",
+      "1 limone",
+      "1 bicchiere latte",
+      "1 bicchiere olio",
+      "50 grammi cioccolata"
+    ],
+    "Istruzioni": "non ci sono istruzioni, si deve desumere",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
     "Costo": "economico",
     "TempoPreparazione": 30,
-    "TempoCottura": null,
+    "TempoCottura": 40,
     "Quantita": 8,
-    "MetodoCottura": "Senza cottura",
+    "MetodoCottura": "Forno",
     "VinoPreferibile": [
-      "Moscato",
-      "Passito"
+      "..."
     ],
     "TipoPiatto": "Dolce"
   },
@@ -242,5 +215,32 @@
       "Moscato"
     ],
     "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Tortellini Emiliani",
+    "Ingredienti": [
+      "Per il ripieno",
+      "1 etto manzo",
+      "1 etto maiale",
+      "1 etto prosciutto",
+      "80 grammi mortadella",
+      "150 grammi parmigiano reggiano 30 mesi.",
+      "Per la sfoglia",
+      "4 uova",
+      "1 chilo tra farina e semola (poca semola)"
+    ],
+    "Istruzioni": "Togliere il grasso al prosciutto, macinare le carni tutte in insieme 2 volte.\naggiungere parmigiano reggiano all'impasto ottenuto\naggiungere noce moscata (a piacere)\naggiungere sale qb\n",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "Medio",
+    "Costo": "",
+    "TempoPreparazione": 300,
+    "TempoCottura": 300,
+    "Quantita": 12,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Lambrusco secco, Grasparossa castelvetro, Lambruscone"
+    ],
+    "TipoPiatto": "Primo"
   }
 ]
