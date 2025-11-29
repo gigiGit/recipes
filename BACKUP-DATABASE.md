@@ -206,7 +206,7 @@ Totale ricette: 98
 Autori disponibili:
   • Internet: 89 ricette
   • Nonna Gio': 7 ricette
-  • Nonna Gio' - VERSIONE AGGIORNATA: 1 ricette
+  • Nonna Gio' -  1 ricette
   • Ricetta tradizionale romana: 1 ricette
 
 ============================================================
