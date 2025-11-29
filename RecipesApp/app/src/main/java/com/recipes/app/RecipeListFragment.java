@@ -49,7 +49,19 @@ public class RecipeListFragment extends Fragment {
     }
 
     private void openRecipeDetail(Recipe recipe) {
+        // Trova l'indice della ricetta
+        RecipeManager manager = new RecipeManager(getContext());
+        List<Recipe> allRecipes = manager.getAllRecipes();
+        int index = -1;
+        for (int i = 0; i < allRecipes.size(); i++) {
+            if (allRecipes.get(i).getNome().equals(recipe.getNome())) {
+                index = i;
+                break;
+            }
+        }
+        
         Intent intent = new Intent(getActivity(), RecipeDetailActivity.class);
+        intent.putExtra("recipe_index", index);
         intent.putExtra("recipe_name", recipe.getNome());
         intent.putExtra("autore", recipe.getAutore());
         intent.putExtra("data", recipe.getDataInserimento());

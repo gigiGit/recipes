@@ -2044,5 +2044,466 @@
       "Moscato d'Asti"
     ],
     "TipoPiatto": "Dolce"
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Lavare tutte le verdure. Tagliare i pomodori a spicchi, i cetrioli a rondelle e grattugiare le carote. Mescolare con la lattuga in una ciotola. Condire con olio, aceto e sale.",
+    "Costo": "economico",
+    "TempoCottura": 0,
+    "VinoPreferibile": [
+      "Vino bianco leggero"
+    ],
+    "TempoPreparazione": 10,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Insalata mista semplice",
+    "MetodoCottura": "Nessuna",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "Lattuga",
+      "Pomodori",
+      "Cetrioli",
+      "Carote",
+      "Olio extravergine d'oliva",
+      "Aceto",
+      "Sale"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Lavare e tagliare le zucchine a rondelle. Rosolare l'aglio in olio, aggiungere le zucchine e cuocere per 15 minuti. Aggiustare di sale e pepe, spolverare con prezzemolo tritato.",
+    "Costo": "economico",
+    "TempoCottura": 15,
+    "VinoPreferibile": [
+      "Verdicchio",
+      "Soave"
+    ],
+    "TempoPreparazione": 10,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Zucchine trifolate",
+    "MetodoCottura": "Fornello",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "600g zucchine",
+      "2 spicchi aglio",
+      "Prezzemolo fresco",
+      "4 cucchiai olio extravergine",
+      "Sale",
+      "Pepe"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Lessare gli spinaci in acqua bollente salata per 5 minuti. Scolarli bene e strizzarli. In padella sciogliere il burro, aggiungere gli spinaci, sale e una grattugiata di noce moscata. Saltare per 2-3 minuti.",
+    "Costo": "economico",
+    "TempoCottura": 10,
+    "VinoPreferibile": [
+      "Pinot Bianco"
+    ],
+    "TempoPreparazione": 5,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Spinaci al burro",
+    "MetodoCottura": "Fornello",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "500g spinaci freschi",
+      "50g burro",
+      "Sale",
+      "Noce moscata"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Tagliare i pomodori a metà e svuotarli. Mescolare pangrattato, aglio tritato, origano, sale e olio. Riempire i pomodori con il composto. Infornare a 180°C per 25 minuti.",
+    "Costo": "economico",
+    "TempoCottura": 25,
+    "VinoPreferibile": [
+      "Vermentino"
+    ],
+    "TempoPreparazione": 15,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Pomodori al forno",
+    "MetodoCottura": "Forno",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "6 pomodori grandi",
+      "Pangrattato",
+      "Aglio",
+      "Origano",
+      "Olio extravergine",
+      "Sale"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Lessare il cavolfiore a cimette in acqua salata per 10 minuti. Disporre in pirofila, coprire con besciamella, parmigiano e pangrattato. Aggiungere fiocchetti di burro. Gratinare in forno a 200°C per 15 minuti.",
+    "Costo": "economico",
+    "TempoCottura": 25,
+    "VinoPreferibile": [
+      "Chardonnay"
+    ],
+    "TempoPreparazione": 15,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Cavolfiore gratinato",
+    "MetodoCottura": "Forno",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "1 cavolfiore medio",
+      "200ml besciamella",
+      "50g parmigiano grattugiato",
+      "Pangrattato",
+      "Burro",
+      "Sale"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Pulire i fagiolini e lessarli 5 minuti. Soffriggere la cipolla tritata, aggiungere i pomodori, i fagiolini e il basilico. Cuocere per 15 minuti a fuoco medio. Salare.",
+    "Costo": "economico",
+    "TempoCottura": 20,
+    "VinoPreferibile": [
+      "Rosato"
+    ],
+    "TempoPreparazione": 10,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Fagiolini al pomodoro",
+    "MetodoCottura": "Fornello",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "500g fagiolini",
+      "300g pomodori pelati",
+      "1 cipolla",
+      "Olio extravergine",
+      "Basilico",
+      "Sale"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Tagliare le melanzane a cubetti, salarle e lasciarle spurgare 30 minuti. Sciacquarle e asciugarle. Rosolare l'aglio in olio, aggiungere le melanzane e cuocere 10 minuti. Aggiungere i pomodorini tagliati e il basilico. Cuocere altri 10 minuti.",
+    "Costo": "economico",
+    "TempoCottura": 20,
+    "VinoPreferibile": [
+      "Primitivo"
+    ],
+    "TempoPreparazione": 40,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Melanzane a funghetto",
+    "MetodoCottura": "Fornello",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "3 melanzane",
+      "2 spicchi aglio",
+      "Pomodorini",
+      "Basilico",
+      "Olio extravergine",
+      "Sale"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Pelare e tagliare le carote a rondelle. Lessarle in acqua salata per 10 minuti. In padella rosolare l'aglio in olio, aggiungere le carote, prezzemolo tritato, sale e pepe. Saltare per 3 minuti.",
+    "Costo": "economico",
+    "TempoCottura": 15,
+    "VinoPreferibile": [
+      "Sauvignon Blanc"
+    ],
+    "TempoPreparazione": 10,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Carote al prezzemolo",
+    "MetodoCottura": "Fornello",
+    "TipoPiatto": "Contorno",
+    "Ingredienti": [
+      "600g carote",
+      "Prezzemolo fresco",
+      "1 spicchio aglio",
+      "Olio extravergine",
+      "Sale",
+      "Pepe"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Arrostire i peperoni interi in forno a 220°C per 30 minuti, girandoli. Chiuderli in un sacchetto e lasciarli raffreddare. Spellarli, pulirli e tagliarli a listarelle. Condire con olio, aglio e acciughe.",
+    "Costo": "economico",
+    "TempoCottura": 30,
+    "VinoPreferibile": [
+      "Barbera"
+    ],
+    "TempoPreparazione": 15,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Peperoni arrostiti",
+    "MetodoCottura": "Forno",
+    "TipoPiatto": "Antipasto",
+    "Ingredienti": [
+      "4 peperoni (rossi e gialli)",
+      "Aglio",
+      "Acciughe (opzionali)",
+      "Olio extravergine",
+      "Sale"
+    ]
+  },
+  {
+    "Autore": "Chef AI",
+    "DataInserimento": "2025-11-29",
+    "Istruzioni": "Soffriggere la cipolla tritata. Aggiungere zucca e patata a cubetti. Coprire con brodo e cuocere 25 minuti. Frullare fino a ottenere una crema liscia. Aggiustare di sale e pepe. Servire con crostini.",
+    "Costo": "economico",
+    "TempoCottura": 30,
+    "VinoPreferibile": [
+      "Prosecco"
+    ],
+    "TempoPreparazione": 15,
+    "Difficolta": "facile",
+    "Quantita": 4,
+    "Nome": "Crema di zucca",
+    "MetodoCottura": "Fornello",
+    "TipoPiatto": "Primo",
+    "Ingredienti": [
+      "800g zucca",
+      "1 patata media",
+      "1 cipolla",
+      "1 litro brodo vegetale",
+      "Olio extravergine",
+      "Sale",
+      "Pepe",
+      "Crostini di pane"
+    ]
+  },
+  {
+    "Nome": "Torta di Tagliatelle",
+    "Ingredienti": [
+      "300 g di tagliatelle all'uovo",
+      "200 g di mandorle tritate",
+      "200 g di zucchero",
+      "100 g di burro",
+      "4 uova",
+      "1 limone (scorza grattugiata)",
+      "50 g di pinoli",
+      "50 g di cioccolato fondente tritato",
+      "1 bustina di lievito per dolci",
+      "Zucchero a velo per guarnire",
+      "Sale q.b."
+    ],
+    "Istruzioni": "Cuocere le tagliatelle in acqua bollente leggermente salata per 3-4 minuti, scolarle e lasciarle raffreddare. In una ciotola montare le uova con lo zucchero fino a ottenere un composto spumoso. Aggiungere il burro fuso, le mandorle tritate, la scorza di limone, i pinoli, il cioccolato e il lievito. Incorporare delicatamente le tagliatelle raffreddate. Versare il composto in una tortiera imburrata e infarinata (diametro 24 cm). Cuocere in forno preriscaldato a 180°C per circa 40-45 minuti. Lasciare raffreddare e spolverare con zucchero a velo prima di servire.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Tradizione emiliana",
+    "Difficolta": "media",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 45,
+    "Quantita": 8,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Moscato d'Asti",
+      "Malvasia dolce"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Tiramisù",
+    "Ingredienti": [
+      "500 g di mascarpone",
+      "6 uova (tuorli e albumi separati)",
+      "150 g di zucchero (2 cucchiai)",
+      "300 g di savoiardi (o 2 pacchi di pavesini grandi 400 grammi)",
+      "400 ml di caffè espresso (freddo 6 persone)",
+      "3 cucchiai di cacao amaro in polvere",
+      "2 cucchiai di marsala o liquore (facoltativo)"
+    ],
+    "Istruzioni": "Montare i tuorli con lo zucchero fino a ottenere una crema chiara e spumosa. \nIncorporare il mascarpone mescolando delicatamente. \nA parte, montare gli albumi a neve ben ferma e aggiungerli alla crema di mascarpone con movimenti dal basso verso l'alto. \nPreparare il caffè e lasciarlo raffreddare, eventualmente aggiungendo il marsala. \nInzuppare velocemente i savoiardi nel caffè e disporli in uno strato sul fondo di una pirofila. \nCoprire con uno strato di crema al mascarpone. \nRipetere con un altro strato di savoiardi e crema. \nSpolverare abbondantemente con cacao amaro. \nMettere in frigorifero per almeno 4 ore (meglio una notte) prima di servire.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": null,
+    "Quantita": 8,
+    "MetodoCottura": "Senza cottura",
+    "VinoPreferibile": [
+      "Moscato d'Asti",
+      "Vin Santo"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Torta di Mele",
+    "Ingredienti": [
+      "3-4  mele renette o golden",
+      "300 g di farina 00",
+      "1 etto di burro",
+      "1 etto di amaretti",
+      "200 g di zucchero",
+      "4 uova",
+      "1 bustina di lievito per dolci",
+      "1 limone (scorza grattugiata)",
+      "Zucchero a velo per guarnire",
+      "Cannella in polvere (facoltativa)"
+    ],
+    "Istruzioni": "Il burro va lasciato ammorbidire per poterlo lavorare meglio (tirarlo fruoi dal frigo)\nSbucciare le mele, tagliarle a fettine sottili e bagnarle con il sassolino. \nIn una ciotola mescolare le uova con lo zucchero, il burro e la scorza di limone. \nSetacciare la farina con il lievito, incorporarla al composto. \nAggiungere le mele tagliate (tenerne alcune da parte per decorare). \nVersare l'impasto in una tortiera imburrata e infarinata (diametro 24 cm). \nDisporre le fettine di mela tenute da parte sulla superficie a raggiera. \nSpolverare con un po' di zucchero e cannella. \nCuocere in forno preriscaldato a 180°C per 40-45 minuti. \nServire tiepida o fredda, spolverata con zucchero a velo.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 20,
+    "TempoCottura": 45,
+    "Quantita": 8,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Moscato",
+      "Passito"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Limoncello",
+    "Ingredienti": [
+      "10 limoni biologici non trattati",
+      "1 litro di alcool puro a 95°",
+      "1 kg di zucchero",
+      "1 litro di acqua"
+    ],
+    "Istruzioni": "Lavare accuratamente i limoni e asciugarli. Con un pelapatate o un coltellino prelevare solo la parte gialla della scorza, evitando la parte bianca che è amara. Mettere le scorze in un contenitore di vetro con l'alcool, chiudere ermeticamente e lasciare macerare in luogo fresco e buio per 15 giorni, agitando il contenitore ogni giorno. Trascorso questo periodo, preparare uno sciroppo portando a bollore l'acqua con lo zucchero, mescolando fino a completo scioglimento. Lasciare raffreddare completamente lo sciroppo. Filtrare l'alcool aromatizzato eliminando le scorze, unirlo allo sciroppo freddo e mescolare bene. Imbottigliare il limoncello in bottiglie di vetro scuro. Lasciare riposare per almeno 30 giorni prima di consumare. Conservare in freezer e servire ghiacciato in bicchierini freddi.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 30,
+    "TempoCottura": null,
+    "Quantita": 2000,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [],
+    "TipoPiatto": "Altro"
+  },
+  {
+    "Nome": "Dolce Mattonella",
+    "Ingredienti": [
+      "300 g di biscotti secchi tipo Oro Saiwa",
+      "150 g di burro a temperatura ambiente",
+      "100 g di zucchero",
+      "4 uova (tuorli e albumi separati)",
+      "400 ml di caffè espresso (freddo)",
+      "4 cucchiai di cacao amaro in polvere"
+    ],
+    "Istruzioni": "Montare il burro ammorbidito con lo zucchero fino a ottenere una crema spumosa. \nAggiungere i tuorli uno alla volta continuando a mescolare fino a incorporarli completamente. \nA parte, montare gli albumi a neve ben ferma. \nPreparare il caffè e lasciarlo raffreddare. \nInzuppare velocemente i biscotti nel caffè freddo. \nIn una pirofila rettangolare disporre un primo strato di biscotti inzuppati. \nSpalmare sopra uno strato di crema al burro. \nSpolverare con cacao amaro. \nRipetere gli strati (biscotti, crema, cacao) fino a esaurimento degli ingredienti, terminando con uno strato di biscotti. \nIncorporare delicatamente gli albumi montati alla crema rimasta e distribuirla come ultimo strato. \nSpolverare abbondantemente con cacao. \nLasciare riposare in frigorifero per almeno 4 ore (meglio una notte) prima di servire.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 30,
+    "TempoCottura": null,
+    "Quantita": 8,
+    "MetodoCottura": "Senza cottura",
+    "VinoPreferibile": [
+      "Moscato",
+      "Passito"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Torta Mattonella",
+    "Ingredienti": [
+      "325 g di biscotti secchi",
+      "250 g di latte intero",
+      "200 g di panna fresca liquida",
+      "20 g di zucchero",
+      "5 cucchiai di cacao amaro in polvere",
+      "6 tuorli",
+      "70 g di amido di mais (maizena)",
+      "1 baccello di vaniglia",
+      "220 g di zucchero (per la crema)",
+      "630 g di latte intero (per la crema)",
+      "150 g di panna fresca (per la crema)"
+    ],
+    "Istruzioni": "Preparare la crema pasticcera: incidere il baccello di vaniglia ed estrarre i semi. In un tegame versare 630g di latte, 150g di panna, il baccello e i semi di vaniglia, portare quasi a bollore. In una ciotola sbattere i tuorli con 220g di zucchero, aggiungere la maizena setacciata. Stemperare con un mestolo del latte caldo, poi versare il tutto nel tegame. Cuocere a fuoco dolce mescolando fino ad addensamento. Versare in una pirofila, coprire e far rassodare in frigo. In una teglia 29x39cm rivestita di pellicola, disporre i biscotti inzuppati nel latte (250g) per 10 secondi. Spalmare 3 cucchiai di crema, spolverare con cacao. Ripetere gli strati fino a ottenere 6 strati totali. Terminare con biscotti e cacao. Far rassodare 3 ore in frigo. Montare 200g di panna con 20g di zucchero. Distribuire la panna montata sulla torta, spolverare con cacao e servire.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "GialloZafferano",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": 40,
+    "TempoCottura": 10,
+    "Quantita": 6,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Moscato d'Asti",
+      "Vin Santo"
+    ],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Paella Valenciana",
+    "Ingredienti": [
+      "400 g di riso per paella (tipo bomba o arborio)",
+      "400 g di pollo a pezzi",
+      "300 g di coniglio a pezzi",
+      "200 g di fagiolini verdi",
+      "150 g di fagioli bianchi (freschi o surgelati)",
+      "2 pomodori maturi",
+      "4 carciofi",
+      "1 litro di brodo di carne o vegetale",
+      "1 cucchiaino di zafferano in stimmi",
+      "1 cucchiaino di paprika dolce",
+      "4 spicchi d'aglio",
+      "100 ml di olio extravergine d'oliva",
+      "1 rametto di rosmarino",
+      "Sale e pepe q.b.",
+      "1 limone (per guarnire)"
+    ],
+    "Istruzioni": "In una paellera o padella larga, scaldare l'olio e rosolare il pollo e il coniglio fino a doratura. Aggiungere l'aglio tritato e il rosmarino. Unire i fagiolini e i fagioli bianchi, cuocere 5 minuti. Aggiungere i pomodori grattugiati (senza buccia) e la paprika, mescolare. Versare il brodo caldo, portare a bollore e cuocere 10 minuti. Aggiungere i carciofi tagliati a spicchi. Distribuire uniformemente il riso sulla superficie senza mescolare. Sciogliere lo zafferano in poco brodo caldo e distribuirlo sul riso. Cuocere a fuoco medio-alto per 10 minuti, poi abbassare la fiamma e cuocere altri 8-10 minuti fino a che il riso abbia assorbito il liquido. Togliere dal fuoco, coprire con un canovaccio e lasciare riposare 5 minuti. Servire direttamente dalla paellera con spicchi di limone.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Tradizione valenciana",
+    "Difficolta": "media",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": 35,
+    "Quantita": 6,
+    "MetodoCottura": "Fornello",
+    "VinoPreferibile": [
+      "Vino bianco spagnolo",
+      "Albariño",
+      "Verdejo"
+    ],
+    "TipoPiatto": "Primo"
+  },
+  {
+    "Nome": "Torta Tenerina",
+    "Ingredienti": [
+      "200 g di cioccolato fondente al 55-65%",
+      "100 g di burro",
+      "4 uova medie",
+      "150 g di zucchero",
+      "50 g di farina 00",
+      "Zucchero a velo per spolverizzare"
+    ],
+    "Istruzioni": "Tritare finemente il cioccolato e scioglierlo a bagnomaria mescolando continuamente. Quando il cioccolato è sciolto, aggiungere il burro a pezzetti e lasciarlo sciogliere mescolando. Lasciare intiepidire. Separare i tuorli dagli albumi in due ciotole. Montare gli albumi con metà dello zucchero fino a ottenere una consistenza ferma e spumosa. Montare i tuorli con lo zucchero restante fino a ottenere un composto chiaro e spumoso. Con le fruste in azione, versare a filo il cioccolato tiepido nei tuorli. Incorporare 1/3 degli albumi montati mescolando con una spatola, poi aggiungere gli albumi restanti con movimenti delicati dal basso verso l'alto. Setacciare la farina e incorporarla delicatamente. Versare l'impasto in uno stampo a cerniera da 24-26 cm imburrato e infarinato. Cuocere in forno statico preriscaldato a 180°C per 25 minuti. Lasciare raffreddare completamente prima di sformare. Spolverizzare con zucchero a velo e servire.",
+    "DataInserimento": "2025-11-29",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 20,
+    "TempoCottura": 25,
+    "Quantita": 8,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [
+      "Passito",
+      "Moscato"
+    ],
+    "TipoPiatto": "Dolce"
   }
 ]

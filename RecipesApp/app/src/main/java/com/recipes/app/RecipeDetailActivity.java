@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipeDetailActivity extends AppCompatActivity {
+    private int recipeIndex = -1;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         
         Intent intent = getIntent();
         String nome = intent.getStringExtra("recipe_name");
+        recipeIndex = intent.getIntExtra("recipe_index", -1);
         
         setTitle(nome);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,6 +82,12 @@ public class RecipeDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
+            return true;
+        } else if (item.getItemId() == R.id.action_edit) {
+            Intent editIntent = new Intent(this, EditRecipeActivity.class);
+            editIntent.putExtra("recipe_index", recipeIndex);
+            startActivity(editIntent);
+            finish(); // Chiudi dettaglio dopo aver aperto modifica
             return true;
         } else if (item.getItemId() == R.id.action_share) {
             shareRecipe();

@@ -373,19 +373,9 @@ function filterRicette() {
       )
     );
   }
-  renderRicette(ricette);
   
-  // Se c'è una ricerca attiva e ci sono risultati, seleziona la prima ricetta e attiva il tab corrispondente
-  if (filtroTesto && ricette.length > 0) {
-    const primaRicetta = ricette[0];
-    const idxGlobale = ricetteGlobal.findIndex(r => r.Nome === primaRicetta.Nome);
-    if (idxGlobale !== -1) {
-      renderRicettaSelezionata(idxGlobale);
-      // Attiva il tab corrispondente al tipo di piatto della prima ricetta
-      const tipoPiatto = primaRicetta.TipoPiatto || 'Altro';
-      switchTab(tipoPiatto);
-    }
-  }
+  // Mostra tutte le ricette filtrate
+  renderRicette(ricette);
 }
 
 async function loadRicette() {

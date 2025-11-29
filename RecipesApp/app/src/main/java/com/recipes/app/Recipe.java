@@ -41,4 +41,19 @@ public class Recipe implements Serializable {
         if (VinoPreferibile == null || VinoPreferibile.length == 0) return "Nessuno";
         return String.join(", ", VinoPreferibile);
     }
+    
+    // Setters
+    public void setNome(String nome) { this.Nome = nome; }
+    public void setIngredienti(String[] ingredienti) { this.Ingredienti = ingredienti; }
+    public void setIstruzioni(String istruzioni) { this.Istruzioni = istruzioni; }
+    public void setDataInserimento(String data) { this.DataInserimento = data; }
+    public void setAutore(String autore) { this.Autore = autore; }
+    public void setDifficolta(String difficolta) { this.Difficolta = difficolta; }
+    public void setCosto(String costo) { this.Costo = costo; }
+    public void setTempoPreparazione(Integer tempo) { this.TempoPreparazione = tempo; }
+    public void setTempoCottura(Integer tempo) { this.TempoCottura = tempo; }
+    public void setQuantita(Integer quantita) { this.Quantita = quantita; }
+    public void setMetodoCottura(String metodo) { this.MetodoCottura = metodo; }
+    public void setVinoPreferibile(String[] vini) { this.VinoPreferibile = vini; }
+    public void setTipoPiatto(String tipo) { this.TipoPiatto = tipo; }
 }
