@@ -125,19 +125,20 @@ if %ERRORLEVEL% EQU 0 (
         echo - Driver ADB installati
     )
     
-    :end
-    echo.
-) else (
-    echo.
-    echo ========================================
-    echo  BUILD FALLITA!
-    echo ========================================
-    echo.
-    echo Verifica:
-    echo - JAVA_HOME punta a JDK 17
-    echo - ANDROID_HOME configurato correttamente
-    echo - Gradle wrapper presente
-    echo.
+    goto :end
 )
 
-pause
+REM Questo blocco viene eseguito solo se la build fallisce
+echo.
+echo ========================================
+echo  BUILD FALLITA!
+echo ========================================
+echo.
+echo Verifica:
+echo - JAVA_HOME punta a JDK 17
+echo - ANDROID_HOME configurato correttamente
+echo - Gradle wrapper presente
+echo.
+
+:end
+
