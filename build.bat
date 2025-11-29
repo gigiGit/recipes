@@ -7,7 +7,7 @@ echo ========================================
 echo  BUILD APK - Inventario Ricette
 echo ========================================
 echo.
-
+copy recipes.json RecipesApp\app\assets\recipes.json >nul
 REM Vai alla directory RecipesApp dalla posizione corrente del batch
 cd /d "%~dp0RecipesApp"
 
@@ -67,8 +67,8 @@ call gradlew.bat clean
 echo.
 
 REM [3/3] Build APK
-echo [3/3] Assemblaggio APK...
-call gradlew.bat assembleDebug
+echo [3/3] Assemblaggio APK Release...
+call gradlew.bat assembleRelease
 
 if %ERRORLEVEL% EQU 0 (
     echo.
@@ -77,12 +77,12 @@ if %ERRORLEVEL% EQU 0 (
     echo ========================================
     echo.
     echo APK creato in:
-    echo app\build\outputs\apk\debug\app-debug.apk
+    echo app\build\outputs\apk\release\app-release-unsigned.apk
     echo.
     
     REM Copia APK nella root recipes
-    if exist "app\build\outputs\apk\debug\app-debug.apk" (
-        copy /Y "app\build\outputs\apk\debug\app-debug.apk" "recipes-android.apk" >nul
+    if exist "app\build\outputs\apk\release\app-release-unsigned.apk" (
+        copy /Y "app\build\outputs\apk\release\app-release-unsigned.apk" "..\recipes-android.apk" >nul
         echo Copiato anche in: recipes-android.apk
         
         REM Mostra dimensione
@@ -106,7 +106,7 @@ if %ERRORLEVEL% EQU 0 (
     "%ANDROID_HOME%\platform-tools\adb.exe" devices
     echo.
     echo Installazione APK su dispositivo Android...
-    "%ANDROID_HOME%\platform-tools\adb.exe" install -r "recipes-android.apk"
+    "%ANDROID_HOME%\platform-tools\adb.exe" install -r "..\recipes-android.apk"
     
     if %ERRORLEVEL% EQU 0 (
         echo.

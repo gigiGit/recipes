@@ -58,6 +58,7 @@ public class RecipeManager {
             if (recipe.getNome().toLowerCase().contains(lowerQuery) ||
                 recipe.getIstruzioni().toLowerCase().contains(lowerQuery) ||
                 containsIngredient(recipe, lowerQuery) ||
+                (recipe.getAutore() != null && recipe.getAutore().toLowerCase().contains(lowerQuery)) ||
                 (recipe.getTipoPiatto() != null && recipe.getTipoPiatto().toLowerCase().contains(lowerQuery))) {
                 results.add(recipe);
             }
