@@ -42,5 +42,9 @@ Thumbs.db
 *.tmp
 *.bak
 *~
-recipes.db.backup*
+recipes.db.backup-*
+*.json.backup-*
+*.json.imported-*
+recipe_modifications.json
+test-modifications.json
 package-lock.json

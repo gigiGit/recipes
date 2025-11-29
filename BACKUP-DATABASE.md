@@ -8,6 +8,7 @@ Questo sistema fornisce backup e ripristino del file `recipes.json` utilizzando 
 
 - **`import-to-db.js`**: Importa `recipes.json` nel database SQLite
 - **`export-from-db.js`**: Esporta il database SQLite in `recipes.json`
+- **`import-modifications.js`**: Import incrementale modifiche dall'app Android
 - **`recipes.db`**: Database SQLite (creato automaticamente)
 
 ## Struttura Database
@@ -114,6 +115,57 @@ node export-from-db.js
 
 # 4. Verifica il ripristino
 node -p "(require('./recipes.json')).length"
+```
+
+## Import Modifiche Android
+
+Quando ricevi il file `recipe_modifications.json` via email dall'app Android:
+
+```powershell
+# 1. Salva il file ricevuto via email nella cartella del progetto
+
+# 2. Importa le modifiche (aggiorna recipes.json e recipes.db)
+node import-modifications.js recipe_modifications.json
+
+# 3. Verifica le modifiche
+node -p "(require('./recipes.json')).length"
+```
+
+Lo script:
+- ✅ Crea backup automatico di `recipes.json` e `recipes.db`
+- ✅ Aggiunge nuove ricette
+- ✅ Aggiorna ricette esistenti (se modificate)
+- ✅ Sincronizza sia JSON che database SQLite
+- ✅ Archivia il file importato con timestamp
+- ✅ Mostra riepilogo dettagliato delle operazioni
+
+**Output esempio:**
+```
+📱 Import incrementale modifiche Android
+
+💾 Backup creato: recipes.json.backup-2025-11-29T22-15-30
+📖 Ricette esistenti: 9
+➕ Aggiunta: Carbonara
+✏️  Aggiornata: Tiramisù
+➖ Invariata: Panettone
+
+✅ File recipes.json aggiornato
+📊 Totale ricette: 10
+
+🔄 Aggiornamento database SQLite...
+💾 Backup DB: recipes.db.backup-2025-11-29T22-15-30
+✅ Database aggiornato: 1 aggiunte, 1 aggiornate
+
+📊 RIEPILOGO IMPORTAZIONE
+==================================================
+➕ Ricette aggiunte:      1
+✏️  Ricette aggiornate:    1
+➖ Ricette invariate:     1
+❌ Errori:                0
+==================================================
+📦 Totale ricette finali: 10
+
+📁 Modifiche archiviate: recipe_modifications.json.imported-2025-11-29T22-15-30
 ```
 
 ## Backup File Database
