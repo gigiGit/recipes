@@ -91,7 +91,7 @@ public class EditRecipeActivity extends AppCompatActivity {
         // Tipo piatto
         ArrayAdapter<String> tipoPiattoAdapter = new ArrayAdapter<>(this,
             android.R.layout.simple_spinner_item,
-            new String[]{"Antipasto", "Primo", "Secondo", "Piatto Unico", "Contorno", "Dolce", "Altro"});
+            new String[]{"Antipasto", "Primo", "Secondo", "Piatto Unico", "Contorno", "Dolce", "Liquore"});
         tipoPiattoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spTipoPiatto.setAdapter(tipoPiattoAdapter);
     }

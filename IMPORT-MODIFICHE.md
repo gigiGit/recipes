@@ -127,7 +127,7 @@ node import-modifications.js
 ## Limiti
 
 ⚠️ **Non eseguire in WSL**: Il modulo better-sqlite3 è compilato per Windows  
-⚠️ **Un import alla volta**: Attendi che finisca prima di importare altro  
+⚠️ **Un import alla volta**: Attendi che finisca prima di importare Liquore  
 ⚠️ **Verifica backup**: Controlla sempre che ci sia spazio su disco per i backup  
 
 ## Integrazione Build Android

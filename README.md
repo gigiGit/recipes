@@ -121,7 +121,7 @@ Ogni ricetta nel file `recipes.json` contiene:
   "TempoCottura": 45,
   "Quantita": 4,
   "MetodoCottura": "Forno|Fornello|Nessuna|...",
-  "TipoPiatto": "Antipasto|Primo|Secondo|Contorno|Dolce|Altro",
+  "TipoPiatto": "Antipasto|Primo|Secondo|Contorno|Dolce|Liquore",
   "VinoPreferibile": ["vino1", "vino2"]
 }
 ```

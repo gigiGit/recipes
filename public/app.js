@@ -144,7 +144,7 @@ let filtroTesto = '';
 function groupByTipoPiatto(ricette) {
   const gruppi = {};
   ricette.forEach((r, idx) => {
-    const tipo = r.TipoPiatto || 'Altro';
+    const tipo = r.TipoPiatto || 'Liquore';
     if (!gruppi[tipo]) gruppi[tipo] = [];
     gruppi[tipo].push({ ...r, _idx: idx });
   });
@@ -173,7 +173,7 @@ function renderSidebar(ricette) {
     'Piatto Unico',
     'Contorno',
     'Dolce',
-    'Altro'
+    'Liquore'
   ];
   
   // Ordina i tipi secondo l'ordine canonico
@@ -364,7 +364,7 @@ function copiaRicettaInClipboard(testo) {
 
 function filterRicette() {
   let ricette = ricetteGlobal;
-  if (filtroTipo) ricette = ricette.filter(r => (r.TipoPiatto||'Altro') === filtroTipo);
+  if (filtroTipo) ricette = ricette.filter(r => (r.TipoPiatto||'Liquore') === filtroTipo);
   if (filtroTesto) {
     const t = filtroTesto.toLowerCase();
     ricette = ricette.filter(r =>

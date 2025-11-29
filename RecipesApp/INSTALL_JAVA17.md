@@ -43,7 +43,7 @@ L'APK sarà disponibile in: `app\build\outputs\apk\debug\app-debug.apk`
 
 L'app Android ora include:
 
-- **Tab per tipo di portata** (Tutte, Antipasto, Primo, Secondo, Contorno, Dolce, Altro)
+- **Tab per tipo di portata** (Tutte, Antipasto, Primo, Secondo, Contorno, Dolce, Liquore)
 - **ViewPager2** con swipe tra categorie
 - **Fragment** per ogni categoria di ricette
 - **Ricerca** che mantiene la suddivisione per portate

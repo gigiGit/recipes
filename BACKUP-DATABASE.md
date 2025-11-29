@@ -8,6 +8,7 @@ Questo sistema fornisce backup e ripristino del file `recipes.json` utilizzando 
 
 - **`import-to-db.js`**: Importa `recipes.json` nel database SQLite
 - **`export-from-db.js`**: Esporta il database SQLite in `recipes.json`
+- **`export-by-author.js`**: Estrae ricette filtrate per autore
 - **`import-modifications.js`**: Import incrementale modifiche dall'app Android
 - **`recipes.db`**: Database SQLite (creato automaticamente)
 
@@ -61,7 +62,7 @@ Questo comando:
 
 Ricette per tipo:
   Dolce: 7
-  Altro: 1
+  Liquore: 1
   Primo: 1
 
 📦 Dimensione database: 40.00 KB
@@ -87,7 +88,7 @@ Questo comando:
 
 Ricette per tipo:
   Dolce: 7
-  Altro: 1
+  Liquore: 1
   Primo: 1
 ```
 
@@ -166,6 +167,62 @@ Lo script:
 📦 Totale ricette finali: 10
 
 📁 Modifiche archiviate: recipe_modifications.json.imported-2025-11-29T22-15-30
+```
+
+## Estrazione Ricette per Autore
+
+Per estrarre ricette specifiche dal database:
+
+```powershell
+# Estrai TUTTE le ricette
+node export-by-author.js
+
+# Estrai solo ricette di un autore specifico
+node export-by-author.js "Nonna Gio'"
+
+# Estrai con ricerca parziale (trova "Nonna Gio'" e "Nonna Gio' - VERSIONE AGGIORNATA")
+node export-by-author.js "Nonna"
+
+# Salva in un file personalizzato
+node export-by-author.js "Internet" ricette-internet.json
+```
+
+Lo script:
+- ✅ Mostra statistiche complete del database
+- ✅ Elenca tutti gli autori disponibili
+- ✅ Ricerca case-insensitive e parziale
+- ✅ Esporta in formato JSON identico all'originale
+- ✅ Ordina alfabeticamente per nome
+- ✅ Mostra statistiche per tipo di piatto
+
+**Output esempio:**
+```
+📖 Estrazione ricette dal database SQLite
+
+📊 STATISTICHE DATABASE
+
+Totale ricette: 98
+
+Autori disponibili:
+  • Internet: 89 ricette
+  • Nonna Gio': 7 ricette
+  • Nonna Gio' - VERSIONE AGGIORNATA: 1 ricette
+  • Ricetta tradizionale romana: 1 ricette
+
+============================================================
+
+🔍 Estrazione: ricette di autore che contiene "Nonna"
+
+✅ Trovate 8 ricette
+
+✅ File creato: ricette-nonna.json
+📦 Dimensione: 9.18 KB
+📊 Ricette esportate: 8
+
+Ricette per tipo:
+  Dolce: 6
+  Altro: 1
+  Primo: 1
 ```
 
 ## Backup File Database

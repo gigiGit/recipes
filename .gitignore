@@ -47,4 +47,6 @@ recipes.db.backup-*
 *.json.imported-*
 recipe_modifications.json
 test-modifications.json
+ricette-estratte.json
+ricette-*.json
 package-lock.json

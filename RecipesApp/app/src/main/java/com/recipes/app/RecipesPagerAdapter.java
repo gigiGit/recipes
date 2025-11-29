@@ -28,12 +28,12 @@ public class RecipesPagerAdapter extends FragmentStateAdapter {
         for (String portata : ordinePortate) {
             grouped.put(portata, new ArrayList<>());
         }
-        grouped.put("Altro", new ArrayList<>());
+        grouped.put("Liquore", new ArrayList<>());
         
         for (Recipe recipe : allRecipes) {
             String tipo = recipe.getTipoPiatto();
             if (tipo == null || tipo.trim().isEmpty()) {
-                tipo = "Altro";
+                tipo = "Liquore";
             }
             
             if (!grouped.containsKey(tipo)) {
