@@ -2,8 +2,13 @@ package com.recipes.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -92,6 +97,9 @@ public class RecipeDetailActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.action_share) {
             shareRecipe();
             return true;
+        } else if (item.getItemId() == R.id.action_print) {
+            printRecipe();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -125,5 +133,96 @@ public class RecipeDetailActivity extends AppCompatActivity {
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, intent.getStringExtra("recipe_name"));
         shareIntent.putExtra(Intent.EXTRA_TEXT, text.toString());
         startActivity(Intent.createChooser(shareIntent, "Condividi ricetta tramite"));
+    }
+    
+    private void printRecipe() {
+        Intent intent = getIntent();
+        
+        // Crea contenuto HTML per la stampa
+        StringBuilder html = new StringBuilder();
+        html.append("<html><head><style>");
+        html.append("body { font-family: Arial, sans-serif; padding: 20px; }");
+        html.append("h1 { color: #333; border-bottom: 2px solid #333; padding-bottom: 10px; }");
+        html.append("h2 { color: #666; margin-top: 20px; }");
+        html.append(".info { background-color: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 5px; }");
+        html.append("ul { list-style-type: none; padding: 0; }");
+        html.append("li:before { content: '• '; font-weight: bold; }");
+        html.append("</style></head><body>");
+        
+        // Titolo
+        html.append("<h1>").append(intent.getStringExtra("recipe_name")).append("</h1>");
+        
+        // Info generali
+        html.append("<div class='info'>");
+        html.append("<strong>Autore:</strong> ").append(intent.getStringExtra("autore")).append("<br>");
+        if (intent.getStringExtra("difficolta") != null)
+            html.append("<strong>Difficoltà:</strong> ").append(intent.getStringExtra("difficolta")).append("<br>");
+        if (intent.getStringExtra("costo") != null)
+            html.append("<strong>Costo:</strong> ").append(intent.getStringExtra("costo")).append("<br>");
+        if (intent.getIntExtra("tempo_prep", 0) > 0)
+            html.append("<strong>Tempo preparazione:</strong> ").append(intent.getIntExtra("tempo_prep", 0)).append(" min<br>");
+        if (intent.getIntExtra("tempo_cottura", 0) > 0)
+            html.append("<strong>Tempo cottura:</strong> ").append(intent.getIntExtra("tempo_cottura", 0)).append(" min<br>");
+        if (intent.getIntExtra("quantita", 0) > 0)
+            html.append("<strong>Porzioni:</strong> ").append(intent.getIntExtra("quantita", 0)).append("<br>");
+        if (intent.getStringExtra("metodo") != null)
+            html.append("<strong>Metodo:</strong> ").append(intent.getStringExtra("metodo")).append("<br>");
+        if (intent.getStringExtra("tipo") != null)
+            html.append("<strong>Tipo:</strong> ").append(intent.getStringExtra("tipo"));
+        html.append("</div>");
+        
+        // Ingredienti
+        html.append("<h2>Ingredienti</h2>");
+        html.append("<ul>");
+        String[] ingredienti = intent.getStringArrayExtra("ingredienti");
+        if (ingredienti != null) {
+            for (String ing : ingredienti) {
+                html.append("<li>").append(ing).append("</li>");
+            }
+        }
+        html.append("</ul>");
+        
+        // Istruzioni
+        html.append("<h2>Istruzioni</h2>");
+        String istruzioni = intent.getStringExtra("istruzioni");
+        if (istruzioni != null) {
+            // Sostituisci newline con <br>
+            istruzioni = istruzioni.replace("\n", "<br>");
+            html.append("<p>").append(istruzioni).append("</p>");
+        }
+        
+        // Vini
+        String[] vini = intent.getStringArrayExtra("vini");
+        if (vini != null && vini.length > 0) {
+            html.append("<h2>Vini consigliati</h2>");
+            html.append("<p>").append(String.join(", ", vini)).append("</p>");
+        }
+        
+        html.append("</body></html>");
+        
+        // Crea WebView per la stampa
+        WebView webView = new WebView(this);
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                createPrintJob(view);
+            }
+        });
+        
+        webView.loadDataWithBaseURL(null, html.toString(), "text/html", "UTF-8", null);
+    }
+    
+    private void createPrintJob(WebView webView) {
+        PrintManager printManager = (PrintManager) getSystemService(PRINT_SERVICE);
+        String jobName = getIntent().getStringExtra("recipe_name") + " - Ricetta";
+        
+        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(jobName);
+        
+        PrintAttributes.Builder builder = new PrintAttributes.Builder();
+        builder.setMediaSize(PrintAttributes.MediaSize.ISO_A4);
+        builder.setResolution(new PrintAttributes.Resolution("pdf", "pdf", 600, 600));
+        builder.setMinMargins(PrintAttributes.Margins.NO_MARGINS);
+        
+        printManager.print(jobName, printAdapter, builder.build());
     }
 }

@@ -13,5 +13,11 @@
         android:title="Condividi"
         android:icon="@android:drawable/ic_menu_share"
         app:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/action_print"
+        android:title="Stampa"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="ifRoom" />
         
 </menu>
