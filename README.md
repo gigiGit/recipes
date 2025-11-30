@@ -1,4 +1,4 @@
-# Inventario Ricette di Cucina
+# Ricette di Cucina
 
 Applicazione completa per la gestione di ricette di cucina con interfaccia web e app Android nativa.
 

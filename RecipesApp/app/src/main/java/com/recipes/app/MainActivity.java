@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             (tab, position) -> tab.setText(pagerAdapter.getTabTitle(position))
         ).attach();
         
-        setTitle("Inventario Ricette (" + allRecipes.size() + ")");
+        setTitle("Ricette (" + allRecipes.size() + ")");
     }
 
     @Override
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(pagerAdapter.getTabTitle(position))
             ).attach();
-            setTitle("Inventario Ricette (" + allRecipes.size() + ")");
+            setTitle("Ricette (" + allRecipes.size() + ")");
         }
     }
 }

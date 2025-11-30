@@ -1,4 +1,4 @@
-# Inventario Ricette - App Android
+# Ricette - App Android
 
 Applicazione Android nativa per visualizzare, cercare e condividere ricette.
 

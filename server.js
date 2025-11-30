@@ -111,5 +111,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Inventario ricette in ascolto su http://localhost:${PORT}`);
+  console.log(`Ricette in ascolto su http://localhost:${PORT}`);
 });

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Inventario Ricette</string>
+    <string name="app_name">Ricette</string>
     <string name="search_hint">Cerca ricette...</string>
     <string name="share_recipe">Condividi ricetta</string>
 </resources>

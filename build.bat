@@ -1,10 +1,10 @@
 @echo off
 REM ========================================
-REM Build APK - Inventario Ricette
+REM Build APK - Ricette
 REM ========================================
 
 echo ========================================
-echo  BUILD APK - Inventario Ricette
+echo  BUILD APK - Ricette
 echo ========================================
 echo.
 copy recipes.json RecipesApp\app\assets\recipes.json >nul
