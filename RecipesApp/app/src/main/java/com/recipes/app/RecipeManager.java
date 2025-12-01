@@ -21,7 +21,16 @@ public class RecipeManager {
 
     private void loadRecipes() {
         try {
-            InputStream is = context.getAssets().open("recipes.json");
+            // Prova prima a caricare da file importato
+            java.io.File importedFile = new java.io.File(context.getFilesDir(), "recipes_imported.json");
+            InputStream is;
+            
+            if (importedFile.exists()) {
+                is = new java.io.FileInputStream(importedFile);
+            } else {
+                is = context.getAssets().open("recipes.json");
+            }
+            
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -194,5 +203,44 @@ public class RecipeManager {
     
     public java.io.File getModificationsFile() {
         return new java.io.File(context.getFilesDir(), "recipe_modifications.json");
+    }
+    
+    public boolean importFromInputStream(InputStream inputStream) {
+        try {
+            // Leggi il contenuto del file
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            
+            String json = new String(buffer, StandardCharsets.UTF_8);
+            
+            // Valida il JSON
+            Gson gson = new Gson();
+            Type listType = new TypeToken<List<Recipe>>(){}.getType();
+            List<Recipe> importedRecipes = gson.fromJson(json, listType);
+            
+            if (importedRecipes == null || importedRecipes.isEmpty()) {
+                return false;
+            }
+            
+            // Salva il file importato
+            java.io.File importedFile = new java.io.File(context.getFilesDir(), "recipes_imported.json");
+            java.io.FileOutputStream fos = new java.io.FileOutputStream(importedFile);
+            fos.write(json.getBytes());
+            fos.close();
+            
+            // Ricarica le ricette
+            recipes = importedRecipes;
+            recipes.sort((r1, r2) -> {
+                String n1 = r1.getNome() != null ? r1.getNome() : "";
+                String n2 = r2.getNome() != null ? r2.getNome() : "";
+                return n1.compareToIgnoreCase(n2);
+            });
+            
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
