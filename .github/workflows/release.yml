@@ -1,0 +1,228 @@
+name: Release Apps
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+    
+    - name: Copy recipes.json
+      run: cp recipes.json RecipesApp/app/src/main/assets/recipes.json
+    
+    - name: Build Release APK
+      working-directory: RecipesApp
+      run: |
+        chmod +x gradlew
+        ./gradlew clean assembleRelease
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-release-apk
+        path: RecipesApp/app/build/outputs/apk/release/app-release-unsigned.apk
+        retention-days: 90
+
+  build-ios:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Xcode
+      run: |
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        xcode-select --print-path
+    
+    - name: Install dependencies
+      run: gem install xcodeproj
+    
+    - name: Create Info.plist
+      run: |
+        cat > RecipesApp-iOS/Info.plist << 'EOF'
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+            <key>CFBundleDevelopmentRegion</key>
+            <string>it_IT</string>
+            <key>CFBundleExecutable</key>
+            <string>$(EXECUTABLE_NAME)</string>
+            <key>CFBundleIdentifier</key>
+            <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+            <key>CFBundleInfoDictionaryVersion</key>
+            <string>6.0</string>
+            <key>CFBundleName</key>
+            <string>Ricette</string>
+            <key>CFBundlePackageType</key>
+            <string>APPL</string>
+            <key>CFBundleShortVersionString</key>
+            <string>1.0</string>
+            <key>CFBundleVersion</key>
+            <string>1</string>
+            <key>LSRequiresIPhoneOS</key>
+            <true/>
+            <key>UIApplicationSceneManifest</key>
+            <dict>
+                <key>UIApplicationSupportsMultipleScenes</key>
+                <true/>
+            </dict>
+            <key>UIApplicationSupportsIndirectInputEvents</key>
+            <true/>
+            <key>UISupportedInterfaceOrientations</key>
+            <array>
+                <string>UIInterfaceOrientationPortrait</string>
+                <string>UIInterfaceOrientationLandscapeLeft</string>
+                <string>UIInterfaceOrientationLandscapeRight</string>
+            </array>
+            <key>UISupportedInterfaceOrientations~ipad</key>
+            <array>
+                <string>UIInterfaceOrientationPortrait</string>
+                <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                <string>UIInterfaceOrientationLandscapeLeft</string>
+                <string>UIInterfaceOrientationLandscapeRight</string>
+            </array>
+            <key>UILaunchScreen</key>
+            <dict/>
+        </dict>
+        </plist>
+        EOF
+    
+    - name: Generate Xcode project
+      run: |
+        cd RecipesApp-iOS
+        ruby << 'RUBY'
+        require 'xcodeproj'
+        
+        project = Xcodeproj::Project.new('RecipesApp-iOS.xcodeproj')
+        target = project.new_target(:application, 'RecipesApp-iOS', :ios, '15.0')
+        
+        target.build_settings('Debug')['SWIFT_VERSION'] = '5.0'
+        target.build_settings('Release')['SWIFT_VERSION'] = '5.0'
+        
+        target.build_settings('Debug')['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.recipes.app'
+        target.build_settings('Release')['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.recipes.app'
+        
+        target.build_settings('Debug')['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+        target.build_settings('Release')['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+        
+        target.build_settings('Debug')['TARGETED_DEVICE_FAMILY'] = '1,2'
+        target.build_settings('Release')['TARGETED_DEVICE_FAMILY'] = '1,2'
+        
+        target.build_settings('Debug')['CODE_SIGN_STYLE'] = 'Automatic'
+        target.build_settings('Release')['CODE_SIGN_STYLE'] = 'Automatic'
+        
+        target.build_settings('Release')['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
+        
+        target.build_settings('Debug')['INFOPLIST_FILE'] = 'Info.plist'
+        target.build_settings('Release')['INFOPLIST_FILE'] = 'Info.plist'
+        
+        main_group = project.main_group
+        main_group.new_file('Info.plist')
+        
+        swift_files = Dir.glob('*.swift') + Dir.glob('**/*.swift')
+        swift_files.each { |file| main_group.new_file(file) }
+        
+        resources = Dir.glob('*.json') + Dir.glob('*.xcassets')
+        resources.each { |resource| main_group.new_file(resource) }
+        
+        project.save
+        RUBY
+    
+    - name: Copy recipes.json
+      run: cp recipes.json RecipesApp-iOS/recipes.json
+    
+    - name: Build iOS App
+      run: |
+        cd RecipesApp-iOS
+        xcodebuild \
+          -scheme RecipesApp-iOS \
+          -destination 'generic/platform=iOS' \
+          -configuration Release \
+          -derivedDataPath build \
+          -allowProvisioningUpdates \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_ENTITLEMENTS="" \
+          build
+    
+    - name: Upload iOS Build
+      uses: actions/upload-artifact@v4
+      with:
+        name: ios-release-build
+        path: RecipesApp-iOS/build/Build/Products/Release-iphoneos/
+        retention-days: 90
+
+  create-release:
+    needs: [build-android, build-ios]
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Download Android APK
+      uses: actions/download-artifact@v4
+      with:
+        name: android-release-apk
+        path: ./artifacts
+    
+    - name: Download iOS Build
+      uses: actions/download-artifact@v4
+      with:
+        name: ios-release-build
+        path: ./artifacts
+    
+    - name: Get tag name
+      id: tag
+      run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./artifacts/**/*
+        tag_name: ${{ steps.tag.outputs.TAG }}
+        body: |
+          # Ricette App Release ${{ steps.tag.outputs.TAG }}
+          
+          ## Download
+          
+          ### Android
+          - **APK**: `app-release-unsigned.apk` - Installare su dispositivo Android
+          
+          ### iOS
+          - **Build**: Copia i file in Xcode o usa TestFlight per distribuire
+          
+          ## Installazione
+          
+          **Android**: 
+          ```bash
+          adb install app-release-unsigned.apk
+          ```
+          
+          **iOS**: Richiede firma e provisioning profile per App Store/TestFlight
+          
+          ## Changelog
+          
+          Vedi i commit di questa release per i dettagli delle modifiche.
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
