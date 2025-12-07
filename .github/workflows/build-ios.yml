@@ -31,6 +31,57 @@ jobs:
       run: |
         gem install xcodeproj
     
+    - name: Create Info.plist
+      run: |
+        cat > RecipesApp-iOS/Info.plist << 'EOF'
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+            <key>CFBundleDevelopmentRegion</key>
+            <string>it_IT</string>
+            <key>CFBundleExecutable</key>
+            <string>$(EXECUTABLE_NAME)</string>
+            <key>CFBundleIdentifier</key>
+            <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+            <key>CFBundleInfoDictionaryVersion</key>
+            <string>6.0</string>
+            <key>CFBundleName</key>
+            <string>Ricette</string>
+            <key>CFBundlePackageType</key>
+            <string>APPL</string>
+            <key>CFBundleShortVersionString</key>
+            <string>1.0</string>
+            <key>CFBundleVersion</key>
+            <string>1</string>
+            <key>LSRequiresIPhoneOS</key>
+            <true/>
+            <key>UIApplicationSceneManifest</key>
+            <dict>
+                <key>UIApplicationSupportsMultipleScenes</key>
+                <true/>
+            </dict>
+            <key>UIApplicationSupportsIndirectInputEvents</key>
+            <true/>
+            <key>UISupportedInterfaceOrientations</key>
+            <array>
+                <string>UIInterfaceOrientationPortrait</string>
+                <string>UIInterfaceOrientationLandscapeLeft</string>
+                <string>UIInterfaceOrientationLandscapeRight</string>
+            </array>
+            <key>UISupportedInterfaceOrientations~ipad</key>
+            <array>
+                <string>UIInterfaceOrientationPortrait</string>
+                <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                <string>UIInterfaceOrientationLandscapeLeft</string>
+                <string>UIInterfaceOrientationLandscapeRight</string>
+            </array>
+            <key>UILaunchScreen</key>
+            <dict/>
+        </dict>
+        </plist>
+        EOF
+    
     - name: Generate Xcode project
       run: |
         cd RecipesApp-iOS
@@ -58,7 +109,13 @@ jobs:
         
         target.build_settings('Release')['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
         
+        target.build_settings('Debug')['INFOPLIST_FILE'] = 'Info.plist'
+        target.build_settings('Release')['INFOPLIST_FILE'] = 'Info.plist'
+        
         main_group = project.main_group
+        
+        # Add Info.plist
+        main_group.new_file('Info.plist')
         
         # Add files
         swift_files = Dir.glob('*.swift') + Dir.glob('**/*.swift')
