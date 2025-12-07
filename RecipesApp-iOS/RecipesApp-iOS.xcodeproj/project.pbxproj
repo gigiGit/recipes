@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B1F4A2A2C5B1E00D8F4A001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F4A292C5B1E00D8F4A001; };
 		3B1F4A2C2C5B1E00D8F4A002 /* RecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1F4A2B2C5B1E00D8F4A002; };
 		3B1F4A2E2C5B1E00D8F4A003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1F4A2D2C5B1E00D8F4A003; };
 		3B1F4A312C5B1E00D8F4A004 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1F4A302C5B1E00D8F4A004; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		3B1F4A262C5B1E00D8F4A001 /* RecipesApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RecipesApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B1F4A292C5B1E00D8F4A001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B1F4A2B2C5B1E00D8F4A002 /* RecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesApp.swift; sourceTree = "<group>"; };
 		3B1F4A2D2C5B1E00D8F4A003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B1F4A302C5B1E00D8F4A004 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -53,25 +51,25 @@
 		3B1F4A1F2C5B1E00D8F4A001 = {
 			isa = PBXGroup;
 			children = (
-				3B1F4A2A2C5B1E00D8F4A001 /* RecipesApp-iOS */,
-				3B1F4A272C5B1E00D8F4A001 /* Products */,
+				3B1F4A272C5B1E00D8F4A002 /* RecipesApp-iOS */,
+				3B1F4A262C5B1E00D8F4A001 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3B1F4A272C5B1E00D8F4A001 /* Products */ = {
+		3B1F4A262C5B1E00D8F4A001 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				3B1F4A262C5B1E00D8F4A001 /* RecipesApp-iOS.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3B1F4A2A2C5B1E00D8F4A001 /* RecipesApp-iOS */ = {
+		3B1F4A272C5B1E00D8F4A002 /* RecipesApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				3B1F4A2B2C5B1E00D8F4A002 /* RecipesApp.swift */,
-				3B1F4A3A2C5B1E00D8F4A007 /* Models */,
-				3B1F4A3B2C5B1E00D8F4A008 /* Views */,
+				3B1F4A2A2C5B1E00D8F4A008 /* Models */,
+				3B1F4A282C5B1E00D8F4A009 /* Views */,
 				3B1F4A2D2C5B1E00D8F4A003 /* Assets.xcassets */,
 				3B1F4A4F2C5B1E00D8F4A00D /* recipes.json */,
 				3B1F4A2F2C5B1E00D8F4A003 /* Preview Content */,
@@ -87,7 +85,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3B1F4A3A2C5B1E00D8F4A007 /* Models */ = {
+		3B1F4A2A2C5B1E00D8F4A008 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3B1F4A3A2C5B1E00D8F4A006 /* Recipe.swift */,
@@ -96,7 +94,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3B1F4A3B2C5B1E00D8F4A008 /* Views */ = {
+		3B1F4A282C5B1E00D8F4A009 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				3B1F4A3B2C5B1E00D8F4A005 /* ContentView.swift */,
@@ -146,15 +144,15 @@
 			};
 			buildConfigurationList = 3B1F4A202C5B1E00D8F4A001 /* Build configuration list for PBXProject "RecipesApp-iOS" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = it;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				it,
+				Base,
 			);
 			mainGroup = 3B1F4A1F2C5B1E00D8F4A001;
-			productRefGroup = 3B1F4A272C5B1E00D8F4A001 /* Products */;
+			productRefGroup = 3B1F4A262C5B1E00D8F4A001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -266,7 +264,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_ANALYZER_NONNULL = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -383,7 +381,7 @@
 		3B1F4A362C5B1E00D8F4A001 /* Build configuration list for PBXNativeTarget "RecipesApp-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3B1F4A372C5B1E00D8F4A001 /* Debug */,
+				3B1F4A362C5B1E00D8F4A001 /* Debug */,
 				3B1F4A372C5B1E00D8F4A001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
