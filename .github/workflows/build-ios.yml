@@ -27,6 +27,39 @@ jobs:
         sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
         xcode-select --print-path
     
+    - name: Install dependencies
+      run: |
+        gem install xcodeproj
+    
+    - name: Generate Xcode project
+      run: |
+        cd RecipesApp-iOS
+        ruby << 'RUBY'
+        require 'xcodeproj'
+        
+        project = Xcodeproj::Project.new('RecipesApp-iOS.xcodeproj')
+        project.new_target(:application, 'RecipesApp-iOS', :ios, '15.0')
+        
+        target = project.targets.first
+        target.build_settings('Debug')['SWIFT_VERSION'] = '5.0'
+        target.build_settings('Release')['SWIFT_VERSION'] = '5.0'
+        
+        main_group = project.main_group
+        
+        # Add files
+        swift_files = Dir.glob('*.swift') + Dir.glob('**/*.swift')
+        swift_files.each do |file|
+          main_group.new_file(file)
+        end
+        
+        resources = Dir.glob('*.json') + Dir.glob('*.xcassets')
+        resources.each do |resource|
+          main_group.new_file(resource)
+        end
+        
+        project.save
+        RUBY
+    
     - name: Copy recipes.json
       run: cp recipes.json RecipesApp-iOS/recipes.json
     
