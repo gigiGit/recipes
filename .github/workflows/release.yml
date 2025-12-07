@@ -27,9 +27,9 @@ jobs:
       run: cp recipes.json RecipesApp/app/src/main/assets/recipes.json
     
     - name: Build Release APK
-      working-directory: RecipesApp
       run: |
-        chmod +x gradlew
+        cd RecipesApp
+        chmod +x ./gradlew
         ./gradlew clean assembleRelease
     
     - name: Upload APK
