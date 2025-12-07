@@ -38,11 +38,25 @@ jobs:
         require 'xcodeproj'
         
         project = Xcodeproj::Project.new('RecipesApp-iOS.xcodeproj')
-        project.new_target(:application, 'RecipesApp-iOS', :ios, '15.0')
+        target = project.new_target(:application, 'RecipesApp-iOS', :ios, '15.0')
         
-        target = project.targets.first
+        # Configure build settings
         target.build_settings('Debug')['SWIFT_VERSION'] = '5.0'
         target.build_settings('Release')['SWIFT_VERSION'] = '5.0'
+        
+        target.build_settings('Debug')['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.recipes.app'
+        target.build_settings('Release')['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.recipes.app'
+        
+        target.build_settings('Debug')['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+        target.build_settings('Release')['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+        
+        target.build_settings('Debug')['TARGETED_DEVICE_FAMILY'] = '1,2'
+        target.build_settings('Release')['TARGETED_DEVICE_FAMILY'] = '1,2'
+        
+        target.build_settings('Debug')['CODE_SIGN_STYLE'] = 'Automatic'
+        target.build_settings('Release')['CODE_SIGN_STYLE'] = 'Automatic'
+        
+        target.build_settings('Release')['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
         
         main_group = project.main_group
         
