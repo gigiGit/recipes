@@ -22,5 +22,5 @@ for(const a in autore){
   console.log(`- ${a||'<Sconosciuto>'}: ${autore[a]}`);
 } 
 console.log(`\nRicette di Nonna Gio (${NonnaGio.length}):`);
-NonnaGio.forEach((nome)=>console.log(`- ${nome}`));
+NonnaGio.forEach((nome)=>console.log(`- ${nome.Nome}`));
 fs.writeJSONSync(path.join(__dirname, 'NonnaGio.json'), NonnaGio, {spaces: 2});

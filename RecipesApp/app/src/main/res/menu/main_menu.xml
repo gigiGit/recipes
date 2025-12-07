@@ -20,5 +20,19 @@
         android:title="Importa JSON"
         android:icon="@android:drawable/ic_menu_upload"
         app:showAsAction="never" />
+    
+    <item
+        android:id="@+id/action_view_mode"
+        android:title="Visualizza per"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/view_by_type"
+                android:title="Tipo Piatto" />
+            <item
+                android:id="@+id/view_by_author"
+                android:title="Autore" />
+        </menu>
+    </item>
         
 </menu>

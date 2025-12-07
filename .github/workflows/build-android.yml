@@ -1,0 +1,76 @@
+name: Build Android App
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'RecipesApp/**'
+      - 'recipes.json'
+      - '.github/workflows/build-android.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'RecipesApp/**'
+      - 'recipes.json'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+    
+    - name: Copy recipes.json
+      run: cp recipes.json RecipesApp/app/src/main/assets/recipes.json
+    
+    - name: Build APK
+      working-directory: RecipesApp
+      run: |
+        chmod +x gradlew
+        ./gradlew clean assembleDebug
+    
+    - name: Upload APK
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-apk
+        path: RecipesApp/app/build/outputs/apk/debug/app-debug.apk
+        retention-days: 30
+    
+    - name: Upload Build Report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-build-report
+        path: RecipesApp/app/build/reports/
+        retention-days: 7
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Run Lint
+      working-directory: RecipesApp
+      run: |
+        chmod +x gradlew
+        ./gradlew lintDebug || true

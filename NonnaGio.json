@@ -18,11 +18,11 @@
     "TempoCottura": null,
     "Quantita": 8,
     "MetodoCottura": "Senza cottura",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato",
       "Passito"
-    ],
-    "TipoPiatto": "Dolce"
+    ]
   },
   {
     "Nome": "Limoncello",
@@ -41,8 +41,8 @@
     "TempoCottura": null,
     "Quantita": 2000,
     "MetodoCottura": "Fornello",
-    "VinoPreferibile": [],
-    "TipoPiatto": "Liquore"
+    "TipoPiatto": "Liquore",
+    "VinoPreferibile": []
   },
   {
     "Nome": "Tiramisù",
@@ -64,11 +64,11 @@
     "TempoCottura": null,
     "Quantita": 8,
     "MetodoCottura": "Senza cottura",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti",
       "Vin Santo"
-    ],
-    "TipoPiatto": "Dolce"
+    ]
   },
   {
     "Nome": "Torta di Mele",
@@ -93,11 +93,11 @@
     "TempoCottura": 45,
     "Quantita": 8,
     "MetodoCottura": "Forno",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato",
       "Passito"
-    ],
-    "TipoPiatto": "Dolce"
+    ]
   },
   {
     "Nome": "Torta di pane grattuggiato",
@@ -119,13 +119,13 @@
     "TempoCottura": 30,
     "Quantita": 6,
     "MetodoCottura": "Forno",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti"
-    ],
-    "TipoPiatto": "Dolce"
+    ]
   },
   {
-    "Nome": "Torta di tagliatelle dolce",
+    "Nome": "Torta di tagliatelle Dolce",
     "Ingredienti": [
       "Per le tagliatelle:",
       "300 g di farina 00",
@@ -153,12 +153,12 @@
     "TempoCottura": 50,
     "Quantita": 10,
     "MetodoCottura": "Forno",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Recioto di Soave",
       "Passito di Pantelleria",
       "Moscato d'Asti"
-    ],
-    "TipoPiatto": "Dolce"
+    ]
   },
   {
     "Nome": "Torta Tenera",
@@ -186,10 +186,10 @@
     "TempoCottura": 40,
     "Quantita": 8,
     "MetodoCottura": "Forno",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "..."
-    ],
-    "TipoPiatto": "Dolce"
+    ]
   },
   {
     "Nome": "Torta Tenerina",
@@ -210,11 +210,11 @@
     "TempoCottura": 25,
     "Quantita": 8,
     "MetodoCottura": "Forno",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Passito",
       "Moscato"
-    ],
-    "TipoPiatto": "Dolce"
+    ]
   },
   {
     "Nome": "Tortellini Emiliani",
@@ -238,9 +238,62 @@
     "TempoCottura": 300,
     "Quantita": 12,
     "MetodoCottura": "Fornello",
+    "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Lambrusco secco, Grasparossa castelvetro, Lambruscone"
+    ]
+  },
+  {
+    "Nome": "Panone di natale",
+    "Ingredienti": [
+      "1 Kg Farina",
+      "1 etto burro ammorbidito (fuori frigo)",
+      "1 uovo",
+      "1 etto zucchero",
+      "2 buste di uvetta",
+      "3 etti Noci e arachidi in parti uguali",
+      "1 buccia di arancio, senza la parte bianca",
+      "1 scatola macedonia canditi",
+      "1 scatola arancia candita",
+      "1 scatola ciliege candite",
+      "1 etto cioccolata fondente",
+      "1 limone grattugiato",
+      "Sapore o marmellata a sufficienza per rendere l'impasto morbido",
+      "1 bustina lievito"
     ],
-    "TipoPiatto": "Primo"
+    "Istruzioni": "Mettere la buccia di arancia a bollire per 30 minuti in  un pentolino.\nSbriciolare la cioccolata .\nTogliere la buccia di arancia e sminuzzarla in piccoli pezzi.\nImpastare il tutto regolare la quantità di marmellata o sapore in base alla consistenza dell'impasto, deve essere morbido, ma non troppo liquido.\nPorzionare l'impasto e metterlo in stampini adeguati \nportare il forno a 170°\ne cuocere per 40 minuti, ogni tanto controllare con lo stecchino per verificare la cottura\n",
+    "DataInserimento": "2025-12-07",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 60,
+    "TempoCottura": 40,
+    "Quantita": null,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [],
+    "TipoPiatto": "Dolce"
+  },
+  {
+    "Nome": "Ravioli dolci",
+    "Ingredienti": [
+      "1Kg Farina",
+      "1 bustina lievito",
+      "2 uova",
+      "2 etti burro (ammorbidito)",
+      "2 etti e mezzo zucchero",
+      "latte a sufficienza per avere impasto morbido",
+      "1 limone grattugiato"
+    ],
+    "Istruzioni": "Impastare.\nfare dei cerchi (come le tigelle) , riempire con marmellata, nutella, crema o....\nchiudere a metà\nmettere in forno 30 minutia 170°",
+    "DataInserimento": "2025-12-07",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "economico",
+    "TempoPreparazione": null,
+    "TempoCottura": null,
+    "Quantita": null,
+    "MetodoCottura": "Forno",
+    "VinoPreferibile": [],
+    "TipoPiatto": "Dolce"
   }
 ]

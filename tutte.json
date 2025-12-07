@@ -48,7 +48,7 @@
     "MetodoCottura": "Forno",
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
-      "Marsala dolce"
+      "Marsala Dolce"
     ]
   },
   {
@@ -203,7 +203,7 @@
     "MetodoCottura": "Forno",
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
-      "Prosecco dolce"
+      "Prosecco Dolce"
     ]
   },
   {
@@ -534,7 +534,7 @@
       "4 carciofi",
       "1 litro di brodo di carne o vegetale",
       "1 cucchiaino di zafferano in stimmi",
-      "1 cucchiaino di paprika dolce",
+      "1 cucchiaino di paprika Dolce",
       "4 spicchi d'aglio",
       "100 ml di olio extravergine d'oliva",
       "1 rametto di rosmarino",
@@ -587,7 +587,7 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti",
-      "Spumante dolce"
+      "Spumante Dolce"
     ]
   },
   {
@@ -2260,7 +2260,7 @@
     ]
   },
   {
-    "Nome": "Torta di riso dolce",
+    "Nome": "Torta di riso Dolce",
     "Ingredienti": [
       "200 g di riso Arborio",
       "1 l di latte",
@@ -2311,11 +2311,11 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti",
-      "Malvasia dolce"
+      "Malvasia Dolce"
     ]
   },
   {
-    "Nome": "Torta di tagliatelle dolce",
+    "Nome": "Torta di tagliatelle Dolce",
     "Ingredienti": [
       "Per le tagliatelle:",
       "300 g di farina 00",
@@ -2365,7 +2365,7 @@
       "630 g di latte intero (per la crema)",
       "150 g di panna fresca (per la crema)"
     ],
-    "Istruzioni": "Preparare la crema pasticcera: incidere il baccello di vaniglia ed estrarre i semi. In un tegame versare 630g di latte, 150g di panna, il baccello e i semi di vaniglia, portare quasi a bollore. In una ciotola sbattere i tuorli con 220g di zucchero, aggiungere la maizena setacciata. Stemperare con un mestolo del latte caldo, poi versare il tutto nel tegame. Cuocere a fuoco dolce mescolando fino ad addensamento. Versare in una pirofila, coprire e far rassodare in frigo. In una teglia 29x39cm rivestita di pellicola, disporre i biscotti inzuppati nel latte (250g) per 10 secondi. Spalmare 3 cucchiai di crema, spolverare con cacao. Ripetere gli strati fino a ottenere 6 strati totali. Terminare con biscotti e cacao. Far rassodare 3 ore in frigo. Montare 200g di panna con 20g di zucchero. Distribuire la panna montata sulla torta, spolverare con cacao e servire.",
+    "Istruzioni": "Preparare la crema pasticcera: incidere il baccello di vaniglia ed estrarre i semi. In un tegame versare 630g di latte, 150g di panna, il baccello e i semi di vaniglia, portare quasi a bollore. In una ciotola sbattere i tuorli con 220g di zucchero, aggiungere la maizena setacciata. Stemperare con un mestolo del latte caldo, poi versare il tutto nel tegame. Cuocere a fuoco Dolce mescolando fino ad addensamento. Versare in una pirofila, coprire e far rassodare in frigo. In una teglia 29x39cm rivestita di pellicola, disporre i biscotti inzuppati nel latte (250g) per 10 secondi. Spalmare 3 cucchiai di crema, spolverare con cacao. Ripetere gli strati fino a ottenere 6 strati totali. Terminare con biscotti e cacao. Far rassodare 3 ore in frigo. Montare 200g di panna con 20g di zucchero. Distribuire la panna montata sulla torta, spolverare con cacao e servire.",
     "DataInserimento": "2025-11-29",
     "Autore": "Internet",
     "Difficolta": "facile",
@@ -2468,7 +2468,7 @@
     "Ingredienti": [
       "6 tuorli d'uovo",
       "100 g di zucchero",
-      "100 ml di Marsala dolce"
+      "100 ml di Marsala Dolce"
     ],
     "Istruzioni": "Montare i tuorli con lo zucchero in una ciotola. Aggiungere il Marsala. Cuocere a bagnomaria mescolando continuamente con una frusta fino a quando il composto diventa spumoso e si addensa. Servire tiepido in coppe o come accompagnamento a dolci.",
     "DataInserimento": "2025-11-29",
@@ -2481,7 +2481,7 @@
     "MetodoCottura": "Fornello",
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
-      "Marsala dolce"
+      "Marsala Dolce"
     ]
   },
   {
@@ -2567,6 +2567,6 @@
     "Quantita": null,
     "MetodoCottura": "Forno",
     "VinoPreferibile": [],
-    "TipoPiatto": "dolce"
+    "TipoPiatto": "Dolce"
   }
 ]

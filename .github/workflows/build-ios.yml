@@ -1,0 +1,98 @@
+name: Build iOS App
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'RecipesApp-iOS/**'
+      - 'recipes.json'
+      - '.github/workflows/build-ios.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'RecipesApp-iOS/**'
+      - 'recipes.json'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Xcode
+      run: |
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        xcode-select --print-path
+    
+    - name: Copy recipes.json
+      run: cp recipes.json RecipesApp-iOS/recipes.json
+    
+    - name: Build iOS App
+      run: |
+        cd RecipesApp-iOS
+        xcodebuild \
+          -scheme RecipesApp-iOS \
+          -destination 'generic/platform=iOS' \
+          -configuration Release \
+          -derivedDataPath build \
+          build
+    
+    - name: Upload Build Artifacts
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ios-build
+        path: |
+          RecipesApp-iOS/build/Build/Products/Release-iphoneos/
+        retention-days: 30
+
+  test:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Xcode
+      run: |
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        xcode-select --print-path
+    
+    - name: Copy recipes.json
+      run: cp recipes.json RecipesApp-iOS/recipes.json
+    
+    - name: Run Tests
+      run: |
+        cd RecipesApp-iOS
+        xcodebuild \
+          -scheme RecipesApp-iOS \
+          -destination 'platform=iOS Simulator,name=iPhone 14 Pro' \
+          -configuration Debug \
+          test || true
+
+  lint:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Xcode
+      run: |
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        xcode-select --print-path
+    
+    - name: Check Build Compilation
+      run: |
+        cd RecipesApp-iOS
+        xcodebuild \
+          -scheme RecipesApp-iOS \
+          -destination 'generic/platform=iOS Simulator' \
+          -configuration Release \
+          -derivedDataPath build \
+          build \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO || true

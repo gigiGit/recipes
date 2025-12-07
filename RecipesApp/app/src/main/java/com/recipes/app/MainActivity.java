@@ -17,6 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_EDIT_RECIPE = 1;
     private static final int REQUEST_IMPORT_JSON = 2;
+    private boolean viewByAuthor = false;
     private ViewPager2 viewPager;
     private TabLayout tabLayout;
     private RecipesPagerAdapter pagerAdapter;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 
                 // Ricrea il pager adapter con i risultati filtrati
-                pagerAdapter = new RecipesPagerAdapter(MainActivity.this, filteredRecipes);
+                pagerAdapter = new RecipesPagerAdapter(MainActivity.this, filteredRecipes, viewByAuthor);
                 viewPager.setAdapter(pagerAdapter);
                 
                 new TabLayoutMediator(tabLayout, viewPager,
@@ -90,6 +91,16 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.action_import) {
             openFilePicker();
+            return true;
+        } else if (item.getItemId() == R.id.view_by_type) {
+            viewByAuthor = false;
+            reloadRecipes();
+            Toast.makeText(this, "Visualizzazione per Tipo Piatto", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (item.getItemId() == R.id.view_by_author) {
+            viewByAuthor = true;
+            reloadRecipes();
+            Toast.makeText(this, "Visualizzazione per Autore", Toast.LENGTH_SHORT).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -138,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     private void reloadRecipes() {
         recipeManager = new RecipeManager(this);
         allRecipes = recipeManager.getAllRecipes();
-        pagerAdapter = new RecipesPagerAdapter(this, allRecipes);
+        pagerAdapter = new RecipesPagerAdapter(this, allRecipes, viewByAuthor);
         viewPager.setAdapter(pagerAdapter);
         new TabLayoutMediator(tabLayout, viewPager,
             (tab, position) -> tab.setText(pagerAdapter.getTabTitle(position))

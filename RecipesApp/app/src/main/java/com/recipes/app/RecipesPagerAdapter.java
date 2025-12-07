@@ -9,13 +9,23 @@ import java.util.*;
 public class RecipesPagerAdapter extends FragmentStateAdapter {
     private final List<String> tabTitles = new ArrayList<>();
     private final Map<String, List<Recipe>> recipesMap = new LinkedHashMap<>();
+    private final boolean viewByAuthor;
 
     public RecipesPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<Recipe> allRecipes) {
-        super(fragmentActivity);
-        categorizeRecipes(allRecipes);
+        this(fragmentActivity, allRecipes, false);
     }
 
-    private void categorizeRecipes(List<Recipe> allRecipes) {
+    public RecipesPagerAdapter(@NonNull FragmentActivity fragmentActivity, List<Recipe> allRecipes, boolean viewByAuthor) {
+        super(fragmentActivity);
+        this.viewByAuthor = viewByAuthor;
+        if (viewByAuthor) {
+            categorizeByAuthor(allRecipes);
+        } else {
+            categorizeByType(allRecipes);
+        }
+    }
+
+    private void categorizeByType(List<Recipe> allRecipes) {
         // Ordine canonico delle portate italiane
         String[] ordinePortate = {"Antipasto", "Primo", "Secondo", "Piatto Unico", "Contorno", "Dolce"};
         
@@ -51,6 +61,35 @@ public class RecipesPagerAdapter extends FragmentStateAdapter {
         }
     }
 
+    private void categorizeByAuthor(List<Recipe> allRecipes) {
+        // Tab "Tutte"
+        tabTitles.add("Tutte");
+        recipesMap.put("Tutte", new ArrayList<>(allRecipes));
+        
+        // Raggruppa per autore
+        Map<String, List<Recipe>> grouped = new TreeMap<>();
+        
+        for (Recipe recipe : allRecipes) {
+            String autore = recipe.getAutore();
+            if (autore == null || autore.trim().isEmpty()) {
+                autore = "Sconosciuto";
+            }
+            
+            if (!grouped.containsKey(autore)) {
+                grouped.put(autore, new ArrayList<>());
+            }
+            grouped.get(autore).add(recipe);
+        }
+        
+        // Aggiungi gli autori in ordine alfabetico
+        for (Map.Entry<String, List<Recipe>> entry : grouped.entrySet()) {
+            if (!entry.getValue().isEmpty()) {
+                tabTitles.add(entry.getKey());
+                recipesMap.put(entry.getKey(), entry.getValue());
+            }
+        }
+    }
+
     @NonNull
     @Override
     public Fragment createFragment(int position) {
@@ -71,7 +110,11 @@ public class RecipesPagerAdapter extends FragmentStateAdapter {
     public void updateRecipes(List<Recipe> newRecipes) {
         recipesMap.clear();
         tabTitles.clear();
-        categorizeRecipes(newRecipes);
+        if (viewByAuthor) {
+            categorizeByAuthor(newRecipes);
+        } else {
+            categorizeByType(newRecipes);
+        }
         notifyDataSetChanged();
     }
 }

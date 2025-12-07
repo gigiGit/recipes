@@ -1,14 +1,14 @@
 const fs = require('fs');
 const sqlite3 = require('better-sqlite3');
-
+const filename = 'recipes.json';
 // Verifica che il file JSON esista
-if (!fs.existsSync('recipes.json')) {
-    console.error('❌ File recipes.json non trovato!');
+if (!fs.existsSync(filename)) {
+    console.error(`❌ File ${filename} non trovato!`);
     process.exit(1);
 }
 
 // Leggi il file JSON
-const filename = 'tutte.json';
+
 const recipes = JSON.parse(fs.readFileSync(filename, 'utf8'));
 console.log(`📦 Trovate ${recipes.length} ricette in ${filename}\n`);
 
@@ -116,15 +116,10 @@ const insertAll = db.transaction((recipes) => {
                 insertVino.run(ricettaId, vino);
             }
         }
-
         count++;
-        if (count % 100 === 0) {
-            console.log(`Importate ${count} ricette...`);
-        }
     }
     return count;
 });
-
 // Esegui l'inserimento
 const totalInserted = insertAll(recipes);
 
@@ -132,8 +127,8 @@ const totalInserted = insertAll(recipes);
 console.log(`\n✅ Database aggiornato: recipes.db`);
 console.log(`📊 Ricette importate: ${totalInserted}`);
 // Aggiorna autori
-db.prepare('update ricette set autore=\'Internet\' where autore not like \'Nonna%\'').run();
-db.prepare('insert into autori (nome) select distinct autore from ricette').run();
+//db.prepare('update ricette set autore=\'Internet\' where autore not like \'Nonna%\'').run();
+//db.prepare('insert into autori (nome) select distinct autore from ricette').run();
 
 // Mostra statistiche
 const stats = db.prepare(`
