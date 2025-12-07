@@ -29,8 +29,7 @@ jobs:
     - name: Build Release APK
       run: |
         cd RecipesApp
-        chmod +x ./gradlew
-        ./gradlew clean assembleRelease
+        java -jar gradle/wrapper/gradle-wrapper.jar clean assembleRelease
     
     - name: Upload APK
       uses: actions/upload-artifact@v4

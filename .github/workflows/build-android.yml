@@ -37,8 +37,7 @@ jobs:
     - name: Build APK
       run: |
         cd RecipesApp
-        chmod +x ./gradlew
-        ./gradlew clean assembleDebug
+        java -jar gradle/wrapper/gradle-wrapper.jar clean assembleDebug
     
     - name: Upload APK
       if: success()
@@ -72,5 +71,4 @@ jobs:
     - name: Run Lint
       run: |
         cd RecipesApp
-        chmod +x ./gradlew
-        ./gradlew lintDebug || true
+        java -jar gradle/wrapper/gradle-wrapper.jar lintDebug || true
