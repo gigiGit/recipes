@@ -60,7 +60,9 @@ struct RecipesByAuthorView: View {
             }
             .sheet(isPresented: $showingPrintBook) {
                 if let author = selectedAuthor {
-                    PrintBookView(author: author, recipesByType: recipeManager.getRecipesByAuthorGroupedByType(author))
+                    let groupedRecipes = recipeManager.getRecipesByAuthorGroupedByType(author)
+                    let recipesByType = Dictionary(uniqueKeysWithValues: groupedRecipes.map { ($0.type, $0.recipes) })
+                    PrintBookView(author: author, recipesByType: recipesByType)
                 }
             }
         }

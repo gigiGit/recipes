@@ -46,7 +46,7 @@ struct PrintBookView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIViewController {
         do {
-            let pdfData = try createPDFData()
+            let pdfData = createPDFData()
             let fileName = "Libro_Ricette_\(author.replacingOccurrences(of: " ", with: "_")).pdf"
             
             // Salva il PDF nella cartella Documenti
