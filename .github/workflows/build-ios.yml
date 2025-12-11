@@ -100,32 +100,34 @@ jobs:
         
         target.build_settings('Debug')['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
         target.build_settings('Release')['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
-        
+
         target.build_settings('Debug')['TARGETED_DEVICE_FAMILY'] = '1,2'
         target.build_settings('Release')['TARGETED_DEVICE_FAMILY'] = '1,2'
         
         target.build_settings('Debug')['CODE_SIGN_STYLE'] = 'Automatic'
         target.build_settings('Release')['CODE_SIGN_STYLE'] = 'Automatic'
-        
-        target.build_settings('Release')['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
-        
+
         target.build_settings('Debug')['INFOPLIST_FILE'] = 'Info.plist'
         target.build_settings('Release')['INFOPLIST_FILE'] = 'Info.plist'
         
+        # Add Swift files to compile sources
         main_group = project.main_group
         
         # Add Info.plist
         main_group.new_file('Info.plist')
         
-        # Add files
+        # Add Swift files to target
         swift_files = Dir.glob('*.swift') + Dir.glob('**/*.swift')
         swift_files.each do |file|
-          main_group.new_file(file)
+          file_ref = main_group.new_file(file)
+          target.add_file_references([file_ref])
         end
         
+        # Add resources
         resources = Dir.glob('*.json') + Dir.glob('*.xcassets')
         resources.each do |resource|
-          main_group.new_file(resource)
+          file_ref = main_group.new_file(resource)
+          target.add_resources([file_ref])
         end
         
         project.save
@@ -134,19 +136,45 @@ jobs:
     - name: Copy recipes.json
       run: cp recipes.json RecipesApp-iOS/recipes.json
     
+    - name: Verify project files
+      run: |
+        cd RecipesApp-iOS
+        echo "Swift files found:"
+        find . -name "*.swift" -type f
+        echo "Total Swift files: $(find . -name "*.swift" -type f | wc -l)"
+        echo "Resources found:"
+        ls -la *.json
+    
     - name: Build iOS App
       run: |
         cd RecipesApp-iOS
+        # List available schemes
+        xcodebuild -list -project RecipesApp-iOS.xcodeproj
+        
+        # Build the app
         xcodebuild \
-          -scheme RecipesApp-iOS \
-          -destination 'generic/platform=iOS' \
+          -project RecipesApp-iOS.xcodeproj \
+          -target RecipesApp-iOS \
           -configuration Release \
+          -sdk iphoneos \
           -derivedDataPath build \
-          -allowProvisioningUpdates \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGN_ENTITLEMENTS="" \
           build
+        
+        # Verify build succeeded
+        if [ ! -d "build/Build/Products/Release-iphoneos/RecipesApp-iOS.app" ]; then
+          echo "Build failed - app bundle not found"
+          exit 1
+        fi
+        
+        # Check app size
+        APP_SIZE=$(du -sh "build/Build/Products/Release-iphoneos/RecipesApp-iOS.app" | cut -f1)
+        echo "App bundle size: $APP_SIZE"
+        
+        # List app contents
+        ls -la "build/Build/Products/Release-iphoneos/RecipesApp-iOS.app/"
     
     - name: Upload Build Artifacts
       if: success()
@@ -154,7 +182,7 @@ jobs:
       with:
         name: ios-build
         path: |
-          RecipesApp-iOS/build/Build/Products/Release-iphoneos/
+          RecipesApp-iOS/build/Build/Products/Release-iphoneos/RecipesApp-iOS.app
         retention-days: 30
 
   test:
