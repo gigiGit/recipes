@@ -3,8 +3,13 @@ package com.recipes.app;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -13,6 +18,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_EDIT_RECIPE = 1;
@@ -51,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         
         MenuItem addItem = menu.findItem(R.id.action_add);
         MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem printBookItem = menu.findItem(R.id.action_print_book);
+        
+        // Mostra l'opzione "Stampa Libro Ricette" solo in modalità autore
+        printBookItem.setVisible(viewByAuthor);
+        
         SearchView searchView = (SearchView) searchItem.getActionView();
         
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -102,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
             reloadRecipes();
             Toast.makeText(this, "Visualizzazione per Autore", Toast.LENGTH_SHORT).show();
             return true;
+        } else if (item.getItemId() == R.id.action_print_book) {
+            printRecipeBook();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -146,6 +161,154 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     
+    private void printRecipeBook() {
+        int currentTab = tabLayout.getSelectedTabPosition();
+        if (currentTab <= 0) {
+            Toast.makeText(this, "Seleziona un autore per stampare il libro ricette", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        String selectedAuthor = pagerAdapter.getTabTitle(currentTab);
+        List<Recipe> authorRecipes = recipeManager.getRecipesByAuthor(selectedAuthor);
+        
+        if (authorRecipes.isEmpty()) {
+            Toast.makeText(this, "Nessuna ricetta trovata per l'autore selezionato", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        // Ordina le ricette per tipo di piatto
+        Map<String, List<Recipe>> recipesByType = new TreeMap<>();
+        String[] ordinePortate = {"Antipasto", "Primo", "Secondo", "Piatto Unico", "Contorno", "Dolce", "Liquore"};
+        
+        // Inizializza le categorie nell'ordine corretto
+        for (String portata : ordinePortate) {
+            recipesByType.put(portata, new java.util.ArrayList<>());
+        }
+        
+        // Raggruppa le ricette per tipo
+        for (Recipe recipe : authorRecipes) {
+            String tipo = recipe.getTipoPiatto();
+            if (tipo == null || tipo.trim().isEmpty()) {
+                tipo = "Liquore";
+            }
+            
+            if (!recipesByType.containsKey(tipo)) {
+                recipesByType.put(tipo, new java.util.ArrayList<>());
+            }
+            recipesByType.get(tipo).add(recipe);
+        }
+        
+        // Genera HTML per il libro ricette
+        String html = generateRecipeBookHTML(selectedAuthor, recipesByType);
+        
+        // Crea WebView per la stampa
+        WebView webView = new WebView(this);
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                createPrintJob(view, selectedAuthor + " - Libro Ricette");
+            }
+        });
+        
+        webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
+    }
+    
+    private String generateRecipeBookHTML(String author, Map<String, List<Recipe>> recipesByType) {
+        StringBuilder html = new StringBuilder();
+        html.append("<html><head><style>");
+        html.append("body { font-family: 'Times New Roman', serif; margin: 40px; line-height: 1.6; }");
+        html.append("h1 { text-align: center; font-size: 28px; margin-bottom: 30px; border-bottom: 3px double #333; padding-bottom: 20px; }");
+        html.append("h2 { font-size: 20px; margin-top: 40px; margin-bottom: 20px; page-break-before: always; border-bottom: 2px solid #666; padding-bottom: 10px; }");
+        html.append("h3 { font-size: 16px; margin-top: 25px; margin-bottom: 15px; color: #333; }");
+        html.append(".recipe { margin-bottom: 30px; page-break-inside: avoid; }");
+        html.append(".info { background-color: #f9f9f9; padding: 15px; margin: 15px 0; border-radius: 8px; border-left: 4px solid #ccc; }");
+        html.append("ul { list-style-type: none; padding: 0; margin: 0; }");
+        html.append("li { margin-bottom: 5px; padding-left: 20px; position: relative; }");
+        html.append("li:before { content: '•'; position: absolute; left: 0; color: #666; font-weight: bold; }");
+        html.append(".instructions { margin-top: 15px; text-align: justify; }");
+        html.append(".page-break { page-break-before: always; }");
+        html.append("@media print { .no-print { display: none; } body { margin: 20px; } }");
+        html.append("</style></head><body>");
+        
+        // Titolo del libro
+        html.append("<h1>Libro delle Ricette</h1>");
+        html.append("<h1 style='font-size: 24px; margin-top: -20px;'>di ").append(author).append("</h1>");
+        
+        // Genera contenuto per ogni tipo di piatto
+        for (Map.Entry<String, List<Recipe>> entry : recipesByType.entrySet()) {
+            String tipoPiatto = entry.getKey();
+            List<Recipe> recipes = entry.getValue();
+            
+            if (recipes.isEmpty()) continue;
+            
+            html.append("<h2>").append(tipoPiatto).append("</h2>");
+            
+            for (Recipe recipe : recipes) {
+                html.append("<div class='recipe'>");
+                html.append("<h3>").append(recipe.getNome()).append("</h3>");
+                
+                // Info generali
+                html.append("<div class='info'>");
+                if (recipe.getDifficolta() != null && !recipe.getDifficolta().isEmpty())
+                    html.append("<strong>Difficoltà:</strong> ").append(recipe.getDifficolta()).append(" | ");
+                if (recipe.getCosto() != null && !recipe.getCosto().isEmpty())
+                    html.append("<strong>Costo:</strong> ").append(recipe.getCosto()).append(" | ");
+                if (recipe.getTempoPreparazione() != null && recipe.getTempoPreparazione() > 0)
+                    html.append("<strong>Prep:</strong> ").append(recipe.getTempoPreparazione()).append(" min | ");
+                if (recipe.getTempoCottura() != null && recipe.getTempoCottura() > 0)
+                    html.append("<strong>Cottura:</strong> ").append(recipe.getTempoCottura()).append(" min | ");
+                if (recipe.getQuantita() != null && recipe.getQuantita() > 0)
+                    html.append("<strong>Porzioni:</strong> ").append(recipe.getQuantita());
+                if (recipe.getMetodoCottura() != null && !recipe.getMetodoCottura().isEmpty())
+                    html.append(" | <strong>Metodo:</strong> ").append(recipe.getMetodoCottura());
+                html.append("</div>");
+                
+                // Ingredienti
+                if (recipe.getIngredienti() != null && recipe.getIngredienti().length > 0) {
+                    html.append("<h4>Ingredienti</h4>");
+                    html.append("<ul>");
+                    for (String ing : recipe.getIngredienti()) {
+                        html.append("<li>").append(ing).append("</li>");
+                    }
+                    html.append("</ul>");
+                }
+                
+                // Istruzioni
+                if (recipe.getIstruzioni() != null && !recipe.getIstruzioni().isEmpty()) {
+                    html.append("<h4>Preparazione</h4>");
+                    String istruzioni = recipe.getIstruzioni().replace("\n", "<br>");
+                    html.append("<div class='instructions'>").append(istruzioni).append("</div>");
+                }
+                
+                // Vini consigliati
+                if (recipe.getVinoPreferibile() != null && recipe.getVinoPreferibile().length > 0) {
+                    html.append("<h4>Vini Consigliati</h4>");
+                    html.append("<p>").append(String.join(", ", recipe.getVinoPreferibile())).append("</p>");
+                }
+                
+                html.append("</div>");
+            }
+        }
+        
+        html.append("</body></html>");
+        return html.toString();
+    }
+    
+    private void createPrintJob(WebView webView, String jobName) {
+        PrintManager printManager = (PrintManager) getSystemService(PRINT_SERVICE);
+        
+        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(jobName);
+        
+        PrintAttributes.Builder builder = new PrintAttributes.Builder();
+        builder.setMediaSize(PrintAttributes.MediaSize.ISO_A4);
+        builder.setResolution(new PrintAttributes.Resolution("pdf", "pdf", 600, 600));
+        builder.setMinMargins(PrintAttributes.Margins.NO_MARGINS);
+        
+        printManager.print(jobName, printAdapter, builder.build());
+        
+        Toast.makeText(this, "Libro ricette inviato alla stampante", Toast.LENGTH_SHORT).show();
+    }
+    
     private void reloadRecipes() {
         recipeManager = new RecipeManager(this);
         allRecipes = recipeManager.getAllRecipes();
@@ -155,5 +318,8 @@ public class MainActivity extends AppCompatActivity {
             (tab, position) -> tab.setText(pagerAdapter.getTabTitle(position))
         ).attach();
         setTitle("Ricette (" + allRecipes.size() + ")");
+        
+        // Aggiorna la visibilità del menu "Stampa Libro Ricette"
+        invalidateOptionsMenu();
     }
 }

@@ -69,8 +69,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
             if (recipe.getTempoPreparazione() != null) {
                 time = "Prep: " + recipe.getTempoPreparazione() + " min";
             }
-            if (recipe.TempoCottura() != null) {
-                time += (time.isEmpty() ? "" : " | ") + "Cottura: " + recipe.TempoCottura() + " min";
+            if (recipe.getTempoCottura() != null) {
+                time += (time.isEmpty() ? "" : " | ") + "Cottura: " + recipe.getTempoCottura() + " min";
             }
             timeText.setText(time);
             

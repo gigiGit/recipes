@@ -68,7 +68,7 @@ public class RecipeListFragment extends Fragment {
         intent.putExtra("difficolta", recipe.getDifficolta());
         intent.putExtra("costo", recipe.getCosto());
         intent.putExtra("tempo_prep", recipe.getTempoPreparazione());
-        intent.putExtra("tempo_cottura", recipe.TempoCottura());
+        intent.putExtra("tempo_cottura", recipe.getTempoCottura());
         intent.putExtra("quantita", recipe.getQuantita());
         intent.putExtra("metodo", recipe.getMetodoCottura());
         intent.putExtra("tipo", recipe.getTipoPiatto());

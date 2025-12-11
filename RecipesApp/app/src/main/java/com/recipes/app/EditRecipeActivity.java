@@ -108,8 +108,8 @@ public class EditRecipeActivity extends AppCompatActivity {
         if (editingRecipe.getTempoPreparazione() != null) {
             etTempoPrep.setText(String.valueOf(editingRecipe.getTempoPreparazione()));
         }
-        if (editingRecipe.TempoCottura() != null) {
-            etTempoCottura.setText(String.valueOf(editingRecipe.TempoCottura()));
+        if (editingRecipe.getTempoCottura() != null) {
+            etTempoCottura.setText(String.valueOf(editingRecipe.getTempoCottura()));
         }
         if (editingRecipe.getQuantita() != null) {
             etQuantita.setText(String.valueOf(editingRecipe.getQuantita()));

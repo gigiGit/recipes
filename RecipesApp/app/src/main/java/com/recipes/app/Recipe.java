@@ -26,7 +26,7 @@ public class Recipe implements Serializable {
     public String getDifficolta() { return Difficolta; }
     public String getCosto() { return Costo; }
     public Integer getTempoPreparazione() { return TempoPreparazione; }
-    public Integer TempoCottura() { return TempoCottura; }
+    public Integer getTempoCottura() { return TempoCottura; }
     public Integer getQuantita() { return Quantita; }
     public String getMetodoCottura() { return MetodoCottura; }
     public String[] getVinoPreferibile() { return VinoPreferibile; }

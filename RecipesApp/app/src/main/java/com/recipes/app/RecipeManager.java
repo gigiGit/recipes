@@ -93,6 +93,28 @@ public class RecipeManager {
         return false;
     }
     
+    public List<Recipe> getRecipesByAuthor(String author) {
+        List<Recipe> authorRecipes = new ArrayList<>();
+        for (Recipe recipe : recipes) {
+            String recipeAuthor = recipe.getAutore();
+            if (recipeAuthor == null || recipeAuthor.trim().isEmpty()) {
+                recipeAuthor = "Sconosciuto";
+            }
+            if (recipeAuthor.equals(author)) {
+                authorRecipes.add(recipe);
+            }
+        }
+        
+        // Ordina alfabeticamente per nome
+        authorRecipes.sort((r1, r2) -> {
+            String n1 = r1.getNome() != null ? r1.getNome() : "";
+            String n2 = r2.getNome() != null ? r2.getNome() : "";
+            return n1.compareToIgnoreCase(n2);
+        });
+        
+        return authorRecipes;
+    }
+    
     public boolean saveRecipe(int index, String nome, String[] ingredienti, String istruzioni,
                               String autore, String data, String difficolta, String costo,
                               Integer tempoPrep, Integer tempoCottura, Integer quantita,
