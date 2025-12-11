@@ -31,6 +31,7 @@ Applicazione Android per visualizzare e condividere ricette.
 - ✅ Condivisione ricette tramite ShareSheet
 - ✅ Stampa ricette su PDF
 - ✅ Importazione runtime di nuovi file recipes.json
+- ✅ **Stampa libro ricette completo per autore** (PDF ordinato per tipo di piatto)
 - ✅ Ordinamento alfabetico automatico
 - ✅ Material Design 3 UI
 - ✅ Android API 33+, JDK 17
@@ -198,6 +199,18 @@ Ogni ricetta nel file `recipes.json` contiene:
 2. Seleziona il target "RecipesApp"
 3. Seleziona il dispositivo o simulatore come destinazione
 4. Premi Build and Run (⌘R)
+
+### Stampare Libro Ricette (Android)
+Quando visualizzi le ricette per autore, appare l'opzione **"Stampa Libro Ricette"** nel menu:
+
+1. Passa alla visualizzazione per autore dal menu "Visualizza per" → "Autore"
+2. Seleziona il tab di un autore specifico
+3. Tocca il menu (⋮) → "Stampa Libro Ricette"
+4. Verrà generato un PDF professionale con:
+   - Tutte le ricette dell'autore ordinate per tipo di piatto
+   - Layout libro con titoli, ingredienti, istruzioni
+   - Formattazione ottimizzata per stampa
+   - Una ricetta per pagina con interruzioni appropriate
 
 ## 📥 Download dei Compilati
 
