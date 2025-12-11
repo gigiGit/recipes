@@ -3,6 +3,8 @@ import SwiftUI
 struct RecipesByAuthorView: View {
     @EnvironmentObject var recipeManager: RecipeManager
     @State private var searchText = ""
+    @State private var selectedAuthor: String? = nil
+    @State private var showingPrintBook = false
     
     var body: some View {
         NavigationStack {
@@ -38,6 +40,50 @@ struct RecipesByAuthorView: View {
                 }
             }
             .navigationTitle("Ricette per Autore")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(action: {
+                            // Trova il primo autore con ricette (escludendo "Tutte")
+                            let authors = recipeManager.getRecipesByAuthor()
+                            if let firstAuthor = authors.first(where: { $0.author != "Tutte" && !$0.recipes.isEmpty }) {
+                                selectedAuthor = firstAuthor.author
+                                showingPrintBook = true
+                            }
+                        }) {
+                            Label("Stampa Libro Ricette", systemImage: "doc.pdf")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingPrintBook) {
+                if let author = selectedAuthor {
+                    PrintBookView(author: author, recipesByType: recipeManager.getRecipesByAuthorGroupedByType(author))
+                }
+            }
+        }
+    }
+}
+
+struct RecipeRowView: View {
+    let recipe: Recipe
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(recipe.nome)
+                .font(.headline)
+            
+            HStack(spacing: 12) {
+                Label(recipe.tipoPiatto, systemImage: "fork.knife")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Label(recipe.autore, systemImage: "person.fill")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
     }
 }

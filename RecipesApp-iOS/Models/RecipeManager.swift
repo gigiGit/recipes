@@ -10,6 +10,8 @@ class RecipeManager: ObservableObject {
         }
     }
     
+    private let dishTypes = ["Antipasto", "Primo", "Secondo", "Piatto Unico", "Contorno", "Dolce", "Liquore"]
+    
     private let fileManager = FileManager.default
     private var documentsPath: URL {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -145,5 +147,27 @@ class RecipeManager: ObservableObject {
     func searchRecipes(_ text: String) {
         searchText = text
         updateRecipes()
+    }
+    
+    func getRecipesByAuthor(_ author: String) -> [Recipe] {
+        return allRecipes.filter { recipe in
+            let recipeAuthor = recipe.autore.isEmpty ? "Sconosciuto" : recipe.autore
+            return recipeAuthor == author
+        }.sorted { $0.nome < $1.nome }
+    }
+    
+    func getRecipesByAuthorGroupedByType(_ author: String) -> [(type: String, recipes: [Recipe])] {
+        let authorRecipes = getRecipesByAuthor(author)
+        var groupedRecipes: [(type: String, recipes: [Recipe])] = []
+        
+        // Ordine fisso per tipo piatto
+        for dishType in dishTypes {
+            let recipesForType = authorRecipes.filter { $0.tipoPiatto == dishType }
+            if !recipesForType.isEmpty {
+                groupedRecipes.append((type: dishType, recipes: recipesForType))
+            }
+        }
+        
+        return groupedRecipes
     }
 }
