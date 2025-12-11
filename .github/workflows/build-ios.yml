@@ -154,7 +154,7 @@ jobs:
         # Build the app
         xcodebuild \
           -project RecipesApp-iOS.xcodeproj \
-          -target RecipesApp-iOS \
+          -scheme RecipesApp-iOS \
           -configuration Release \
           -sdk iphoneos \
           -derivedDataPath build \
