@@ -58,10 +58,6 @@ public class MainActivity extends AppCompatActivity {
         
         MenuItem addItem = menu.findItem(R.id.action_add);
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        MenuItem printBookItem = menu.findItem(R.id.action_print_book);
-        
-        // Mostra l'opzione "Stampa Libro Ricette" solo in modalità autore
-        printBookItem.setVisible(viewByAuthor);
         
         SearchView searchView = (SearchView) searchItem.getActionView();
         
@@ -96,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
     }
     
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem printBookItem = menu.findItem(R.id.action_print_book);
+        if (printBookItem != null) {
+            printBookItem.setVisible(viewByAuthor);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+    
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add) {
             Intent intent = new Intent(this, EditRecipeActivity.class);
@@ -112,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.view_by_author) {
             viewByAuthor = true;
             reloadRecipes();
-            Toast.makeText(this, "Visualizzazione per Autore", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Visualizzazione per Autore - Ora puoi stampare il libro ricette!", Toast.LENGTH_LONG).show();
             return true;
         } else if (item.getItemId() == R.id.action_print_book) {
             printRecipeBook();
@@ -162,9 +167,14 @@ public class MainActivity extends AppCompatActivity {
     }
     
     private void printRecipeBook() {
+        if (!viewByAuthor) {
+            Toast.makeText(this, "Passa prima alla visualizzazione per Autore", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
         int currentTab = tabLayout.getSelectedTabPosition();
         if (currentTab <= 0) {
-            Toast.makeText(this, "Seleziona un autore per stampare il libro ricette", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Seleziona un autore dalla lista per stampare il libro ricette", Toast.LENGTH_SHORT).show();
             return;
         }
         
@@ -175,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Nessuna ricetta trovata per l'autore selezionato", Toast.LENGTH_SHORT).show();
             return;
         }
+        
+        Toast.makeText(this, "Generando libro ricette per " + selectedAuthor + "...", Toast.LENGTH_SHORT).show();
         
         // Ordina le ricette per tipo di piatto
         Map<String, List<Recipe>> recipesByType = new TreeMap<>();
@@ -320,6 +332,6 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Ricette (" + allRecipes.size() + ")");
         
         // Aggiorna la visibilità del menu "Stampa Libro Ricette"
-        invalidateOptionsMenu();
+        supportInvalidateOptionsMenu();
     }
 }
