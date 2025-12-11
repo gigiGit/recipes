@@ -50,6 +50,36 @@ struct Recipe: Identifiable, Codable {
         self.vinoPreferibile = try container.decode([String].self, forKey: .vinoPreferibile)
     }
     
+    init(id: UUID = UUID(),
+         nome: String,
+         ingredienti: [String],
+         istruzioni: String,
+         dataInserimento: String = "",
+         autore: String = "",
+         difficolta: String = "",
+         costo: String = "",
+         tempoPreparazione: Int = 0,
+         tempoCottura: Int = 0,
+         quantita: Int = 0,
+         metodoCottura: String = "",
+         tipoPiatto: String = "",
+         vinoPreferibile: [String] = []) {
+        self.id = id
+        self.nome = nome
+        self.ingredienti = ingredienti
+        self.istruzioni = istruzioni
+        self.dataInserimento = dataInserimento
+        self.autore = autore
+        self.difficolta = difficolta
+        self.costo = costo
+        self.tempoPreparazione = tempoPreparazione
+        self.tempoCottura = tempoCottura
+        self.quantita = quantita
+        self.metodoCottura = metodoCottura
+        self.tipoPiatto = tipoPiatto
+        self.vinoPreferibile = vinoPreferibile
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(nome, forKey: .nome)

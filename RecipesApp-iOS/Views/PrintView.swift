@@ -7,97 +7,37 @@ struct PrintView: UIViewControllerRepresentable {
     let recipe: Recipe
     @Environment(\.dismiss) var dismiss
 
-    func makeUIViewController(context: Context) -> UIPrintInteractionController {
-        let printController = UIPrintInteractionController.shared
-
-        let pdfData = generatePDF()
-        let printFormatter = UISimpleTextPrintFormatter(text: generateRecipeText())
-
-        printController.printFormatter = printFormatter
-
-        return printController
-    }
-
-    func updateUIViewController(_ uiViewController: UIPrintInteractionController, context: Context) {}
-
-    private func generatePDF() -> Data? {
-        let pdfRenderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 612, height: 792))
-
-        let pdfData = pdfRenderer.pdfData { context in
-            context.beginPage()
-
-            let attributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 24, weight: .bold)
-            ]
-
-            let title = NSAttributedString(string: recipe.nome, attributes: attributes)
-            title.draw(at: CGPoint(x: 40, y: 40))
-        }
-
-        return pdfData
-    }
-
-    private func generateRecipeText() -> String {
-        """
-        RICETTA: \(recipe.nome)
-
-        TIPO: \(recipe.tipoPiatto)
-        AUTORE: \(recipe.autore)
-
-        INGREDIENTI:
-        \(recipe.ingredienti.enumerated().map { "\($0.offset + 1). \($0.element)" }.joined(separator: "\n"))
-
-        ISTRUZIONI:
-        \(recipe.istruzioni)
-
-        INFORMAZIONI:
-        Difficoltà: \(recipe.difficolta)
-        Costo: \(recipe.costo)
-        Tempo Preparazione: \(recipe.tempoPreparazione) min
-        Tempo Cottura: \(recipe.tempoCottura) min
-        Quantità: \(recipe.quantita) porzioni
-        Metodo Cottura: \(recipe.metodoCottura)
-        """
-    }
-}
-
-struct PrintBookView: UIViewControllerRepresentable {
-    let author: String
-    let recipesByType: [(type: String, recipes: [Recipe])]
-    @Environment(\.dismiss) var dismiss
-
     func makeUIViewController(context: Context) -> UIViewController {
         let viewController = UIViewController()
         viewController.view.backgroundColor = .systemBackground
 
-        // Genera il PDF direttamente
-        generateAndSavePDF()
+        // Questo view è stato sostituito dalla generazione diretta di PDF
+        // Mostra un messaggio informativo
+        let label = UILabel()
+        label.text = "La generazione PDF è ora diretta.\nUsa il menu 'Stampa Libro Ricette'."
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        viewController.view.addSubview(label)
+
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: viewController.view.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: viewController.view.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: viewController.view.trailingAnchor, constant: -20)
+        ])
+
+        // Chiudi automaticamente dopo 2 secondi
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            dismiss()
+        }
 
         return viewController
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 
-    private func generateAndSavePDF() {
-        let pdfData = createPDFData()
-
-        // Crea il nome del file con timestamp
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
-        let timestamp = dateFormatter.string(from: Date())
-        let fileName = "Libro_Ricette_\(author.replacingOccurrences(of: "[^a-zA-Z0-9]", with: "_", options: .regularExpression))_\(timestamp).pdf"
-
-        // Salva nella directory Documents
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-
-        do {
-            try pdfData.write(to: fileURL)
-
-            // Mostra alert di successo
-            DispatchQueue.main.async {
-                showSuccessAlert(fileURL: fileURL, fileName: fileName)
-            }
         } catch {
             DispatchQueue.main.async {
                 showErrorAlert(error: error)
