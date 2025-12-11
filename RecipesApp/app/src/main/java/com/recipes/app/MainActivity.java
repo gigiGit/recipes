@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
         MenuItem printBookItem = menu.findItem(R.id.action_print_book);
         if (printBookItem != null) {
             printBookItem.setVisible(viewByAuthor);
+            printBookItem.setEnabled(viewByAuthor);
+            android.util.Log.d("MainActivity", "Menu item visibility set to: " + viewByAuthor);
         }
         return super.onPrepareOptionsMenu(menu);
     }
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.view_by_author) {
             viewByAuthor = true;
+            android.util.Log.d("MainActivity", "Switching to author view: " + viewByAuthor);
             reloadRecipes();
             Toast.makeText(this, "Visualizzazione per Autore - Ora puoi stampare il libro ricette!", Toast.LENGTH_LONG).show();
             return true;
@@ -332,6 +335,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Ricette (" + allRecipes.size() + ")");
         
         // Aggiorna la visibilità del menu "Stampa Libro Ricette"
+        android.util.Log.d("MainActivity", "Invalidating options menu, viewByAuthor: " + viewByAuthor);
         supportInvalidateOptionsMenu();
     }
 }
