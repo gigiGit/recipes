@@ -1,53 +1,55 @@
 import SwiftUI
 import PDFKit
+import UIKit
+import CoreText
 
 struct PrintView: UIViewControllerRepresentable {
     let recipe: Recipe
     @Environment(\.dismiss) var dismiss
-    
+
     func makeUIViewController(context: Context) -> UIPrintInteractionController {
         let printController = UIPrintInteractionController.shared
-        
+
         let pdfData = generatePDF()
         let printFormatter = UISimpleTextPrintFormatter(text: generateRecipeText())
-        
+
         printController.printFormatter = printFormatter
-        
+
         return printController
     }
-    
+
     func updateUIViewController(_ uiViewController: UIPrintInteractionController, context: Context) {}
-    
+
     private func generatePDF() -> Data? {
         let pdfRenderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 612, height: 792))
-        
+
         let pdfData = pdfRenderer.pdfData { context in
             context.beginPage()
-            
+
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.systemFont(ofSize: 24, weight: .bold)
             ]
-            
+
             let title = NSAttributedString(string: recipe.nome, attributes: attributes)
             title.draw(at: CGPoint(x: 40, y: 40))
         }
-        
+
         return pdfData
     }
-    
+
     private func generateRecipeText() -> String {
         """
         RICETTA: \(recipe.nome)
-        
+
         TIPO: \(recipe.tipoPiatto)
         AUTORE: \(recipe.autore)
-        
+
         INGREDIENTI:
         \(recipe.ingredienti.enumerated().map { "\($0.offset + 1). \($0.element)" }.joined(separator: "\n"))
-        
+
         ISTRUZIONI:
         \(recipe.istruzioni)
-        
+
         INFORMAZIONI:
         Difficoltà: \(recipe.difficolta)
         Costo: \(recipe.costo)
@@ -63,143 +65,197 @@ struct PrintBookView: UIViewControllerRepresentable {
     let author: String
     let recipesByType: [(type: String, recipes: [Recipe])]
     @Environment(\.dismiss) var dismiss
-    
-    func makeUIViewController(context: Context) -> UIPrintInteractionController {
-        let printController = UIPrintInteractionController.shared
-        
-        let printFormatter = UIMarkupTextPrintFormatter(markupText: generateBookHTML())
-        printFormatter.perPageContentInsets = UIEdgeInsets(top: 36, left: 36, bottom: 36, right: 36)
-        
-        printController.printFormatter = printFormatter
-        
-        return printController
+
+    func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemBackground
+
+        // Genera il PDF direttamente
+        generateAndSavePDF()
+
+        return viewController
     }
-    
-    func updateUIViewController(_ uiViewController: UIPrintInteractionController, context: Context) {}
-    
-    private func generateBookHTML() -> String {
-        var html = """
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="utf-8">
-            <style>
-                body {
-                    font-family: 'Times New Roman', serif;
-                    margin: 40px;
-                    line-height: 1.6;
-                }
-                h1 {
-                    text-align: center;
-                    font-size: 28px;
-                    margin-bottom: 30px;
-                    border-bottom: 3px double #333;
-                    padding-bottom: 20px;
-                }
-                h2 {
-                    font-size: 20px;
-                    margin-top: 40px;
-                    margin-bottom: 20px;
-                    page-break-before: always;
-                    border-bottom: 2px solid #666;
-                    padding-bottom: 10px;
-                }
-                h3 {
-                    font-size: 16px;
-                    margin-top: 25px;
-                    margin-bottom: 15px;
-                    color: #333;
-                }
-                .recipe {
-                    margin-bottom: 30px;
-                    page-break-inside: avoid;
-                }
-                .info {
-                    background-color: #f9f9f9;
-                    padding: 15px;
-                    margin: 15px 0;
-                    border-radius: 8px;
-                    border-left: 4px solid #ccc;
-                }
-                ul {
-                    list-style-type: none;
-                    padding: 0;
-                    margin: 0;
-                }
-                li {
-                    margin-bottom: 5px;
-                    padding-left: 20px;
-                    position: relative;
-                }
-                li:before {
-                    content: '•';
-                    position: absolute;
-                    left: 0;
-                    color: #666;
-                    font-weight: bold;
-                }
-                .instructions {
-                    margin-top: 15px;
-                    text-align: justify;
-                }
-                @media print {
-                    .no-print { display: none; }
-                    body { margin: 20px; }
-                }
-            </style>
-        </head>
-        <body>
-            <h1>Libro delle Ricette</h1>
-            <h1 style="font-size: 24px; margin-top: -20px;">di \(author)</h1>
-        """
-        
-        // Genera contenuto per ogni tipo di piatto
-        for (type, recipes) in recipesByType {
-            html += "<h2>\(type)</h2>"
-            
-            for recipe in recipes {
-                html += """
-                <div class="recipe">
-                    <h3>\(recipe.nome)</h3>
-                    
-                    <div class="info">
-                """
-                
-                // Info generali
-                if !recipe.difficolta.isEmpty { html += "<strong>Difficoltà:</strong> \(recipe.difficolta) | " }
-                if !recipe.costo.isEmpty { html += "<strong>Costo:</strong> \(recipe.costo) | " }
-                if recipe.tempoPreparazione > 0 { html += "<strong>Prep:</strong> \(recipe.tempoPreparazione) min | " }
-                if recipe.tempoCottura > 0 { html += "<strong>Cottura:</strong> \(recipe.tempoCottura) min | " }
-                if recipe.quantita > 0 { html += "<strong>Porzioni:</strong> \(recipe.quantita)" }
-                if !recipe.metodoCottura.isEmpty { html += " | <strong>Metodo:</strong> \(recipe.metodoCottura)" }
-                
-                html += "</div>"
-                
-                // Ingredienti
-                if !recipe.ingredienti.isEmpty {
-                    html += "<h4>Ingredienti</h4><ul>"
-                    for ingrediente in recipe.ingredienti {
-                        html += "<li>\(ingrediente)</li>"
-                    }
-                    html += "</ul>"
-                }
-                
-                // Istruzioni
-                if !recipe.istruzioni.isEmpty {
-                    html += "<h4>Preparazione</h4>"
-                    html += "<div class=\"instructions\">\(recipe.istruzioni.replacingOccurrences(of: "\n", with: "<br>"))</div>"
-                }
-                
-                // Vini consigliati
-                if !recipe.vinoPreferibile.isEmpty {
-                    html += "<h4>Vini Consigliati</h4><p>\(recipe.vinoPreferibile.joined(separator: ", "))</p>"
-                }
-                
-                html += "</div>"
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+
+    private func generateAndSavePDF() {
+        let pdfData = createPDFData()
+
+        // Crea il nome del file con timestamp
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
+        let timestamp = dateFormatter.string(from: Date())
+        let fileName = "Libro_Ricette_\(author.replacingOccurrences(of: "[^a-zA-Z0-9]", with: "_", options: .regularExpression))_\(timestamp).pdf"
+
+        // Salva nella directory Documents
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+
+        do {
+            try pdfData.write(to: fileURL)
+
+            // Mostra alert di successo
+            DispatchQueue.main.async {
+                showSuccessAlert(fileURL: fileURL, fileName: fileName)
+            }
+        } catch {
+            DispatchQueue.main.async {
+                showErrorAlert(error: error)
             }
         }
-        
-        html += "</body></html>"
-        return html
     }
+
+    private func createPDFData() -> Data {
+        let pdfMetaData = [
+            kCGPDFContextCreator: "Recipes App",
+            kCGPDFContextAuthor: author
+        ]
+        let format = UIGraphicsPDFRendererFormat()
+        format.documentInfo = pdfMetaData as [String: Any]
+
+        // Dimensioni A4
+        let pageWidth = 595.2
+        let pageHeight = 841.8
+        let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
+
+        let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
+
+        let data = renderer.pdfData { (context) in
+            let textContent = generateBookText()
+
+            // Suddividi il contenuto in pagine
+            let attributedString = NSAttributedString(string: textContent, attributes: [
+                .font: UIFont.systemFont(ofSize: 12),
+                .foregroundColor: UIColor.black
+            ])
+
+            let framesetter = CTFramesetterCreateWithAttributedString(attributedString)
+            var currentRange = CFRangeMake(0, 0)
+            var currentPage = 1
+
+            while currentRange.location < attributedString.length {
+                context.beginPage()
+
+                // Margini
+                let margin: CGFloat = 50
+                let textRect = CGRect(x: margin, y: margin, width: pageWidth - (margin * 2), height: pageHeight - (margin * 2))
+
+                let frame = CTFramesetterCreateFrame(framesetter, currentRange, CGPath(rect: textRect, transform: nil), nil)
+
+                let frameRange = CTFrameGetVisibleStringRange(frame)
+                currentRange = CFRangeMake(frameRange.location + frameRange.length, 0)
+
+                CTFrameDraw(frame, context.cgContext)
+
+                currentPage += 1
+            }
+        }
+
+        return data
+    }
+
+    private func generateBookText() -> String {
+        var content = "LIBRO DELLE RICETTE\ndi \(author)\n\n"
+
+        // Genera contenuto per ogni tipo di piatto
+        for (type, recipes) in recipesByType {
+            content += "\n\(type.uppercased())\n"
+            content += String(repeating: "=", count: type.count) + "\n\n"
+
+            for recipe in recipes {
+                content += "\(recipe.nome)\n"
+                content += String(repeating: "-", count: recipe.nome.count) + "\n\n"
+
+                // Info generali
+                var infoParts: [String] = []
+                if !recipe.difficolta.isEmpty { infoParts.append("Difficoltà: \(recipe.difficolta)") }
+                if !recipe.costo.isEmpty { infoParts.append("Costo: \(recipe.costo)") }
+                if recipe.tempoPreparazione > 0 { infoParts.append("Prep: \(recipe.tempoPreparazione) min") }
+                if recipe.tempoCottura > 0 { infoParts.append("Cottura: \(recipe.tempoCottura) min") }
+                if recipe.quantita > 0 { infoParts.append("Porzioni: \(recipe.quantita)") }
+                if !recipe.metodoCottura.isEmpty { infoParts.append("Metodo: \(recipe.metodoCottura)") }
+
+                if !infoParts.isEmpty {
+                    content += infoParts.joined(separator: " | ") + "\n\n"
+                }
+
+                // Ingredienti
+                if !recipe.ingredienti.isEmpty {
+                    content += "INGREDIENTI:\n"
+                    for ingrediente in recipe.ingredienti {
+                        content += "• \(ingrediente)\n"
+                    }
+                    content += "\n"
+                }
+
+                // Istruzioni
+                if !recipe.istruzioni.isEmpty {
+                    content += "PREPARAZIONE:\n\(recipe.istruzioni)\n\n"
+                }
+
+                // Vini consigliati
+                if !recipe.vinoPreferibile.isEmpty {
+                    content += "VINI CONSIGLIATI:\n\(recipe.vinoPreferibile.joined(separator: ", "))\n\n"
+                }
+
+                content += "\n"
+            }
+        }
+
+        return content
+    }
+
+    private func showSuccessAlert(fileURL: URL, fileName: String) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first,
+              let rootViewController = window.rootViewController else {
+            return
+        }
+
+        let alert = UIAlertController(
+            title: "PDF Salvato",
+            message: "Il libro ricette è stato salvato come '\(fileName)' nella cartella Documenti.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Apri PDF", style: .default) { _ in
+            let documentController = UIDocumentInteractionController(url: fileURL)
+            documentController.presentPreview(animated: true)
+        })
+
+        alert.addAction(UIAlertAction(title: "Condividi", style: .default) { _ in
+            let activityViewController = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
+            rootViewController.present(activityViewController, animated: true)
+        })
+
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel) { _ in
+            self.dismiss()
+        })
+
+        rootViewController.present(alert, animated: true)
+    }
+
+    private func showErrorAlert(error: Error) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first,
+              let rootViewController = window.rootViewController else {
+            return
+        }
+
+        let alert = UIAlertController(
+            title: "Errore",
+            message: "Errore durante il salvataggio del PDF: \(error.localizedDescription)",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.dismiss()
+        })
+
+        rootViewController.present(alert, animated: true)
+    }
+}
+
+extension UIDocumentInteractionController: UIAdaptivePresentationControllerDelegate {
+    // Estensione per supportare il preview dei PDF
 }

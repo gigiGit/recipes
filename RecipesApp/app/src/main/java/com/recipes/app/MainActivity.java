@@ -1,22 +1,27 @@
 package com.recipes.app;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
-import android.print.PrintAttributes;
-import android.print.PrintDocumentAdapter;
-import android.print.PrintManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.FileProvider;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -174,154 +179,269 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Prima seleziona 'Visualizza per → Autore' per stampare il libro ricette", Toast.LENGTH_LONG).show();
             return;
         }
-        
+
         int currentTab = tabLayout.getSelectedTabPosition();
         if (currentTab <= 0) {
             Toast.makeText(this, "Seleziona un autore dalla lista per stampare il libro ricette", Toast.LENGTH_SHORT).show();
             return;
         }
-        
+
         String selectedAuthor = pagerAdapter.getTabTitle(currentTab);
         List<Recipe> authorRecipes = recipeManager.getRecipesByAuthor(selectedAuthor);
-        
+
         if (authorRecipes.isEmpty()) {
             Toast.makeText(this, "Nessuna ricetta trovata per l'autore selezionato", Toast.LENGTH_SHORT).show();
             return;
         }
-        
+
         Toast.makeText(this, "Generando libro ricette per " + selectedAuthor + "...", Toast.LENGTH_SHORT).show();
-        
+
         // Ordina le ricette per tipo di piatto
         Map<String, List<Recipe>> recipesByType = new TreeMap<>();
         String[] ordinePortate = {"Antipasto", "Primo", "Secondo", "Piatto Unico", "Contorno", "Dolce", "Liquore"};
-        
+
         // Inizializza le categorie nell'ordine corretto
         for (String portata : ordinePortate) {
             recipesByType.put(portata, new java.util.ArrayList<>());
         }
-        
+
         // Raggruppa le ricette per tipo
         for (Recipe recipe : authorRecipes) {
             String tipo = recipe.getTipoPiatto();
             if (tipo == null || tipo.trim().isEmpty()) {
                 tipo = "Liquore";
             }
-            
+
             if (!recipesByType.containsKey(tipo)) {
                 recipesByType.put(tipo, new java.util.ArrayList<>());
             }
             recipesByType.get(tipo).add(recipe);
         }
-        
-        // Genera HTML per il libro ricette
-        String html = generateRecipeBookHTML(selectedAuthor, recipesByType);
-        
-        // Crea WebView per la stampa
-        WebView webView = new WebView(this);
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                createPrintJob(view, selectedAuthor + " - Libro Ricette");
-            }
-        });
-        
-        webView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
+
+        // Genera contenuto del libro ricette
+        String bookContent = generateRecipeBookContent(selectedAuthor, recipesByType);
+
+        // Crea il PDF direttamente
+        createRecipeBookPdf(bookContent, selectedAuthor);
     }
     
-    private String generateRecipeBookHTML(String author, Map<String, List<Recipe>> recipesByType) {
-        StringBuilder html = new StringBuilder();
-        html.append("<html><head><style>");
-        html.append("body { font-family: 'Times New Roman', serif; margin: 40px; line-height: 1.6; }");
-        html.append("h1 { text-align: center; font-size: 28px; margin-bottom: 30px; border-bottom: 3px double #333; padding-bottom: 20px; }");
-        html.append("h2 { font-size: 20px; margin-top: 40px; margin-bottom: 20px; page-break-before: always; border-bottom: 2px solid #666; padding-bottom: 10px; }");
-        html.append("h3 { font-size: 16px; margin-top: 25px; margin-bottom: 15px; color: #333; }");
-        html.append(".recipe { margin-bottom: 30px; page-break-inside: avoid; }");
-        html.append(".info { background-color: #f9f9f9; padding: 15px; margin: 15px 0; border-radius: 8px; border-left: 4px solid #ccc; }");
-        html.append("ul { list-style-type: none; padding: 0; margin: 0; }");
-        html.append("li { margin-bottom: 5px; padding-left: 20px; position: relative; }");
-        html.append("li:before { content: '•'; position: absolute; left: 0; color: #666; font-weight: bold; }");
-        html.append(".instructions { margin-top: 15px; text-align: justify; }");
-        html.append(".page-break { page-break-before: always; }");
-        html.append("@media print { .no-print { display: none; } body { margin: 20px; } }");
-        html.append("</style></head><body>");
-        
+    private String generateRecipeBookContent(String author, Map<String, List<Recipe>> recipesByType) {
+        StringBuilder content = new StringBuilder();
+
         // Titolo del libro
-        html.append("<h1>Libro delle Ricette</h1>");
-        html.append("<h1 style='font-size: 24px; margin-top: -20px;'>di ").append(author).append("</h1>");
-        
+        content.append("LIBRO DELLE RICETTE\n");
+        content.append("di ").append(author).append("\n\n");
+
         // Genera contenuto per ogni tipo di piatto
         for (Map.Entry<String, List<Recipe>> entry : recipesByType.entrySet()) {
             String tipoPiatto = entry.getKey();
             List<Recipe> recipes = entry.getValue();
-            
+
             if (recipes.isEmpty()) continue;
-            
-            html.append("<h2>").append(tipoPiatto).append("</h2>");
-            
+
+            content.append("\n").append(tipoPiatto.toUpperCase()).append("\n");
+            content.append("=".repeat(tipoPiatto.length())).append("\n\n");
+
             for (Recipe recipe : recipes) {
-                html.append("<div class='recipe'>");
-                html.append("<h3>").append(recipe.getNome()).append("</h3>");
-                
+                content.append(recipe.getNome()).append("\n");
+                content.append("-".repeat(recipe.getNome().length())).append("\n\n");
+
                 // Info generali
-                html.append("<div class='info'>");
+                StringBuilder info = new StringBuilder();
                 if (recipe.getDifficolta() != null && !recipe.getDifficolta().isEmpty())
-                    html.append("<strong>Difficoltà:</strong> ").append(recipe.getDifficolta()).append(" | ");
+                    info.append("Difficoltà: ").append(recipe.getDifficolta()).append(" | ");
                 if (recipe.getCosto() != null && !recipe.getCosto().isEmpty())
-                    html.append("<strong>Costo:</strong> ").append(recipe.getCosto()).append(" | ");
+                    info.append("Costo: ").append(recipe.getCosto()).append(" | ");
                 if (recipe.getTempoPreparazione() != null && recipe.getTempoPreparazione() > 0)
-                    html.append("<strong>Prep:</strong> ").append(recipe.getTempoPreparazione()).append(" min | ");
+                    info.append("Prep: ").append(recipe.getTempoPreparazione()).append(" min | ");
                 if (recipe.getTempoCottura() != null && recipe.getTempoCottura() > 0)
-                    html.append("<strong>Cottura:</strong> ").append(recipe.getTempoCottura()).append(" min | ");
+                    info.append("Cottura: ").append(recipe.getTempoCottura()).append(" min | ");
                 if (recipe.getQuantita() != null && recipe.getQuantita() > 0)
-                    html.append("<strong>Porzioni:</strong> ").append(recipe.getQuantita());
+                    info.append("Porzioni: ").append(recipe.getQuantita()).append(" | ");
                 if (recipe.getMetodoCottura() != null && !recipe.getMetodoCottura().isEmpty())
-                    html.append(" | <strong>Metodo:</strong> ").append(recipe.getMetodoCottura());
-                html.append("</div>");
-                
+                    info.append("Metodo: ").append(recipe.getMetodoCottura());
+
+                if (info.length() > 0) {
+                    content.append(info.toString().trim()).append("\n\n");
+                }
+
                 // Ingredienti
                 if (recipe.getIngredienti() != null && recipe.getIngredienti().length > 0) {
-                    html.append("<h4>Ingredienti</h4>");
-                    html.append("<ul>");
+                    content.append("INGREDIENTI:\n");
                     for (String ing : recipe.getIngredienti()) {
-                        html.append("<li>").append(ing).append("</li>");
+                        content.append("• ").append(ing).append("\n");
                     }
-                    html.append("</ul>");
+                    content.append("\n");
                 }
-                
+
                 // Istruzioni
                 if (recipe.getIstruzioni() != null && !recipe.getIstruzioni().isEmpty()) {
-                    html.append("<h4>Preparazione</h4>");
-                    String istruzioni = recipe.getIstruzioni().replace("\n", "<br>");
-                    html.append("<div class='instructions'>").append(istruzioni).append("</div>");
+                    content.append("PREPARAZIONE:\n");
+                    content.append(recipe.getIstruzioni()).append("\n\n");
                 }
-                
+
                 // Vini consigliati
                 if (recipe.getVinoPreferibile() != null && recipe.getVinoPreferibile().length > 0) {
-                    html.append("<h4>Vini Consigliati</h4>");
-                    html.append("<p>").append(String.join(", ", recipe.getVinoPreferibile())).append("</p>");
+                    content.append("VINI CONSIGLIATI:\n");
+                    content.append(String.join(", ", recipe.getVinoPreferibile())).append("\n\n");
                 }
-                
-                html.append("</div>");
+
+                content.append("\n");
             }
         }
-        
-        html.append("</body></html>");
-        return html.toString();
+
+        return content.toString();
     }
-    
-    private void createPrintJob(WebView webView, String jobName) {
-        PrintManager printManager = (PrintManager) getSystemService(PRINT_SERVICE);
-        
-        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(jobName);
-        
-        PrintAttributes.Builder builder = new PrintAttributes.Builder();
-        builder.setMediaSize(PrintAttributes.MediaSize.ISO_A4);
-        builder.setResolution(new PrintAttributes.Resolution("pdf", "pdf", 600, 600));
-        builder.setMinMargins(PrintAttributes.Margins.NO_MARGINS);
-        
-        printManager.print(jobName, printAdapter, builder.build());
-        
-        Toast.makeText(this, "Libro ricette inviato alla stampante", Toast.LENGTH_SHORT).show();
+
+    private void createRecipeBookPdf(String content, String author) {
+        try {
+            // Crea il nome del file con timestamp
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+            String timestamp = sdf.format(new Date());
+            String fileName = "Libro_Ricette_" + author.replaceAll("[^a-zA-Z0-9]", "_") + "_" + timestamp + ".pdf";
+
+            // Usa la directory esterna privata dell'app (non richiede permessi speciali)
+            File downloadsDir = new File(getExternalFilesDir(null), "Downloads");
+            if (!downloadsDir.exists()) {
+                downloadsDir.mkdirs();
+            }
+            File pdfFile = new File(downloadsDir, fileName);
+
+            // Crea il documento PDF
+            PdfDocument document = new PdfDocument();
+            Paint paint = new Paint();
+            paint.setColor(Color.BLACK);
+            paint.setTextSize(12);
+
+            // Dimensioni pagina A4
+            int pageWidth = 595; // A4 width in points (72 DPI)
+            int pageHeight = 842; // A4 height in points (72 DPI)
+            int margin = 50;
+            int contentWidth = pageWidth - (margin * 2);
+
+            String[] lines = content.split("\n");
+            int currentLine = 0;
+            int pageNumber = 1;
+
+            while (currentLine < lines.length) {
+                // Crea una nuova pagina
+                PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNumber).create();
+                PdfDocument.Page page = document.startPage(pageInfo);
+                Canvas canvas = page.getCanvas();
+
+                int yPosition = margin + 20;
+
+                // Disegna le linee per questa pagina
+                while (currentLine < lines.length && yPosition < pageHeight - margin) {
+                    String line = lines[currentLine];
+
+                    // Gestisci linee vuote
+                    if (line.trim().isEmpty()) {
+                        yPosition += 15;
+                        currentLine++;
+                        continue;
+                    }
+
+                    // Verifica se la linea è un titolo (tutto maiuscolo)
+                    if (line.equals(line.toUpperCase()) && line.length() > 3) {
+                        paint.setTextSize(16);
+                        paint.setFakeBoldText(true);
+                    } else if (line.contains("-") && line.replace("-", "").trim().isEmpty()) {
+                        // Linea di separazione
+                        paint.setTextSize(12);
+                        paint.setFakeBoldText(false);
+                    } else {
+                        paint.setTextSize(12);
+                        paint.setFakeBoldText(false);
+                    }
+
+                    // Gestisci il text wrapping in modo sicuro
+                    drawWrappedText(canvas, paint, line, margin, yPosition, contentWidth);
+                    yPosition += paint.getTextSize() + 5;
+
+                    currentLine++;
+
+                    // Se non c'è più spazio per almeno una riga, interrompi
+                    if (yPosition + 20 > pageHeight - margin) {
+                        break;
+                    }
+                }
+
+                document.finishPage(page);
+                pageNumber++;
+            }
+
+            // Salva il documento
+            FileOutputStream fos = new FileOutputStream(pdfFile);
+            document.writeTo(fos);
+            document.close();
+            fos.close();
+
+            // Mostra messaggio di successo con percorso relativo
+            String relativePath = "Android/data/com.recipes.app/files/Downloads/" + fileName;
+            Toast.makeText(this, "PDF salvato in: " + relativePath, Toast.LENGTH_LONG).show();
+
+            // Apri il file con un visualizzatore PDF
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri = FileProvider.getUriForFile(this, "com.recipes.app.fileprovider", pdfFile);
+            intent.setDataAndType(uri, "application/pdf");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(intent);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Errore nella generazione del PDF: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
+
+    private void drawWrappedText(Canvas canvas, Paint paint, String text, float x, float y, float maxWidth) {
+        if (text == null || text.isEmpty()) {
+            return;
+        }
+
+        String[] words = text.split(" ");
+        StringBuilder currentLine = new StringBuilder();
+
+        for (String word : words) {
+            String testLine = currentLine.length() == 0 ? word : currentLine + " " + word;
+            if (paint.measureText(testLine) <= maxWidth) {
+                currentLine = new StringBuilder(testLine);
+            } else {
+                // Disegna la linea corrente se non è vuota
+                if (currentLine.length() > 0) {
+                    canvas.drawText(currentLine.toString(), x, y, paint);
+                    y += paint.getTextSize() + 2;
+                    currentLine = new StringBuilder(word);
+                } else {
+                    // Se una singola parola è troppo lunga, tagliala
+                    String truncatedWord = truncateTextToFit(word, paint, maxWidth);
+                    canvas.drawText(truncatedWord, x, y, paint);
+                    y += paint.getTextSize() + 2;
+                    currentLine = new StringBuilder();
+                }
+            }
+        }
+
+        // Disegna l'ultima linea
+        if (currentLine.length() > 0) {
+            canvas.drawText(currentLine.toString(), x, y, paint);
+        }
+    }
+
+    private String truncateTextToFit(String text, Paint paint, float maxWidth) {
+        if (paint.measureText(text) <= maxWidth) {
+            return text;
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            if (paint.measureText(result.toString() + c) <= maxWidth) {
+                result.append(c);
+            } else {
+                break;
+            }
+        }
+        return result.toString();
     }
     
     private void reloadRecipes() {
