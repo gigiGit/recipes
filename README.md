@@ -52,6 +52,7 @@ Applicazione iOS con interfaccia nativa SwiftUI, feature-parity con Android.
 - ✅ Condivisione ricette tramite Share Sheet
 - ✅ Anteprima stampa ricette (PDF)
 - ✅ Importazione runtime di nuovi file recipes.json tramite file picker
+- ✅ **Stampa libro ricette completo per autore** (PDF ordinato per tipo di piatto)
 - ✅ NavigationStack per navigazione fluida
 - ✅ Adattamento automatico light/dark mode
 - ✅ iOS 15.0+, Swift 5.0
