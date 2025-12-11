@@ -5,7 +5,7 @@ struct RecipesByTypeView: View {
     @State private var searchText = ""
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 SearchBar(text: $searchText)
                     .onChange(of: searchText) { newValue in

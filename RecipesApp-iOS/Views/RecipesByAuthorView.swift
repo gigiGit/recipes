@@ -7,7 +7,7 @@ struct RecipesByAuthorView: View {
     @State private var showingPrintBook = false
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 SearchBar(text: $searchText)
                     .onChange(of: searchText) { newValue in
@@ -62,27 +62,6 @@ struct RecipesByAuthorView: View {
                 if let author = selectedAuthor {
                     PrintBookView(author: author, recipesByType: recipeManager.getRecipesByAuthorGroupedByType(author))
                 }
-            }
-        }
-    }
-}
-
-struct RecipeRowView: View {
-    let recipe: Recipe
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(recipe.nome)
-                .font(.headline)
-            
-            HStack(spacing: 12) {
-                Label(recipe.tipoPiatto, systemImage: "fork.knife")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                Label(recipe.autore, systemImage: "person.fill")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
             }
         }
     }

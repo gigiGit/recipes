@@ -168,7 +168,7 @@ struct ShareSheet: UIViewControllerRepresentable {
 }
 
 #Preview {
-    NavigationStack {
+    NavigationView {
         RecipeDetailView(recipe: Recipe(
             id: UUID(),
             nome: "Carbonara",

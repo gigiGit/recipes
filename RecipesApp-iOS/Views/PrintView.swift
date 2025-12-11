@@ -37,13 +37,40 @@ struct PrintView: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+}
 
+struct PrintBookView: UIViewControllerRepresentable {
+    let author: String
+    let recipesByType: [String: [Recipe]]
+    @Environment(\.dismiss) var dismiss
+
+    func makeUIViewController(context: Context) -> UIViewController {
+        do {
+            let pdfData = try createPDFData()
+            let fileName = "Libro_Ricette_\(author.replacingOccurrences(of: " ", with: "_")).pdf"
+            
+            // Salva il PDF nella cartella Documenti
+            let fileManager = FileManager.default
+            let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent(fileName)
+            
+            try pdfData.write(to: fileURL)
+            
+            // Mostra alert di successo
+            DispatchQueue.main.async {
+                showSuccessAlert(fileURL: fileURL, fileName: fileName)
+            }
+            
+            return UIViewController()
         } catch {
             DispatchQueue.main.async {
                 showErrorAlert(error: error)
             }
+            return UIViewController()
         }
     }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 
     private func createPDFData() -> Data {
         let pdfMetaData = [
@@ -196,6 +223,6 @@ struct PrintView: UIViewControllerRepresentable {
     }
 }
 
-extension UIDocumentInteractionController: UIAdaptivePresentationControllerDelegate {
+extension UIDocumentInteractionController: @retroactive UIAdaptivePresentationControllerDelegate {
     // Estensione per supportare il preview dei PDF
 }
