@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <h1>Ricette di Cucina</h1>
   <div id="main-layout">
@@ -17,29 +19,62 @@
         <select id="author-select">
           <option value="">Tutti gli autori</option>
         </select>
-        
+
         <label for="recipe-filter">Cerca ricetta:</label>
         <input id="recipe-filter" type="text" placeholder="Nome ricetta, ingredienti...">
-        
+
         <div style="margin-top: 1em; display: flex; gap: 0.5em;">
-          <button id="print-filtered" style="flex: 1; background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">🖨️ Stampa Filtrate</button>
-          <button id="print-all" style="flex: 1; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">📚 Stampa Tutto</button>
+          <button id="print-filtered"
+            style="flex: 1; background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">🖨️ Stampa Filtrate</button>
+          <button id="print-all" style="flex: 1; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">📚
+            Stampa Tutto</button>
         </div>
       </div>
-      
+
       <div id="recipe-tree">
         <div id="tree-content"></div>
+        <ul id="ricette-list">
+        </ul>
       </div>
     </aside>
     <section id="content">
-      <input id="search-input" type="text" placeholder="Cerca ricetta..." style="width:100%;margin-bottom:1em;">
       <div id="app">
         <button onclick="showForm()">Aggiungi Ricetta</button>
         <div id="form-container" style="display:none;"></div>
-        <ul id="ricette-list"></ul>
+        <div id="selected-recipe" style="display: none;">
+          <li id="recipe-template" style="display: none;">
+            <b class="recipe-name"></b><br>
+            <div id="container1">
+              <div id="pannello1">
+                <small class="recipe-meta"></small><br>
+                Difficoltà: <span class="recipe-difficulty"></span> | Costo: <span class="recipe-cost"></span><br>
+                Tempo prep: <span class="recipe-prep-time"></span> min | Tempo cottura: <span
+                  class="recipe-cook-time"></span> min<br>
+                Quantità: <span class="recipe-quantity"></span> porzioni<br>
+                Metodo cottura: <span class="recipe-method"></span><br>
+                Tipo piatto: <span class="recipe-type"></span><br>
+                Vino preferibile: <span class="recipe-wines"></span><br>
+              </div>
+              <div id="recipe-image-1" class="recipe-images"></div>
+            </div>
+            <div id="container2">
+              <div id="recipe-ingredients">
+              Ingredienti:<ul class="ingredienti-list"></ul>
+              </div>
+              <div id="recipe-image-2" class="recipe-images"></div>
+            </div>
+            Istruzioni: <span class="recipe-instructions"></span><br>
+            <div id="recipe-image-3" class="recipe-images"></div>
+            <button class="edit-btn">Modifica</button>
+            <button class="delete-btn">Elimina</button>
+            <button class="print-btn">🖨️ Stampa Ricetta</button>
+          </li>
+          <div id="selected-recipe-content"></div>
+        </div>
       </div>
     </section>
   </div>
   <script src="app.js"></script>
 </body>
+
 </html>

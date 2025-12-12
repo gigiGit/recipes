@@ -311,7 +311,7 @@
       "Moscato",
       "Passito"
     ],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -554,7 +554,7 @@
     "MetodoCottura": "Fornello",
     "TipoPiatto": "Liquore",
     "VinoPreferibile": [],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2433,7 +2433,7 @@
       "Moscato d'Asti",
       "Vin Santo"
     ],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2494,7 +2494,7 @@
       "Moscato",
       "Passito"
     ],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2522,8 +2522,8 @@
     "VinoPreferibile": [
       "Moscato d'Asti"
     ],
-    "Immagine1": "images/recipe_icon.png",
-    "Immagine2": null,
+    "Immagine1": "recipe_icon.png",
+    "Immagine2": "TortaPaneGrattugiato.png",
     "Immagine3": null
   },
   {
@@ -2622,7 +2622,7 @@
       "Passito di Pantelleria",
       "Moscato d'Asti"
     ],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2689,7 +2689,7 @@
     "VinoPreferibile": [
       "..."
     ],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2717,7 +2717,7 @@
       "Passito",
       "Moscato"
     ],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2747,7 +2747,7 @@
     "VinoPreferibile": [
       "Lambrusco secco, Grasparossa castelvetro, Lambruscone"
     ],
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2865,7 +2865,7 @@
     "MetodoCottura": "Forno",
     "VinoPreferibile": [],
     "TipoPiatto": "Dolce",
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   },
@@ -2891,7 +2891,7 @@
     "MetodoCottura": "Forno",
     "VinoPreferibile": [],
     "TipoPiatto": "Dolce",
-    "Immagine1": "images/recipe_icon.png",
+    "Immagine1": "recipe_icon.png",
     "Immagine2": null,
     "Immagine3": null
   }

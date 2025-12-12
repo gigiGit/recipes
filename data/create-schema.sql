@@ -10,7 +10,10 @@
     quantita INTEGER,
     metodo_cottura TEXT,
     tipo_piatto TEXT,
-    istruzioni TEXT
+    istruzioni TEXT,
+    immagine1 TEXT,
+    immagine2 TEXT,
+    immagine3 TEXT
 );
 
 CREATE TABLE IF NOT EXISTS ingredienti (

@@ -140,14 +140,15 @@ if (fs.existsSync(DB_FILE)) {
         const insertRicetta = db.prepare(`
             INSERT INTO ricette (nome, autore, data_inserimento, difficolta, costo, 
                                 tempo_preparazione, tempo_cottura, quantita, metodo_cottura, 
-                                tipo_piatto, istruzioni)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                                tipo_piatto, istruzioni, immagine1, immagine2, immagine3)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `);
         const updateRicetta = db.prepare(`
             UPDATE ricette SET 
                 nome = ?, autore = ?, data_inserimento = ?, difficolta = ?, costo = ?,
                 tempo_preparazione = ?, tempo_cottura = ?, quantita = ?, 
-                metodo_cottura = ?, tipo_piatto = ?, istruzioni = ?
+                metodo_cottura = ?, tipo_piatto = ?, istruzioni = ?,
+                immagine1 = ?, immagine2 = ?, immagine3 = ?
             WHERE id = ?
         `);
         const deleteIngredienti = db.prepare('DELETE FROM ingredienti WHERE ricetta_id = ?');
@@ -180,6 +181,9 @@ if (fs.existsSync(DB_FILE)) {
                         mod.MetodoCottura || '',
                         mod.TipoPiatto || '',
                         mod.Istruzioni || '',
+                        mod.Immagine1 || '',
+                        mod.Immagine2 || '',
+                        mod.Immagine3 || '',
                         existing.id
                     );
                     ricettaId = existing.id;
@@ -201,7 +205,10 @@ if (fs.existsSync(DB_FILE)) {
                         mod.Quantita || null,
                         mod.MetodoCottura || '',
                         mod.TipoPiatto || '',
-                        mod.Istruzioni || ''
+                        mod.Istruzioni || '',
+                        mod.Immagine1 || '',
+                        mod.Immagine2 || '',
+                        mod.Immagine3 || ''
                     );
                     ricettaId = result.lastInsertRowid;
                     dbStats.added++;

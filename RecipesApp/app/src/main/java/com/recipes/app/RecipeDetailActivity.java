@@ -76,26 +76,23 @@ public class RecipeDetailActivity extends AppCompatActivity {
     }
     
     private void loadImageIfPresent(String url, int imageViewId) {
-        if (url != null && !url.isEmpty()) {
-            ImageView imageView = findViewById(imageViewId);
-            imageView.setVisibility(View.VISIBLE);
-            try {
-                // Se è un URL relativo (inizia con images/), carica da assets
-                if (url.startsWith("images/")) {
-                    String assetPath = url;
-                    android.content.res.AssetManager assetManager = getAssets();
-                    java.io.InputStream inputStream = assetManager.open(assetPath);
-                    android.graphics.Bitmap bitmap = android.graphics.BitmapFactory.decodeStream(inputStream);
-                    imageView.setImageBitmap(bitmap);
-                    inputStream.close();
-                } else {
-                    // Per URL esterni, usa una libreria come Glide se disponibile
-                    // Per ora, nascondi se non è supportato
-                    imageView.setVisibility(View.GONE);
-                }
-            } catch (Exception e) {
-                imageView.setVisibility(View.GONE);
+        ImageView imageView = findViewById(imageViewId);
+        try {
+            String assetPath;
+            if (url == null || url.isEmpty()) {
+                assetPath = "images/placeholder.jpg";
+            } else {
+                assetPath = "images/" + url;
             }
+            // Carica da assets
+            android.content.res.AssetManager assetManager = getAssets();
+            java.io.InputStream inputStream = assetManager.open(assetPath);
+            android.graphics.Bitmap bitmap = android.graphics.BitmapFactory.decodeStream(inputStream);
+            imageView.setImageBitmap(bitmap);
+            imageView.setVisibility(View.VISIBLE);
+            inputStream.close();
+        } catch (Exception e) {
+            imageView.setVisibility(View.GONE);
         }
     }
     

@@ -27,7 +27,10 @@ db.exec(`
         quantita INTEGER,
         metodo_cottura TEXT,
         tipo_piatto TEXT,
-        istruzioni TEXT
+        istruzioni TEXT,
+        immagine1 TEXT,
+        immagine2 TEXT,
+        immagine3 TEXT
     );
 
     CREATE TABLE IF NOT EXISTS ingredienti (
@@ -55,8 +58,8 @@ console.log('Tabelle create con successo');
 const insertRicetta = db.prepare(`
     INSERT INTO ricette (nome, autore, data_inserimento, difficolta, costo, 
                         tempo_preparazione, tempo_cottura, quantita, metodo_cottura, 
-                        tipo_piatto, istruzioni)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        tipo_piatto, istruzioni, immagine1, immagine2, immagine3)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 
 const insertIngrediente = db.prepare(`
@@ -85,7 +88,10 @@ const insertAll = db.transaction((recipes) => {
             recipe.Quantita || null,
             recipe.MetodoCottura || '',
             recipe.TipoPiatto || '',
-            recipe.Istruzioni || ''
+            recipe.Istruzioni || '',
+            recipe.Immagine1 || '',
+            recipe.Immagine2 || '',
+            recipe.Immagine3 || ''
         );
         
         const ricettaId = result.lastInsertRowid;

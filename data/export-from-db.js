@@ -17,7 +17,7 @@ console.log('📦 Esportazione ricette dal database SQLite...\n');
 const ricette = db.prepare(`
     SELECT id, nome, autore, data_inserimento, difficolta, costo,
            tempo_preparazione, tempo_cottura, quantita, metodo_cottura,
-           tipo_piatto, istruzioni
+           tipo_piatto, istruzioni, immagine1, immagine2, immagine3
     FROM ricette
     ORDER BY nome COLLATE NOCASE
 `).all();
@@ -52,7 +52,10 @@ const recipes = ricette.map(r => {
         Quantita: r.quantita,
         MetodoCottura: r.metodo_cottura || '',
         TipoPiatto: r.tipo_piatto || '',
-        VinoPreferibile: vini
+        VinoPreferibile: vini,
+        Immagine1: r.immagine1 || '',
+        Immagine2: r.immagine2 || '',
+        Immagine3: r.immagine3 || ''
     };
 });
 
@@ -60,10 +63,10 @@ db.close();
 
 // Scrivi il file JSON
 const jsonOutput = JSON.stringify(recipes, null, 2);
-fs.writeFileSync('recipes.json', jsonOutput, 'utf8');
+fs.writeFileSync('data/recipes.json', jsonOutput, 'utf8');
 
-console.log(`✅ Esportate ${recipes.length} ricette in recipes.json`);
-console.log(`📊 Dimensione file: ${(fs.statSync('recipes.json').size / 1024).toFixed(2)} KB`);
+console.log(`✅ Esportate ${recipes.length} ricette in data/recipes.json`);
+console.log(`📊 Dimensione file: ${(fs.statSync('data/recipes.json').size / 1024).toFixed(2)} KB`);
 
 // Mostra statistiche
 const stats = {};
@@ -77,4 +80,4 @@ Object.entries(stats).sort((a, b) => b[1] - a[1]).forEach(([tipo, count]) => {
     console.log(`  ${tipo}: ${count}`);
 });
 
-console.log('\n✅ File recipes.json generato con successo dal database!');
+console.log('\n✅ File data/recipes.json generato con successo dal database!');
