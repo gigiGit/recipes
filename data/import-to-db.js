@@ -13,15 +13,15 @@ const recipes = JSON.parse(fs.readFileSync(filename, 'utf8'));
 console.log(`📦 Trovate ${recipes.length} ricette in ${filename}\n`);
 
 // Backup del database esistente
-if (fs.existsSync('recipes.db')) {
-    const backupName = `recipes.db.backup-${new Date().toISOString().replace(/:/g, '-').split('.')[0]}`;
-    fs.copyFileSync('recipes.db', backupName);
+if (fs.existsSync('data/recipes.db')) {
+    const backupName = `data/recipes.db.backup-${new Date().toISOString().replace(/:/g, '-').split('.')[0]}`;
+    fs.copyFileSync('data/recipes.db', backupName);
     console.log(`💾 Backup creato: ${backupName}`);
-    fs.unlinkSync('recipes.db');
+    fs.unlinkSync('data/recipes.db');
 }
 
 // Crea il database
-const db = new sqlite3('recipes.db');
+const db = new sqlite3('data/recipes.db');
 
 // Crea le tabelle
 db.exec(`
@@ -124,7 +124,7 @@ const insertAll = db.transaction((recipes) => {
 const totalInserted = insertAll(recipes);
 
 
-console.log(`\n✅ Database aggiornato: recipes.db`);
+console.log(`\n✅ Database aggiornato: data/recipes.db`);
 console.log(`📊 Ricette importate: ${totalInserted}`);
 // Aggiorna autori
 //db.prepare('update ricette set autore=\'Internet\' where autore not like \'Nonna%\'').run();
@@ -154,7 +154,7 @@ console.log('\nRicette per autore:');
 stats2.forEach(row => {
     console.log(`  ${row.autore || 'Senza tipo'}: ${row.count}`);
 });
-const fileSize = fs.statSync('recipes.db').size;
+const fileSize = fs.statSync('data/recipes.db').size;
 console.log(`\n📦 Dimensione database: ${(fileSize / 1024).toFixed(2)} KB`);
 
 db.close();

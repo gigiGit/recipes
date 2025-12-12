@@ -2,13 +2,27 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
+const multer = require('multer');
 
 const app = express();
 const PORT = 3000;
-const DB_PATH = path.join(__dirname, 'recipes.json');
+const DB_PATH = path.join(__dirname, 'data', 'recipes.json');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use('/images', express.static('data/images'));
+
+// Configurazione multer per upload immagini
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, 'data', 'images'));
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage: storage });
 
 // Helper: load and save recipes
 function loadRecipes() {
@@ -103,6 +117,15 @@ app.get('/api/ricette/:index', (req, res) => {
     return res.status(404).json({ error: 'Ricetta non trovata' });
   }
   res.json(recipes[idx]);
+});
+
+// API: upload immagine
+app.post('/api/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'Nessuna immagine caricata' });
+  }
+  const imageUrl = `/images/${req.file.filename}`;
+  res.json({ url: imageUrl });
 });
 
 // Homepage

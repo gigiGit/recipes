@@ -75,6 +75,9 @@ public class RecipeListFragment extends Fragment {
         intent.putExtra("ingredienti", recipe.getIngredienti());
         intent.putExtra("istruzioni", recipe.getIstruzioni());
         intent.putExtra("vini", recipe.getVinoPreferibile());
+        intent.putExtra("immagine1", recipe.getImmagine1());
+        intent.putExtra("immagine2", recipe.getImmagine2());
+        intent.putExtra("immagine3", recipe.getImmagine3());
         
         startActivity(intent);
     }

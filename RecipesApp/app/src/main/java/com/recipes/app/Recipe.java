@@ -16,6 +16,9 @@ public class Recipe implements Serializable {
     private String MetodoCottura;
     private String[] VinoPreferibile;
     private String TipoPiatto;
+    private String Immagine1;
+    private String Immagine2;
+    private String Immagine3;
 
     // Getters
     public String getNome() { return Nome; }
@@ -31,6 +34,9 @@ public class Recipe implements Serializable {
     public String getMetodoCottura() { return MetodoCottura; }
     public String[] getVinoPreferibile() { return VinoPreferibile; }
     public String getTipoPiatto() { return TipoPiatto; }
+    public String getImmagine1() { return Immagine1; }
+    public String getImmagine2() { return Immagine2; }
+    public String getImmagine3() { return Immagine3; }
     
     public String getIngredientiAsString() {
         if (Ingredienti == null) return "";
@@ -56,4 +62,7 @@ public class Recipe implements Serializable {
     public void setMetodoCottura(String metodo) { this.MetodoCottura = metodo; }
     public void setVinoPreferibile(String[] vini) { this.VinoPreferibile = vini; }
     public void setTipoPiatto(String tipo) { this.TipoPiatto = tipo; }
+    public void setImmagine1(String immagine) { this.Immagine1 = immagine; }
+    public void setImmagine2(String immagine) { this.Immagine2 = immagine; }
+    public void setImmagine3(String immagine) { this.Immagine3 = immagine; }
 }

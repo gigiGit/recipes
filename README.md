@@ -1,6 +1,8 @@
 # Ricette di Cucina
 
-Applicazione completa per la gestione di ricette di cucina con interfaccia web e app native Android e iOS.
+Applicazione completa per la gestione di ricette di cucina con interfaccia web e app nativa Android.
+
+📋 **[Specifiche App Web](WEB_APP_SPECIFICATIONS.md)** - Documento dettagliato delle funzionalità web e confronto con Android
 
 ## 📱 Applicazioni Disponibili
 
@@ -11,8 +13,11 @@ Interfaccia web per gestire le ricette con funzionalità complete di CRUD.
 - ✅ Aggiungi, modifica, elimina ricette
 - ✅ Ricerca per nome, ingredienti, tipo piatto
 - ✅ Suddivisione per portate (Antipasto, Primo, Secondo, Contorno, Dolce)
+- ✅ Suddivisione per autore
 - ✅ Ordinamento alfabetico automatico
-- ✅ Database JSON locale
+- ✅ Database JSON in `data/recipes.json`
+- ✅ Database SQLite in `data/recipes.db`
+- ✅ Immagini ricette in `data/images/`
 
 **Avvio:**
 ```bash
@@ -42,30 +47,6 @@ build.bat
 ```
 Richiede JDK 17 e Android SDK.
 
-### App iOS (SwiftUI)
-Applicazione iOS con interfaccia nativa SwiftUI, feature-parity con Android.
-
-**Funzionalità:**
-- ✅ Visualizzazione ricette con tab per portate (Antipasto, Primo, Secondo, Contorno, Dolce)
-- ✅ Visualizzazione ricette per autore
-- ✅ Ricerca full-text su nome e ingredienti
-- ✅ Condivisione ricette tramite Share Sheet
-- ✅ Anteprima stampa ricette (PDF)
-- ✅ Importazione runtime di nuovi file recipes.json tramite file picker
-- ✅ **Stampa libro ricette completo per autore** (PDF ordinato per tipo di piatto)
-- ✅ NavigationStack per navigazione fluida
-- ✅ Adattamento automatico light/dark mode
-- ✅ iOS 15.0+, Swift 5.0
-
-**Compilazione locale:**
-```bash
-cd RecipesApp-iOS
-open RecipesApp.xcodeproj
-# Compila in Xcode o da terminale:
-xcodebuild -scheme RecipesApp build
-```
-Richiede Xcode 16+ e macOS 13+.
-
 ## 🚀 Avvio Rapido
 
 ### Applicazione Web
@@ -89,7 +70,10 @@ Lo script:
 
 ```
 recipes/
-├── recipes.json              # Database ricette (condiviso)
+├── data/                     # Dati condivisi
+│   ├── recipes.json         # Database ricette JSON
+│   ├── recipes.db           # Database SQLite
+│   └── images/              # Immagini ricette
 ├── server.js                 # Server Express
 ├── package.json              # Dipendenze Node.js
 ├── build.bat                 # Build script Android
@@ -115,19 +99,6 @@ recipes/
 │   ├── sync-recipes.ps1      # Script sincronizzazione
 │   └── gradle/wrapper/
 │       └── gradle-wrapper.jar
-└── RecipesApp-iOS/          # Progetto iOS nativo (Swift/SwiftUI)
-    ├── RecipesApp.swift     # Entry point app
-    ├── Models/
-    │   ├── Recipe.swift     # Modello Codable
-    │   └── RecipeManager.swift  # Logica condivisa
-    ├── Views/
-    │   ├── ContentView.swift
-    │   ├── RecipesByTypeView.swift
-    │   ├── RecipesByAuthorView.swift
-    │   ├── RecipeDetailView.swift
-    │   ├── SearchBar.swift
-    │   └── PrintView.swift
-    └── recipes.json         # Copia sincronizzata
 ```
 
 ## 🔄 Sincronizzazione Ricette
@@ -147,11 +118,6 @@ Il file `recipes.json` è condiviso tra web e Android:
 - JDK 17
 - Android SDK API 33+
 - Gradle 8.4+
-
-### App iOS
-- Xcode 16+ (solo su macOS)
-- macOS 13+
-- Swift 5.0+ (incluso in Xcode)
 
 ## 📝 Formato Ricette
 
@@ -195,12 +161,6 @@ Ogni ricetta nel file `recipes.json` contiene:
 2. Esegui `build.bat` per ricompilare con i dati aggiornati
 3. Reinstalla l'APK sul dispositivo
 
-### Installare App iOS
-1. Apri `RecipesApp-iOS/RecipesApp.xcodeproj` in Xcode
-2. Seleziona il target "RecipesApp"
-3. Seleziona il dispositivo o simulatore come destinazione
-4. Premi Build and Run (⌘R)
-
 ### Stampare Libro Ricette (Android)
 Quando visualizzi le ricette per autore, appare l'opzione **"Stampa Libro Ricette"** nel menu:
 
@@ -235,19 +195,6 @@ Ogni push su `main` avvia automaticamente la compilazione Android. I compilati s
    ```
    Oppure trasferisci il file sul dispositivo e tocca per installare
 
-### App iOS tramite GitHub Actions
-
-La compilazione iOS è disponibile in GitHub Actions, ma per installare su dispositivo fisico è necessario:
-- Firmare l'app (richiede Apple Developer Account)
-- O usare TestFlight per la distribuzione beta
-- Oppure compilare direttamente da Xcode su macOS
-
-**Per testare localmente su macOS:**
-```bash
-cd RecipesApp-iOS
-xcodebuild -scheme RecipesApp build
-```
-
 ### Release Ufficiali
 
 Quando è pronto un rilascio ufficiale, viene creato un tag (es. `v1.0.0`):
@@ -259,7 +206,6 @@ git push origin v1.0.0
 
 Questo attiva il workflow "Release" che:
 - Compila APK Release (Android)
-- Compila Build Release (iOS)
 - Crea una GitHub Release con i file scaricabili
 
 Le release sono disponibili in: https://github.com/gigiGit/recipes/releases
@@ -277,11 +223,10 @@ adb install -r recipes-android.apk
 
 ## 🔄 Sincronizzazione Ricette
 
-Il file `recipes.json` è condiviso tra web, Android e iOS:
+Il file `recipes.json` è condiviso tra web e Android:
 - **Modifica ricette**: usa l'app web
 - **Build Android**: `build.bat` sincronizza automaticamente il file aggiornato
-- **Build iOS**: Xcode sincronizza il file dalla directory di progetto
-- **Sincronizzazione manuale**: copia `recipes.json` in `RecipesApp/app/src/main/assets/` (Android) e `RecipesApp-iOS/` (iOS)
+- **Sincronizzazione manuale**: copia `recipes.json` in `RecipesApp/app/src/main/assets/` (Android)
 
 ## 🛠️ Sviluppo
 
@@ -293,15 +238,8 @@ Modifica i file in `public/` e riavvia il server.
 2. Modifica codice Java o layout XML
 3. Build → Build APK
 
-### Modificare l'App iOS
-1. Apri `RecipesApp-iOS/RecipesApp.xcodeproj` in Xcode
-2. Modifica i file Swift o gli asset
-3. Build and Run (⌘R)
-
 ## 📄 Note
 - Tutti i dati sono salvati localmente in `recipes.json`
 - Le ricette sono ordinate alfabeticamente in tutte le app
 - L'app Android è in modalità debug (non firmata per produzione)
-- L'app iOS è compilata senza codice di firma (debug mode)
 - Nessun database esterno o servizio cloud richiesto
-- Le app Android e iOS hanno feature parity completa

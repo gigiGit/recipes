@@ -33,12 +33,22 @@ echo.
 
 REM Sincronizza recipes.json
 echo [1/3] Sincronizzazione recipes.json...
-if exist "..\recipes.json" (
+if exist "..\data\recipes.json" (
     echo   Copia recipes.json da app web...
-    copy /Y "..\recipes.json" "app\src\main\assets\recipes.json" >nul
+    copy /Y "..\data\recipes.json" "app\src\main\assets\recipes.json" >nul
     echo   [OK] recipes.json aggiornato
 ) else (
-    echo   [!] recipes.json non trovato nella root
+    echo   [!] recipes.json non trovato in ..\data
+)
+
+REM Sincronizza immagini
+echo [1.5/3] Sincronizzazione immagini...
+if exist "..\data\images" (
+    echo   Copia immagini da app web...
+    xcopy /Y /E /I "..\data\images\*" "app\src\main\assets\images\" >nul 2>&1
+    echo   [OK] Immagini aggiornate
+) else (
+    echo   [!] Cartella immagini non trovata in ..\data
 )
 
 REM Clean build

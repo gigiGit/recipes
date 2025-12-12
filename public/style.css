@@ -3,33 +3,69 @@ h1 { color: #2c3e50; margin: 0; padding: 1.5em 2em; background: linear-gradient(
 #main-layout { display: flex; min-height: calc(100vh - 5em); max-height: calc(100vh - 5em); }
 #sidebar { width: 320px; background: #2c3e50; padding: 1.5em; color: white; overflow-y: auto; box-shadow: 2px 0 10px rgba(0,0,0,0.1); max-height: calc(100vh - 5em); }
 #sidebar h2 { margin-top: 0; color: #ecf0f1; border-bottom: 2px solid #3498db; padding-bottom: 0.5em; }
-#tab-buttons { display: flex; flex-wrap: wrap; gap: 0.4em; margin-bottom: 1em; padding-bottom: 0.5em; }
-.tab-button { padding: 0.6em 1em; background: #34495e; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; transition: all 0.3s; color: #ecf0f1; font-weight: 500; }
-.tab-button:hover { background: #3498db; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-.tab-button.active { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; font-weight: bold; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4); }
-#tab-content { max-height: calc(100vh - 22em); overflow-y: auto; }
+#filters { margin-bottom: 1.5em; padding: 1em; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+#filters label { display: block; margin: 0.8em 0 0.3em 0; color: #ecf0f1; font-weight: 500; font-size: 0.9em; }
+#filters select, #filters input { width: 100%; padding: 0.6em; border: 1px solid #34495e; border-radius: 4px; background: #34495e; color: #ecf0f1; font-size: 0.9em; transition: all 0.3s; }
+#filters select:focus, #filters input:focus { outline: none; border-color: #3498db; box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3); background: #2c3e50; }
+#filters select option { background: #2c3e50; color: #ecf0f1; }
+
+#recipe-tree { max-height: calc(100vh - 20em); overflow-y: auto; }
+.tree-category { margin-bottom: 1em; }
+.tree-category-header { 
+  cursor: pointer; 
+  padding: 0.6em; 
+  background: #34495e; 
+  border-radius: 6px; 
+  margin-bottom: 0.3em; 
+  transition: all 0.3s;
+  font-weight: 500;
+  border-left: 4px solid #3498db;
+  position: relative;
+}
+.tree-category-header:hover { background: #3498db; transform: translateX(2px); }
+.tree-category-header::after {
+  content: '▶';
+  position: absolute;
+  right: 0.6em;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s;
+  color: #bdc3c7;
+}
+.tree-category-header:hover::after { color: #ecf0f1; }
+.tree-category-content.expanded .tree-category-header::after { transform: translateY(-50%) rotate(90deg); }
+.tree-category-content { padding-left: 1em; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.tree-category-content.expanded { max-height: 500px; }
+.tree-recipe { 
+  padding: 0.4em 0.6em; 
+  margin: 0.1em 0; 
+  cursor: pointer; 
+  border-radius: 4px; 
+  transition: all 0.2s;
+  color: #bdc3c7;
+  font-size: 0.85em;
+}
+.tree-recipe:hover { 
+  background: rgba(52, 152, 219, 0.2); 
+  color: #ecf0f1; 
+  padding-left: 1em;
+}
 
 /* Scrollbar personalizzata per il sidebar */
-#sidebar::-webkit-scrollbar, #tab-content::-webkit-scrollbar {
+#sidebar::-webkit-scrollbar, #recipe-tree::-webkit-scrollbar {
   width: 8px;
 }
-#sidebar::-webkit-scrollbar-track, #tab-content::-webkit-scrollbar-track {
+#sidebar::-webkit-scrollbar-track, #recipe-tree::-webkit-scrollbar-track {
   background: #34495e;
   border-radius: 4px;
 }
-#sidebar::-webkit-scrollbar-thumb, #tab-content::-webkit-scrollbar-thumb {
+#sidebar::-webkit-scrollbar-thumb, #recipe-tree::-webkit-scrollbar-thumb {
   background: #3498db;
   border-radius: 4px;
 }
-#sidebar::-webkit-scrollbar-thumb:hover, #tab-content::-webkit-scrollbar-thumb:hover {
+#sidebar::-webkit-scrollbar-thumb:hover, #recipe-tree::-webkit-scrollbar-thumb:hover {
   background: #2980b9;
 }
-.tab-pane { display: none; }
-.tab-pane.active { display: block; }
-.tab-pane ul { list-style: none; padding-left: 0.5em; margin: 0; }
-.tab-pane li { margin-bottom: 0.1em; }
-.ricetta-link { cursor: pointer; color: #3498db; text-decoration: none; padding: 0.2em 0.4em; display: block; border-radius: 4px; transition: all 0.2s; font-size: 0.9em; line-height: 1.2; }
-.ricetta-link:hover { background: rgba(52, 152, 219, 0.2); color: #ecf0f1; padding-left: 0.8em; }
 #content { flex: 1; padding: 2em; overflow-y: auto; background: #f8f9fa; }
 #app { background: white; padding: 2em; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 #search-input { width: 100%; padding: 0.8em 1em; margin-bottom: 1.5em; border: 2px solid #3498db; border-radius: 8px; font-size: 1em; transition: all 0.3s; }

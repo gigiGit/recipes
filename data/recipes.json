@@ -22,7 +22,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Nero d'Avola"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Babà al rum",
@@ -49,7 +52,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Marsala Dolce"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Brownies al cioccolato",
@@ -75,7 +81,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Porto Ruby"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Cannoli Siciliani",
@@ -103,7 +112,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Passito di Pantelleria"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Caponata siciliana",
@@ -131,7 +143,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Cerasuolo di Vittoria"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Carote al prezzemolo",
@@ -155,7 +170,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Sauvignon Blanc"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Cavolfiore gratinato",
@@ -179,7 +197,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Chardonnay"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Cheesecake al limone",
@@ -204,7 +225,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Prosecco Dolce"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Crema di zucca",
@@ -230,7 +254,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Prosecco"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Crostata di marmellata",
@@ -255,7 +282,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Passito di Pantelleria"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Dolce Mattonella",
@@ -280,7 +310,10 @@
     "VinoPreferibile": [
       "Moscato",
       "Passito"
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Fagiolini al pomodoro",
@@ -304,7 +337,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Rosato"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Farinata di ceci",
@@ -326,7 +362,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Pigato"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Focaccia alla genovese",
@@ -350,7 +389,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Vermentino Ligure"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Hummus",
@@ -375,7 +417,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Insalata di riso",
@@ -403,7 +448,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Pinot Grigio"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Insalata mista semplice",
@@ -428,7 +476,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Vino bianco leggero"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Involtini primavera",
@@ -453,7 +504,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Gewürztraminer"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Lasagne alla Bolognese",
@@ -476,7 +530,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Sangiovese di Romagna DOC"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Limoncello",
@@ -496,7 +553,10 @@
     "Quantita": 2000,
     "MetodoCottura": "Fornello",
     "TipoPiatto": "Liquore",
-    "VinoPreferibile": []
+    "VinoPreferibile": [],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Melanzane a funghetto",
@@ -520,7 +580,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Primitivo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Paella Valenciana",
@@ -555,7 +618,10 @@
       "Vino bianco spagnolo",
       "Albariño",
       "Verdejo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Panettone",
@@ -588,7 +654,10 @@
     "VinoPreferibile": [
       "Moscato d'Asti",
       "Spumante Dolce"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Panna Cotta",
@@ -610,7 +679,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Panzerotti fritti",
@@ -635,7 +707,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Primitivo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta al pesto genovese",
@@ -661,7 +736,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Vermentino"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta alla amatriciana",
@@ -686,7 +764,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Cesanese"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta alla gricia",
@@ -708,7 +789,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Frascati"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta alla Norma",
@@ -734,7 +818,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Nero d'Avola"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta alla puttanesca",
@@ -762,7 +849,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Aglianico"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta cacio e pepe",
@@ -784,7 +874,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Frascati"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con i broccoli",
@@ -809,7 +902,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Fiano"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con i carciofi",
@@ -834,7 +930,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Verdicchio"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con i ceci e gamberi",
@@ -859,7 +958,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con i funghi porcini",
@@ -884,7 +986,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Barbera"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con i peperoni",
@@ -908,7 +1013,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Chardonnay"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con i piselli",
@@ -932,7 +1040,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Pinot Grigio"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con i tenerumi",
@@ -957,7 +1068,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Grillo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con il salmone",
@@ -982,7 +1096,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Chardonnay"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con il tonno",
@@ -1006,7 +1123,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Verdicchio"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con la bottarga",
@@ -1030,7 +1150,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Vermentino di Sardegna"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con la panna e prosciutto",
@@ -1055,7 +1178,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Pinot Bianco"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con la ricotta",
@@ -1080,7 +1206,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Greco di Tufo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con la zucca",
@@ -1104,7 +1233,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Soave"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con le cozze",
@@ -1129,7 +1261,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con le noci",
@@ -1154,7 +1289,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Pigato"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con le sarde",
@@ -1182,7 +1320,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Inzolia"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con le sarde e finocchietto",
@@ -1210,7 +1351,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Inzolia"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con le zucchine",
@@ -1234,7 +1378,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Vermentino"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con vongole",
@@ -1259,7 +1406,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta con zucchine e gamberetti",
@@ -1284,7 +1434,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Vermentino"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta e ceci",
@@ -1311,7 +1464,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Verdicchio"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta e fagioli",
@@ -1338,7 +1494,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Lambrusco"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta e lenticchie",
@@ -1365,7 +1524,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Montepulciano d'Abruzzo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pasta e patate",
@@ -1392,7 +1554,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pastiera Napoletana",
@@ -1419,7 +1584,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Lacryma Christi"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Patate al forno",
@@ -1441,7 +1609,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Greco di Tufo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Peperoni arrostiti",
@@ -1464,7 +1635,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Barbera"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Polpette al sugo",
@@ -1490,7 +1664,10 @@
     "TipoPiatto": "Secondo",
     "VinoPreferibile": [
       "Chianti"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Polpette di zucca",
@@ -1514,7 +1691,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Chardonnay"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Pomodori al forno",
@@ -1538,7 +1718,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Vermentino"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Profiteroles",
@@ -1563,7 +1746,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Champagne"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto agli asparagi",
@@ -1589,7 +1775,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Pinot Grigio"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto ai frutti di mare",
@@ -1614,7 +1803,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto ai funghi porcini",
@@ -1641,7 +1833,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Barbera"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al Barolo",
@@ -1667,7 +1862,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Barolo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al gorgonzola e noci",
@@ -1693,7 +1891,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Bonarda"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al limone",
@@ -1719,7 +1920,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Greco di Tufo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al limone e gamberi",
@@ -1745,7 +1949,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al nero di seppia",
@@ -1770,7 +1977,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Falanghina"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al prosecco",
@@ -1796,7 +2006,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Prosecco"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al radicchio",
@@ -1822,7 +2035,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Raboso"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto al taleggio e pere",
@@ -1848,7 +2064,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Chardonnay"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto alla milanese",
@@ -1874,7 +2093,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Bonarda"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto alla parmigiana",
@@ -1899,7 +2121,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Lambrusco"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto alla pescatora",
@@ -1924,7 +2149,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Verdicchio"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto alla zucca",
@@ -1950,7 +2178,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Soave Classico"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto con salsiccia e zafferano",
@@ -1977,7 +2208,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Barbera"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Risotto con zucchine e speck",
@@ -2003,7 +2237,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Pinot Nero"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Sbrisolona",
@@ -2029,7 +2266,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Vin Santo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Spaghetti alla Carbonara",
@@ -2053,7 +2293,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Frascati Superiore DOCG"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Spinaci al burro",
@@ -2075,7 +2318,10 @@
     "TipoPiatto": "Contorno",
     "VinoPreferibile": [
       "Pinot Bianco"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Supplì al telefono",
@@ -2100,7 +2346,10 @@
     "TipoPiatto": "Antipasto",
     "VinoPreferibile": [
       "Frascati"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Timballo di riso",
@@ -2127,7 +2376,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Greco di Tufo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Tiramisù",
@@ -2151,7 +2403,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Marsala secco"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Tiramisù",
@@ -2177,7 +2432,10 @@
     "VinoPreferibile": [
       "Moscato d'Asti",
       "Vin Santo"
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta di mele",
@@ -2203,7 +2461,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta di Mele",
@@ -2232,7 +2493,10 @@
     "VinoPreferibile": [
       "Moscato",
       "Passito"
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta di pane grattuggiato",
@@ -2257,7 +2521,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti"
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta di riso Dolce",
@@ -2282,7 +2549,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta di Tagliatelle",
@@ -2312,7 +2582,10 @@
     "VinoPreferibile": [
       "Moscato d'Asti",
       "Malvasia Dolce"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta di tagliatelle Dolce",
@@ -2348,7 +2621,10 @@
       "Recioto di Soave",
       "Passito di Pantelleria",
       "Moscato d'Asti"
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta Mattonella",
@@ -2378,7 +2654,10 @@
     "VinoPreferibile": [
       "Moscato d'Asti",
       "Vin Santo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta Tenera",
@@ -2409,7 +2688,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "..."
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Torta Tenerina",
@@ -2434,7 +2716,10 @@
     "VinoPreferibile": [
       "Passito",
       "Moscato"
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Tortellini Emiliani",
@@ -2461,7 +2746,10 @@
     "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Lambrusco secco, Grasparossa castelvetro, Lambruscone"
-    ]
+    ],
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Zabaione",
@@ -2482,7 +2770,10 @@
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Marsala Dolce"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Zucchine trifolate",
@@ -2507,7 +2798,10 @@
     "VinoPreferibile": [
       "Verdicchio",
       "Soave"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Zuppa Inglese",
@@ -2537,7 +2831,10 @@
     "VinoPreferibile": [
       "Passito",
       "Vin Santo"
-    ]
+    ],
+    "Immagine1": null,
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Panone di natale",
@@ -2567,7 +2864,10 @@
     "Quantita": null,
     "MetodoCottura": "Forno",
     "VinoPreferibile": [],
-    "TipoPiatto": "Dolce"
+    "TipoPiatto": "Dolce",
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   },
   {
     "Nome": "Ravioli dolci",
@@ -2590,6 +2890,9 @@
     "Quantita": null,
     "MetodoCottura": "Forno",
     "VinoPreferibile": [],
-    "TipoPiatto": "Dolce"
+    "TipoPiatto": "Dolce",
+    "Immagine1": "images/recipe_icon.png",
+    "Immagine2": null,
+    "Immagine3": null
   }
 ]

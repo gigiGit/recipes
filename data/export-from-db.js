@@ -2,14 +2,14 @@ const fs = require('fs');
 const sqlite3 = require('better-sqlite3');
 
 // Verifica che il database esista
-if (!fs.existsSync('recipes.db')) {
-    console.error('❌ Database recipes.db non trovato!');
+if (!fs.existsSync('data/recipes.db')) {
+    console.error('❌ Database data/recipes.db non trovato!');
     console.log('Esegui prima: node create-db.js');
     process.exit(1);
 }
 
 // Apri il database
-const db = new sqlite3('recipes.db');
+const db = new sqlite3('data/recipes.db');
 
 console.log('📦 Esportazione ricette dal database SQLite...\n');
 

@@ -4,7 +4,7 @@ const sqlite3 = require('better-sqlite3');
 // File di input (modifiche dall'app Android)
 const MODIFICATIONS_FILE = process.argv[2] || 'recipe_modifications.json';
 const RECIPES_JSON = 'recipes.json';
-const DB_FILE = 'recipes.db';
+const DB_FILE = 'data/recipes.db';
 
 console.log(`📱 Import incrementale modifiche Android\n`);
 

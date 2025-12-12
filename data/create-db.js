@@ -2,16 +2,16 @@ const fs = require('fs');
 const sqlite3 = require('better-sqlite3');
 
 // Leggi il file JSON
-const recipes = JSON.parse(fs.readFileSync('recipes.json', 'utf8'));
+const recipes = JSON.parse(fs.readFileSync('data/recipes.json', 'utf8'));
 
 // Rimuovi il database esistente se presente
-if (fs.existsSync('recipes.db')) {
-    fs.unlinkSync('recipes.db');
+if (fs.existsSync('data/recipes.db')) {
+    fs.unlinkSync('data/recipes.db');
     console.log('Database esistente rimosso');
 }
 
 // Crea il database
-const db = new sqlite3('recipes.db');
+const db = new sqlite3('data/recipes.db');
 
 // Crea le tabelle
 db.exec(`
@@ -115,7 +115,7 @@ const insertAll = db.transaction((recipes) => {
 // Esegui l'inserimento
 const totalInserted = insertAll(recipes);
 
-console.log(`\n✅ Database creato con successo: recipes.db`);
+console.log(`\n✅ Database creato con successo: data/recipes.db`);
 console.log(`Ricette inserite: ${totalInserted}`);
 
 // Mostra statistiche
@@ -132,7 +132,9 @@ stats.forEach(row => {
 });
 
 // Mostra dimensione file
-const fileSize = fs.statSync('recipes.db').size;
+const fileSize = fs.statSync('data/recipes.db').size;
 console.log(`\nDimensione database: ${(fileSize / 1024).toFixed(2)} KB`);
 
 db.close();
+
+console.log('\n✅ Database creato con successo: data/recipes.db');

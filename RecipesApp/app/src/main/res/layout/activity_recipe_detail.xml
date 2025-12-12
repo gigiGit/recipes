@@ -41,6 +41,30 @@
             android:textSize="14sp"
             android:layout_marginBottom="16dp" />
 
+        <ImageView
+            android:id="@+id/recipe_image1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/recipe_image2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/recipe_image3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -5,7 +5,7 @@ Write-Host " SYNC recipes.json" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
-$sourceJson = "..\recipes.json"
+$sourceJson = "..\data\recipes.json"
 $targetJson = "app\src\main\assets\recipes.json"
 
 if (-not (Test-Path $sourceJson)) {
@@ -46,6 +46,27 @@ if (-not $targetExists -or $sourceDate -gt $targetDate) {
     Write-Host "  Ricette: $recipesCount" -ForegroundColor Gray
 } else {
     Write-Host "✓ recipes.json già aggiornato (nessuna modifica)" -ForegroundColor Green
+}
+
+# Sincronizza immagini
+Write-Host " SYNC immagini" -ForegroundColor Cyan
+$sourceImages = "..\data\images"
+$targetImages = "app\src\main\assets\images"
+
+if (Test-Path $sourceImages) {
+    if (!(Test-Path $targetImages)) {
+        New-Item -ItemType Directory -Path $targetImages -Force | Out-Null
+    }
+    
+    $imageFiles = Get-ChildItem $sourceImages -File
+    if ($imageFiles.Count -gt 0) {
+        Copy-Item "$sourceImages\*" $targetImages -Force -Recurse
+        Write-Host "✓ Immagini sincronizzate: $($imageFiles.Count) file" -ForegroundColor Green
+    } else {
+        Write-Host "✓ Nessuna immagine da sincronizzare" -ForegroundColor Gray
+    }
+} else {
+    Write-Host "⚠ Cartella immagini non trovata: $sourceImages" -ForegroundColor Yellow
 }
 
 Write-Host ""

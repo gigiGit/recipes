@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
-import android.view.Menu;
+import android.view.View;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipeDetailActivity extends AppCompatActivity {
@@ -67,6 +67,35 @@ public class RecipeDetailActivity extends AppCompatActivity {
         String[] vini = intent.getStringArrayExtra("vini");
         if (vini != null && vini.length > 0) {
             setText(R.id.recipe_wines, "Vini consigliati: " + String.join(", ", vini));
+        }
+        
+        // Immagini
+        loadImageIfPresent(intent.getStringExtra("immagine1"), R.id.recipe_image1);
+        loadImageIfPresent(intent.getStringExtra("immagine2"), R.id.recipe_image2);
+        loadImageIfPresent(intent.getStringExtra("immagine3"), R.id.recipe_image3);
+    }
+    
+    private void loadImageIfPresent(String url, int imageViewId) {
+        if (url != null && !url.isEmpty()) {
+            ImageView imageView = findViewById(imageViewId);
+            imageView.setVisibility(View.VISIBLE);
+            try {
+                // Se è un URL relativo (inizia con images/), carica da assets
+                if (url.startsWith("images/")) {
+                    String assetPath = url;
+                    android.content.res.AssetManager assetManager = getAssets();
+                    java.io.InputStream inputStream = assetManager.open(assetPath);
+                    android.graphics.Bitmap bitmap = android.graphics.BitmapFactory.decodeStream(inputStream);
+                    imageView.setImageBitmap(bitmap);
+                    inputStream.close();
+                } else {
+                    // Per URL esterni, usa una libreria come Glide se disponibile
+                    // Per ora, nascondi se non è supportato
+                    imageView.setVisibility(View.GONE);
+                }
+            } catch (Exception e) {
+                imageView.setVisibility(View.GONE);
+            }
         }
     }
     
