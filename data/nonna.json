@@ -103,10 +103,10 @@
     "TempoCottura": null,
     "Quantita": null,
     "MetodoCottura": "Forno",
-    "VinoPreferibile": [],
     "TipoPiatto": "Dolce",
+    "VinoPreferibile": [],
     "Immagine1": "recipe_icon.png",
-    "Immagine2": "Ravioli dolci_2.jpg",
+    "Immagine2": "",
     "Immagine3": ""
   },
   {

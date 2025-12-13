@@ -8,8 +8,14 @@ if (!fs.existsSync(filename)) {
 }
 
 // Leggi il file JSON
-
+const nonnaGio = []
 const recipes = JSON.parse(fs.readFileSync(filename, 'utf8'));
 recipes.forEach(element => {
-    console.log(element.Nome,element.Autore);
+
+    if (element.Autore === "Nonna Gio'") {
+        console.log(element.Nome, element.Autore);
+        nonnaGio.push(element);
+    }
 });
+
+fs.writeFileSync('nonna.json', JSON.stringify(nonnaGio, null, 2), 'utf8');

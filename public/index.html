@@ -6,20 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ricette</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" >
+  <style>
+    #grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      height: auto;
+    }
+
+    .border-box {
+      border: 1px solid black;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Ricette di Cucina</h1>
+  <h1>Ricette di Nonna Gio'</h1>
   <div id="main-layout">
     <aside id="sidebar">
-      <h2>Ricette</h2>
       <div id="filters">
-        <label for="author-select">Filtra per autore:</label>
-        <select id="author-select">
-          <option value="">Tutti gli autori</option>
-        </select>
-
+        <div style="display:none"> <label for="author-select">Filtra per autore:</label>
+          <select id="author-select">
+            <option value="">Tutti gli autori</option>
+          </select>
+        </div>
         <label for="recipe-filter">Cerca ricetta:</label>
         <input id="recipe-filter" type="text" placeholder="Nome ricetta, ingredienti...">
 
@@ -44,27 +60,31 @@
         <div id="selected-recipe" style="display: none;">
           <li id="recipe-template" style="display: none;">
             <b class="recipe-name"></b><br>
-            <div id="container1">
-              <div id="pannello1">
+            <div id="grid-container">
+              <div class="border-box">
                 <small class="recipe-meta"></small><br>
                 Difficoltà: <span class="recipe-difficulty"></span> | Costo: <span class="recipe-cost"></span><br>
                 Tempo prep: <span class="recipe-prep-time"></span> min | Tempo cottura: <span
-                  class="recipe-cook-time"></span> min<br>
+                  class="recipe-cook-time"></span>
+                min<br>
                 Quantità: <span class="recipe-quantity"></span> porzioni<br>
                 Metodo cottura: <span class="recipe-method"></span><br>
                 Tipo piatto: <span class="recipe-type"></span><br>
                 Vino preferibile: <span class="recipe-wines"></span><br>
               </div>
-              <div id="recipe-image-1" class="recipe-images"></div>
-            </div>
-            <div id="container2">
-              <div id="recipe-ingredients">
-              Ingredienti:<ul class="ingredienti-list"></ul>
+              <div class="recipe-images border-box" id="recipe-image-1">
               </div>
-              <div id="recipe-image-2" class="recipe-images"></div>
+              <div class="border-box" id="recipe-image-2" class="recipe-images"></div>
+              <div class="border-box" id="recipe-ingredients">
+                Ingredienti:<ul class="ingredienti-list"></ul>
+              </div>
+
+              <div class="border-box">
+                Istruzioni: <span class="recipe-instructions"></span><br>
+              </div>
+              <div class="border-box" id="recipe-image-3" class="recipe-images"></div>
+
             </div>
-            Istruzioni: <span class="recipe-instructions"></span><br>
-            <div id="recipe-image-3" class="recipe-images"></div>
             <button class="edit-btn">Modifica</button>
             <button class="delete-btn">Elimina</button>
             <button class="print-btn">🖨️ Stampa Ricetta</button>

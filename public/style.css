@@ -1,11 +1,11 @@
 body { font-family: sans-serif; background: #e8f4f8; margin: 0; padding: 0; }
-h1 { color: #2c3e50; margin: 0; padding: 1.5em 2em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+h1 { color: #2c3e50; margin: 0; padding: 0.5em 0.2em; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
 #main-layout { display: flex; min-height: calc(100vh - 5em); max-height: calc(100vh - 5em); }
 #sidebar { width: 320px; background: #2c3e50; padding: 1.5em; color: white; overflow-y: auto; box-shadow: 2px 0 10px rgba(0,0,0,0.1); max-height: calc(100vh - 5em); }
 #sidebar h2 { margin-top: 0; color: #ecf0f1; border-bottom: 2px solid #3498db; padding-bottom: 0.5em; }
 #filters { margin-bottom: 1.5em; padding: 1em; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
-#filters label { display: block; margin: 0.8em 0 0.3em 0; color: #ecf0f1; font-weight: 500; font-size: 0.9em; }
-#filters select, #filters input { width: 100%; padding: 0.6em; border: 1px solid #34495e; border-radius: 4px; background: #34495e; color: #ecf0f1; font-size: 0.9em; transition: all 0.3s; }
+#filters label { display: inline-block; margin: 0.8em 0.5em 0.3em 0; color: #ecf0f1; font-weight: 500; font-size: 0.9em; }
+#filters select, #filters input { display: inline-block; width: calc(100% - 10em); padding: 0.6em; border: 1px solid #34495e; border-radius: 4px; background: #34495e; color: #ecf0f1; font-size: 0.9em; transition: all 0.3s; }
 #filters select:focus, #filters input:focus { outline: none; border-color: #3498db; box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3); background: #2c3e50; }
 #filters select option { background: #2c3e50; color: #ecf0f1; }
 
@@ -90,93 +90,11 @@ li ul.ingredienti-list li { margin-bottom: 0.2em; padding: 0.2em 0.2em; backgrou
 
 #container1 { display: flex; align-items: flex-start; gap: 1em; }
 
-#container2 { display: flex; align-items: flex-start; gap: 1em; }
+#container2 { display: flex; align-items: stretch; gap: 1em; }
 
-/* Stili per la stampa */
-@media sprint {
-  body { 
-    background: white !important; 
-    margin: 0; 
-    padding: 1em; 
-  }
-  h1 { display: none !important; }
-  #sidebar { display: none !important; }
-  #search-input { display: none !important; }
-  button { display: none !important; }
-  #main-layout { 
-    display: block !important;
-    max-width: 100% !important;
-  }
-  #content { 
-    margin: 0 !important; 
-    max-width: 100% !important;
-    flex: none !important;
-  }
-  #app { 
-    box-shadow: none !important; 
-    padding: 1em !important; 
-    background: white !important; 
-  }
-  #form-container { display: none !important; }
-  #selected-recipe { 
-    display: block !important;
-  }
-  #selected-recipe-content { 
-    padding: 0 !important;
-  }
-  #selected-recipe-content li { 
-    background: white !important; 
-    margin: 0 !important; 
-    padding: 1em !important; 
-    border-radius: 0 !important;
-    page-break-inside: avoid;
-    display: block !important;
-    list-style: none !important;
-  }
-  #selected-recipe-content li b { 
-    font-size: 1.8em !important; 
-    display: block !important; 
-    margin-bottom: 0.5em !important;
-    border-bottom: 2px solid #000 !important;
-    padding-bottom: 0.3em !important;
-    color: #000 !important;
-  }
-  #selected-recipe-content li small { 
-    font-size: 0.9em !important;
-    color: #666 !important;
-  }
-  #selected-recipe-content li strong {
-    font-weight: bold !important;
-    color: #000 !important;
-  }
-  #selected-recipe-content li ul.ingredienti-list { 
-    list-style: none !important; 
-    margin: 0.5em 0 !important;
-    padding: 0.5em !important;
-    background: none !important;
-    border-left: none !important;
-    border-radius: 0 !important;
-  }
-  #selected-recipe-content li ul.ingredienti-list li { 
-    margin-bottom: 0.1em !important;
-    background: none !important;
-    padding: 0.1em 0.3em !important;
-    display: list-item !important;
-    border-left: none !important;
-    box-shadow: none !important;
-    font-size: 0.9em !important;
-  }
-  #selected-recipe-content li br { 
-    display: block !important; 
-    content: "" !important;
-  }
-  #selected-recipe-content img {
-    max-width: 200px !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0.5em 0 !important;
-  }
-}
+#recipe-ingredients { flex: 1; }
+#recipe-image-2 { flex: 1; height: 100%; }
+#recipe-image-2 img { height: 200px; width: auto; object-fit: contain; }
 
 /* Stile per le immagini delle ricette */
 .recipe-images img {

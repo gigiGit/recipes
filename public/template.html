@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ricette</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+      width: 100vw;
+      height: 100vh;
+    }
+.border-box {
+      border: 1px solid black;
+    }
+    .c11 c12 c21 c22 c31 c32 {
+      
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="grid-container">
+    <div class="c11 border-box">
+      <b class="recipe-name"></b><br>
+      <small class="recipe-meta"></small><br>
+      Difficoltà: <span class="recipe-difficulty"></span> | Costo: <span class="recipe-cost"></span><br>
+      Tempo prep: <span class="recipe-prep-time"></span> min | Tempo cottura: <span class="recipe-cook-time"></span>
+      min<br>
+      Quantità: <span class="recipe-quantity"></span> porzioni<br>
+      Metodo cottura: <span class="recipe-method"></span><br>
+      Tipo piatto: <span class="recipe-type"></span><br>
+      Vino preferibile: <span class="recipe-wines"></span><br>
+    </div>
+    <div class="recipe-images c12 border-box">
+    </div>
+    <div class="c21 border-box" id="recipe-ingredients">
+      Ingredienti:<ul class="ingredienti-list"></ul>
+    </div>
+    <div class="c22 border-box" id="recipe-image-2" class="recipe-images"></div>
+    <div class="c31 border-box">
+      Istruzioni: <span class="recipe-instructions"></span><br>
+    </div>
+    <div class="c32 border-box" id="recipe-image-3" class="recipe-images"></div>
+
+  </div>
+
+</body>
+
+
+</html>
