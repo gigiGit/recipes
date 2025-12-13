@@ -6,7 +6,39 @@ async function fetchRicette() {
   const res = await fetch('/api/ricette');
   return res.json();
 }
-
+function templateRicetta(ricetta){
+  let template=`
+          <li id="recipe-template" style="display: none;">
+            <b class="recipe-name"></b><br>
+            <div id="container1">
+              <div id="pannello1">
+                <small class="recipe-meta"></small><br>
+                Difficoltà: <span class="recipe-difficulty"></span> | Costo: <span class="recipe-cost"></span><br>
+                Tempo prep: <span class="recipe-prep-time"></span> min | Tempo cottura: <span
+                  class="recipe-cook-time"></span> min<br>
+                Quantità: <span class="recipe-quantity"></span> porzioni<br>
+                Metodo cottura: <span class="recipe-method"></span><br>
+                Tipo piatto: <span class="recipe-type"></span><br>
+                Vino preferibile: <span class="recipe-wines"></span><br>
+              </div>
+              <div id="recipe-image-1" class="recipe-images"></div>
+            </div>
+            <div id="container2">
+              <div id="recipe-ingredients">
+              Ingredienti:<ul class="ingredienti-list"></ul>
+              </div>
+              <div id="recipe-image-2" class="recipe-images"></div>
+            </div>
+            Istruzioni: <span class="recipe-instructions"></span><br>
+            <div id="recipe-image-3" class="recipe-images"></div>
+            <button class="edit-btn">Modifica</button>
+            <button class="delete-btn">Elimina</button>
+            <button class="print-btn">🖨️ Stampa Ricetta</button>
+          </li>
+          <div id="selected-recipe-content"></div>
+        `;
+        return template;
+}
 function showRecipe(r) {
   if (!r) return;
   
@@ -49,6 +81,45 @@ function showRecipe(r) {
   
   contentDiv.appendChild(li);
   document.getElementById('selected-recipe').style.display = 'block';
+}
+
+// Funzione helper per generare HTML della ricetta usando il template (per stampa)
+function generateRecipeHTML(r) {
+  const template = document.getElementById('recipe-template');
+  const li = template.cloneNode(true);
+  li.id = '';
+  li.style.display = 'block';
+  
+  // Popola i campi
+  li.querySelector('.recipe-name').textContent = r.Nome;
+  li.querySelector('.recipe-meta').textContent = `Inserita il: ${r.DataInserimento || ''} da ${r.Autore || ''}`;
+  li.querySelector('.recipe-difficulty').textContent = r.Difficolta || '';
+  li.querySelector('.recipe-cost').textContent = r.Costo || '';
+  li.querySelector('.recipe-prep-time').textContent = r.TempoPreparazione || '';
+  li.querySelector('.recipe-cook-time').textContent = r.TempoCottura || '';
+  li.querySelector('.recipe-quantity').textContent = r.Quantita || '';
+  li.querySelector('.recipe-method').textContent = r.MetodoCottura || '';
+  li.querySelector('.recipe-type').textContent = r.TipoPiatto || '';
+  li.querySelector('.recipe-wines').textContent = (r.VinoPreferibile || []).join(', ');
+  
+  // Immagini
+  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
+  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
+  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
+  
+  // Ingredienti
+  const ingredientiUl = li.querySelector('.ingredienti-list');
+  ingredientiUl.innerHTML = (r.Ingredienti || []).map(i => `<li>${i}</li>`).join('');
+  
+  // Istruzioni
+  li.querySelector('.recipe-instructions').textContent = r.Istruzioni;
+  
+  // Rimuovi i bottoni per la stampa
+  li.querySelector('.edit-btn').remove();
+  li.querySelector('.delete-btn').remove();
+  li.querySelector('.print-btn').remove();
+  
+  return li.outerHTML;
 }
 
 async function loadRicette() {
@@ -502,6 +573,13 @@ function printFilteredRecipes() {
           .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; }
           .header h1 { color: #2c3e50; margin: 0; }
           .header p { color: #7f8c8d; margin: 5px 0 0 0; }
+          /* Stili per il template */
+          .recipe-name { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; display: block; }
+          #container1, #container2 { margin: 10px 0; }
+          #pannello1 { margin-bottom: 10px; }
+          .ingredienti-list { margin: 0; padding-left: 20px; }
+          .recipe-instructions { line-height: 1.6; margin: 15px 0; display: block; }
+          .edit-btn, .delete-btn, .print-btn { display: none !important; }
         }
         
         @media screen {
@@ -527,53 +605,7 @@ function printFilteredRecipes() {
       html += '<div class="page-break"></div>';
     }
     
-    html += `
-      <div class="recipe">
-        <div class="recipe-title">${ricetta.Nome}</div>
-        <div class="recipe-meta">
-          ${ricetta.DataInserimento ? `Inserita il: ${ricetta.DataInserimento}` : ''}
-          ${ricetta.Autore ? ` - Autore: ${ricetta.Autore}` : ''}
-        </div>
-        
-        <div class="recipe-images">
-          ${ricetta.Immagine1 ? `<img src="/images/${ricetta.Immagine1}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`}
-          ${ricetta.Immagine2 ? `<img src="/images/${ricetta.Immagine2}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`}
-          ${ricetta.Immagine3 ? `<img src="/images/${ricetta.Immagine3}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`}
-        </div>
-        
-        <div class="recipe-section">
-          <strong>Difficoltà:</strong> ${ricetta.Difficolta || 'N/A'} | 
-          <strong>Costo:</strong> ${ricetta.Costo || 'N/A'}
-        </div>
-        
-        <div class="recipe-section">
-          <strong>Tempo preparazione:</strong> ${ricetta.TempoPreparazione || 'N/A'} min | 
-          <strong>Tempo cottura:</strong> ${ricetta.TempoCottura || 'N/A'} min
-        </div>
-        
-        <div class="recipe-section">
-          <strong>Quantità:</strong> ${ricetta.Quantita || 'N/A'} porzioni | 
-          <strong>Metodo cottura:</strong> ${ricetta.MetodoCottura || 'N/A'}
-        </div>
-        
-        <div class="recipe-section">
-          <strong>Tipo piatto:</strong> ${ricetta.TipoPiatto || 'N/A'} | 
-          <strong>Vino preferibile:</strong> ${(ricetta.VinoPreferibile || []).join(', ') || 'N/A'}
-        </div>
-        
-        <div class="ingredients">
-          <strong>🥘 Ingredienti:</strong>
-          <ul>
-            ${(ricetta.Ingredienti || []).map(ing => `<li>${ing}</li>`).join('')}
-          </ul>
-        </div>
-        
-        <div class="instructions">
-          <strong>📝 Istruzioni:</strong><br>
-          ${ricetta.Istruzioni || 'N/A'}
-        </div>
-      </div>
-    `;
+    html += generateRecipeHTML(ricetta);
   });
   
   html += `
@@ -655,6 +687,13 @@ function printAllRecipes() {
           .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 15px; margin-bottom: 25px; }
           .header h1 { color: #2c3e50; margin: 0; font-size: 24px; }
           .header p { color: #7f8c8d; margin: 5px 0 0 0; font-size: 14px; }
+          /* Stili per il template */
+          .recipe-name { font-size: 16px; font-weight: bold; color: #2c3e50; margin-bottom: 8px; display: block; }
+          #container1, #container2 { margin: 8px 0; }
+          #pannello1 { margin-bottom: 8px; }
+          .ingredienti-list { margin: 0; padding-left: 18px; }
+          .recipe-instructions { line-height: 1.5; margin: 12px 0; font-size: 12px; display: block; }
+          .edit-btn, .delete-btn, .print-btn { display: none !important; }
         }
         
         @media screen {
@@ -679,53 +718,7 @@ function printAllRecipes() {
     html += `<div class="category-title">${tipo} (${gruppiTipo[tipo].length} ricette)</div>`;
     
     gruppiTipo[tipo].forEach(ricetta => {
-      html += `
-        <div class="recipe">
-          <div class="recipe-title">${ricetta.Nome}</div>
-          <div class="recipe-meta">
-            ${ricetta.DataInserimento ? `Inserita il: ${ricetta.DataInserimento}` : ''}
-            ${ricetta.Autore ? ` - Autore: ${ricetta.Autore}` : ''}
-          </div>
-          
-          <div class="recipe-images">
-            ${ricetta.Immagine1 ? `<img src="/images/${ricetta.Immagine1}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`}
-            ${ricetta.Immagine2 ? `<img src="/images/${ricetta.Immagine2}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`}
-            ${ricetta.Immagine3 ? `<img src="/images/${ricetta.Immagine3}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`}
-          </div>
-          
-          <div class="recipe-section">
-            <strong>Difficoltà:</strong> ${ricetta.Difficolta || 'N/A'} | 
-            <strong>Costo:</strong> ${ricetta.Costo || 'N/A'}
-          </div>
-          
-          <div class="recipe-section">
-            <strong>Tempo preparazione:</strong> ${ricetta.TempoPreparazione || 'N/A'} min | 
-            <strong>Tempo cottura:</strong> ${ricetta.TempoCottura || 'N/A'} min
-          </div>
-          
-          <div class="recipe-section">
-            <strong>Quantità:</strong> ${ricetta.Quantita || 'N/A'} porzioni | 
-            <strong>Metodo cottura:</strong> ${ricetta.MetodoCottura || 'N/A'}
-          </div>
-          
-          <div class="recipe-section">
-            <strong>Tipo piatto:</strong> ${ricetta.TipoPiatto || 'N/A'} | 
-            <strong>Vino preferibile:</strong> ${(ricetta.VinoPreferibile || []).join(', ') || 'N/A'}
-          </div>
-          
-          <div class="ingredients">
-            <strong>🥘 Ingredienti:</strong>
-            <ul>
-              ${(ricetta.Ingredienti || []).map(ing => `<li>${ing}</li>`).join('')}
-            </ul>
-          </div>
-          
-          <div class="instructions">
-            <strong>📝 Istruzioni:</strong><br>
-            ${ricetta.Istruzioni || 'N/A'}
-          </div>
-        </div>
-      `;
+      html += generateRecipeHTML(ricetta);
     });
     
     // Aggiungi un'interruzione di pagina dopo ogni categoria (eccetto l'ultima)
