@@ -59,7 +59,10 @@ app.post('/api/ricette', (req, res) => {
     VinoPreferibile: Array.isArray(req.body.VinoPreferibile)
       ? req.body.VinoPreferibile
       : (typeof req.body.VinoPreferibile === 'string' ? req.body.VinoPreferibile.split(/\r?\n|,|;/).map(s => s.trim()).filter(Boolean) : []),
-    TipoPiatto: req.body.TipoPiatto || ''
+    TipoPiatto: req.body.TipoPiatto || '',
+    Immagine1: req.body.Immagine1 || '',
+    Immagine2: req.body.Immagine2 || '',
+    Immagine3: req.body.Immagine3 || ''
   };
   recipes.push(newRecipe);
   saveRecipes(recipes);
@@ -91,7 +94,10 @@ app.put('/api/ricette/:index', (req, res) => {
     VinoPreferibile: Array.isArray(req.body.VinoPreferibile)
       ? req.body.VinoPreferibile
       : (typeof req.body.VinoPreferibile === 'string' ? req.body.VinoPreferibile.split(/\r?\n|,|;/).map(s => s.trim()).filter(Boolean) : []),
-    TipoPiatto: req.body.TipoPiatto || recipes[idx].TipoPiatto || ''
+    TipoPiatto: req.body.TipoPiatto || recipes[idx].TipoPiatto || '',
+    Immagine1: req.body.Immagine1 !== undefined ? req.body.Immagine1 : recipes[idx].Immagine1 || '',
+    Immagine2: req.body.Immagine2 !== undefined ? req.body.Immagine2 : recipes[idx].Immagine2 || '',
+    Immagine3: req.body.Immagine3 !== undefined ? req.body.Immagine3 : recipes[idx].Immagine3 || ''
   };
   saveRecipes(recipes);
   res.json(recipes[idx]);
@@ -124,8 +130,22 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'Nessuna immagine caricata' });
   }
-  const imageUrl = `/images/${req.file.filename}`;
-  res.json({ url: imageUrl });
+  let filename = req.file.filename;
+  if (req.body.recipeName && req.body.imageIndex) {
+    const ext = path.extname(req.file.originalname);
+    const newFilename = `${req.body.recipeName}_${req.body.imageIndex}${ext}`;
+    const oldPath = path.join(__dirname, 'data', 'images', req.file.filename);
+    const newPath = path.join(__dirname, 'data', 'images', newFilename);
+    try {
+      fs.renameSync(oldPath, newPath);
+      filename = newFilename;
+    } catch (error) {
+      console.error('Errore rinominazione:', error);
+      // Mantieni il nome originale se fallisce
+    }
+  }
+  const imageUrl = `/images/${filename}`;
+  res.json({ url: filename });
 });
 
 // Homepage

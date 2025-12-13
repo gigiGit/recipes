@@ -6,39 +6,6 @@ async function fetchRicette() {
   const res = await fetch('/api/ricette');
   return res.json();
 }
-function templateRicetta(ricetta){
-  let template=`
-          <li id="recipe-template" style="display: none;">
-            <b class="recipe-name"></b><br>
-            <div id="container1">
-              <div id="pannello1">
-                <small class="recipe-meta"></small><br>
-                Difficoltà: <span class="recipe-difficulty"></span> | Costo: <span class="recipe-cost"></span><br>
-                Tempo prep: <span class="recipe-prep-time"></span> min | Tempo cottura: <span
-                  class="recipe-cook-time"></span> min<br>
-                Quantità: <span class="recipe-quantity"></span> porzioni<br>
-                Metodo cottura: <span class="recipe-method"></span><br>
-                Tipo piatto: <span class="recipe-type"></span><br>
-                Vino preferibile: <span class="recipe-wines"></span><br>
-              </div>
-              <div id="recipe-image-1" class="recipe-images"></div>
-            </div>
-            <div id="container2">
-              <div id="recipe-ingredients">
-              Ingredienti:<ul class="ingredienti-list"></ul>
-              </div>
-              <div id="recipe-image-2" class="recipe-images"></div>
-            </div>
-            Istruzioni: <span class="recipe-instructions"></span><br>
-            <div id="recipe-image-3" class="recipe-images"></div>
-            <button class="edit-btn">Modifica</button>
-            <button class="delete-btn">Elimina</button>
-            <button class="print-btn">🖨️ Stampa Ricetta</button>
-          </li>
-          <div id="selected-recipe-content"></div>
-        `;
-        return template;
-}
 function showRecipe(r) {
   if (!r) return;
   
@@ -63,9 +30,9 @@ function showRecipe(r) {
   li.querySelector('.recipe-wines').textContent = (r.VinoPreferibile || []).join(', ');
   
   // Immagini
-  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
-  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
-  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
+  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
+  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
+  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
   
   // Ingredienti
   const ingredientiUl = li.querySelector('.ingredienti-list');
@@ -75,9 +42,9 @@ function showRecipe(r) {
   li.querySelector('.recipe-instructions').textContent = r.Istruzioni;
   
   // Bottoni
-  li.querySelector('.edit-btn').onclick = () => editRicetta(r.id);
-  li.querySelector('.delete-btn').onclick = () => deleteRicetta(r.id);
-  li.querySelector('.print-btn').onclick = () => window.print();
+  li.querySelector('.edit-btn').onclick = () => editRicetta(r._globalIdx);
+  li.querySelector('.delete-btn').onclick = () => deleteRicetta(r._globalIdx);
+  li.querySelector('.print-btn').onclick = () => printSingleRecipe(r);
   
   contentDiv.appendChild(li);
   document.getElementById('selected-recipe').style.display = 'block';
@@ -103,9 +70,9 @@ function generateRecipeHTML(r) {
   li.querySelector('.recipe-wines').textContent = (r.VinoPreferibile || []).join(', ');
   
   // Immagini
-  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
-  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
-  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
+  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
+  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
+  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
   
   // Ingredienti
   const ingredientiUl = li.querySelector('.ingredienti-list');
@@ -120,6 +87,67 @@ function generateRecipeHTML(r) {
   li.querySelector('.print-btn').remove();
   
   return li.outerHTML;
+}
+
+function printSingleRecipe(r) {
+  // Genera HTML per la stampa singola
+  let html = `
+    <!DOCTYPE html>
+    <html lang="it">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${r.Nome} - Ricetta</title>
+      <style>
+        @media print {
+          body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+          .recipe { margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+          .recipe-title { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; }
+          .recipe-meta { font-size: 12px; color: #7f8c8d; margin-bottom: 15px; }
+          .recipe-section { margin: 10px 0; }
+          .recipe-section strong { color: #2980b9; }
+          .ingredients { background: #f8f9fa; padding: 10px; border-left: 4px solid #f39c12; margin: 10px 0; }
+          .ingredients ul { margin: 0; padding-left: 20px; }
+          .instructions { line-height: 1.6; margin: 15px 0; }
+          .recipe-images { margin: 10px 0; }
+          .recipe-images img { max-width: 150px; margin-right: 10px; height: auto; }
+          #recipe-image-2 img { width: 200px; height: auto; }
+          .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; }
+          .header h1 { color: #2c3e50; margin: 0; }
+          .header p { color: #7f8c8d; margin: 5px 0 0 0; }
+          /* Stili per il template */
+          .recipe-name { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; display: block; }
+          #container1, #container2 { margin: 10px 0; }
+          #pannello1 { margin-bottom: 10px; }
+          .ingredienti-list { margin: 0; padding-left: 20px; }
+          .recipe-instructions { line-height: 1.6; margin: 15px 0; display: block; }
+          .edit-btn, .delete-btn, .print-btn { display: none !important; }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <h1>Ricetta di Cucina</h1>
+        <p>Stampato il ${new Date().toLocaleDateString('it-IT')}</p>
+      </div>
+      
+      ${generateRecipeHTML(r)}
+    </body>
+    </html>
+  `;
+  
+  // Apri in una nuova finestra
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(html);
+  printWindow.document.close();
+  
+  // Attendi che la pagina sia caricata
+  printWindow.onload = function() {
+    setTimeout(() => {
+      printWindow.focus();
+      printWindow.print();
+    }, 500);
+  };
 }
 
 async function loadRicette() {
@@ -164,9 +192,9 @@ function showForm(ricetta = {}, index = null) {
     </select></label><br>
     <label>Tipo piatto:<br><input name="TipoPiatto" placeholder="Tipo piatto (es. Primo, Secondo, Dolce)" value="${ricetta.TipoPiatto || ''}"></label><br>
     <label>Vini preferibili (uno per riga):<br><textarea name="VinoPreferibile" placeholder="Vini preferibili (uno per riga)">${Array.isArray(ricetta.VinoPreferibile) ? ricetta.VinoPreferibile.join('\n') : ''}</textarea></label><br>
-    <label>Immagine1 (foto o logo autore):<br><input type="file" id="file1" accept="image/*"><br><input name="Immagine1" id="url1" placeholder="URL immagine autore" value="${ricetta.Immagine1 || ''}" readonly></label><br>
-    <label>Immagine2 (foto del piatto):<br><input type="file" id="file2" accept="image/*"><br><input name="Immagine2" id="url2" placeholder="URL immagine piatto" value="${ricetta.Immagine2 || ''}" readonly></label><br>
-    <label>Immagine3 (foto passaggio):<br><input type="file" id="file3" accept="image/*"><br><input name="Immagine3" id="url3" placeholder="URL immagine passaggio" value="${ricetta.Immagine3 || ''}" readonly></label><br>
+    <label>Immagine1 (foto o logo autore):<br><input type="file" id="file1" accept="image/*"><br><input name="Immagine1" id="url1" placeholder="URL immagine autore" value="${ricetta.Immagine1 || ''}" readonly><br>${ricetta.Immagine1 ? `<img src="/images/${ricetta.Immagine1.replace(/^\/images\//, '')}" alt="Anteprima Immagine1" style="max-width: 100px; max-height: 100px; margin-top: 5px;">` : ''}</label><br>
+    <label>Immagine2 (foto del piatto):<br><input type="file" id="file2" accept="image/*"><br><input name="Immagine2" id="url2" placeholder="URL immagine piatto" value="${ricetta.Immagine2 || ''}" readonly><br>${ricetta.Immagine2 ? `<img src="/images/${ricetta.Immagine2.replace(/^\/images\//, '')}" alt="Anteprima Immagine2" style="max-width: 100px; max-height: 100px; margin-top: 5px;">` : ''}</label><br>
+    <label>Immagine3 (foto passaggio):<br><input type="file" id="file3" accept="image/*"><br><input name="Immagine3" id="url3" placeholder="URL immagine passaggio" value="${ricetta.Immagine3 || ''}" readonly><br>${ricetta.Immagine3 ? `<img src="/images/${ricetta.Immagine3.replace(/^\/images\//, '')}" alt="Anteprima Immagine3" style="max-width: 100px; max-height: 100px; margin-top: 5px;">` : ''}</label><br>
     <label>Ingredienti (uno per riga):<br><textarea name="Ingredienti" placeholder="Ingredienti (uno per riga)" required>${Array.isArray(ricetta.Ingredienti) ? ricetta.Ingredienti.join('\n') : ''}</textarea></label><br>
     <label>Istruzioni:<br><textarea name="Istruzioni" placeholder="Istruzioni" required>${ricetta.Istruzioni || ''}</textarea></label><br>
     <button type="submit">${index !== null ? '💾 Salva modifiche' : '➕ Aggiungi ricetta'}</button>
@@ -216,10 +244,17 @@ function showForm(ricetta = {}, index = null) {
   };
   
   // Funzione per upload immagine
-  async function uploadImage(file, urlInput) {
+  async function uploadImage(file, urlInput, imageIndex) {
     if (!file) return;
     const formData = new FormData();
     formData.append('image', file);
+    // Prendi il nome della ricetta se disponibile
+    const recipeNameInput = form.querySelector('input[name="Nome"]');
+    const recipeName = recipeNameInput ? recipeNameInput.value.trim() : '';
+    if (recipeName) {
+      formData.append('recipeName', recipeName);
+      formData.append('imageIndex', imageIndex);
+    }
     try {
       const response = await fetch('/api/upload', {
         method: 'POST',
@@ -228,15 +263,49 @@ function showForm(ricetta = {}, index = null) {
       if (!response.ok) throw new Error('Errore upload');
       const result = await response.json();
       urlInput.value = result.url;
+      // Aggiorna anteprima immagine
+      const img = urlInput.nextElementSibling;
+      if (img && img.tagName === 'IMG') {
+        img.src = "/images/" + result.url;
+        img.style.display = 'block';
+      }
     } catch (error) {
       alert('Errore upload immagine: ' + error.message);
     }
   }
   
   // Event listeners per upload
-  form.querySelector('#file1').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url1')));
-  form.querySelector('#file2').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url2')));
-  form.querySelector('#file3').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url3')));
+  form.querySelector('#file1').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url1'), 1));
+  form.querySelector('#file2').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url2'), 2));
+  form.querySelector('#file3').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url3'), 3));
+  
+  // Event listener per incollare immagini
+  form.addEventListener('paste', async (e) => {
+    const items = e.clipboardData.items;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf('image') !== -1) {
+        const file = items[i].getAsFile();
+        // Trova il primo campo immagine vuoto
+        let targetUrl = null;
+        let imageIndex = null;
+        if (!form.querySelector('#url1').value) {
+          targetUrl = form.querySelector('#url1');
+          imageIndex = 1;
+        } else if (!form.querySelector('#url2').value) {
+          targetUrl = form.querySelector('#url2');
+          imageIndex = 2;
+        } else if (!form.querySelector('#url3').value) {
+          targetUrl = form.querySelector('#url3');
+          imageIndex = 3;
+        } else {
+          alert('Tutti i campi immagine sono pieni. Rimuovi un\'immagine esistente per incollarne una nuova.');
+          return;
+        }
+        await uploadImage(file, targetUrl, imageIndex);
+        break; // Carica solo la prima immagine
+      }
+    }
+  });
   
   document.getElementById('form-container').innerHTML = '';
   document.getElementById('form-container').appendChild(form);
@@ -282,21 +351,6 @@ function groupByTipoPiatto(ricette) {
   return gruppi;
 }
 
-function groupByAutore(ricette) {
-  const gruppi = {};
-  ricette.forEach((r, idx) => {
-    const autore = r.Autore || 'Senza autore';
-    if (!gruppi[autore]) gruppi[autore] = [];
-    gruppi[autore].push({ ...r, _idx: r.id });
-  });
-  
-  // Ordina alfabeticamente ogni gruppo
-  Object.keys(gruppi).forEach(autore => {
-    gruppi[autore].sort((a, b) => a.Nome.localeCompare(b.Nome, 'it'));
-  });
-  
-  return gruppi;
-}
 
 function renderSidebar(ricette) {
   const authorSelect = document.getElementById('author-select');
@@ -442,42 +496,6 @@ function updateTotalCounter(count) {
   document.getElementById('total-counter').textContent = `Ricette visibili: ${count} di ${ricetteGlobal.length}`;
 }
 
-function renderRicettaSelezionata(idx) {
-  showRecipe(ricetteGlobal[idx]);
-}
-
-async function condividiRicetta(idx) {
-  const ricetta = ricetteGlobal[idx];
-  const testoCondivisione = `${ricetta.Nome}
-
-Ingredienti:
-${(ricetta.Ingredienti || []).map(i => `• ${i}`).join('\n')}
-
-Istruzioni:
-${ricetta.Istruzioni}
-
-Tempo preparazione: ${ricetta.TempoPreparazione || '?'} min
-Tempo cottura: ${ricetta.TempoCottura || '?'} min
-Porzioni: ${ricetta.Quantita || '?'}`;
-
-  // Prova a usare l'API Web Share se disponibile
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: ricetta.Nome,
-        text: testoCondivisione,
-      });
-    } catch (err) {
-      if (err.name !== 'AbortError') {
-        copiaRicettaInClipboard(testoCondivisione);
-      }
-    }
-  } else {
-    // Fallback: copia negli appunti
-    copiaRicettaInClipboard(testoCondivisione);
-  }
-}
-
 function copiaRicettaInClipboard(testo) {
   navigator.clipboard.writeText(testo).then(() => {
     alert('✅ Ricetta copiata negli appunti! Puoi incollarla dove vuoi.');
@@ -507,12 +525,6 @@ function filterRicette() {
   
   // Mostra tutte le ricette filtrate
   renderSidebar(ricette);
-}
-
-async function loadRicette() {
-  currentRecipes = await fetchRicette();
-  ricetteGlobal = currentRecipes;
-  renderSidebar(currentRecipes);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
