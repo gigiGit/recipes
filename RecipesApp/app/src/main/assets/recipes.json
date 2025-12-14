@@ -321,12 +321,12 @@
     "TempoCottura": 300,
     "Quantita": 12,
     "MetodoCottura": "Fornello",
-    "TipoPiatto": "Primo",
     "VinoPreferibile": [
       "Lambrusco secco, Grasparossa castelvetro, Lambruscone"
     ],
+    "TipoPiatto": "Primo",
     "Immagine1": "recipe_icon.png",
-    "Immagine2": "",
+    "Immagine2": "Tortellini Emiliani_2.png",
     "Immagine3": ""
   }
 ]

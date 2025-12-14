@@ -402,7 +402,6 @@ function renderSidebar(ricette) {
   recipeFilter.oninput = applyFilters;
 
   // Gestisci i pulsanti di stampa
-  document.getElementById('print-filtered').onclick = printFilteredRecipes;
   document.getElementById('print-all').onclick = printAllRecipes;
 
   // Inizializza il contatore
@@ -516,77 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
       filterRicette();
     });
   }
-  document.getElementById('print-filtered').addEventListener('click', printFilteredRecipes);
   document.getElementById('print-all').addEventListener('click', printAllRecipes);
 });
-
-function printFilteredRecipes() {
-  // Raccogli tutte le ricette filtrate (visibili)
-  const visibleRecipes = [];
-  const treeRecipes = document.querySelectorAll('.tree-recipe[style*="block"]');
-
-  treeRecipes.forEach(recipeDiv => {
-    const recipeName = recipeDiv.textContent;
-    const ricetta = ricetteGlobal.find(r => r.Nome === recipeName);
-    if (ricetta) {
-      visibleRecipes.push(ricetta);
-    }
-  });
-
-  if (visibleRecipes.length === 0) {
-    alert('Nessuna ricetta da stampare. Applica dei filtri per selezionare le ricette desiderate.');
-    return;
-  }
-
-  // Genera HTML per la stampa
-  let html = `
-    <!DOCTYPE html>
-    <html lang="it">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ricette Filtrate - ${new Date().toLocaleDateString('it-IT')}</title>
-      <link rel="stylesheet" href="print-style.css" >
-      <link rel="stylesheet" href="style.css" >
-    </head>
-    <body>
-      <div class="header">
-        <h1>Ricette di Cucina</h1>
-        <p>Stampato il ${new Date().toLocaleDateString('it-IT')} - ${visibleRecipes.length} ricette filtrate</p>
-      </div>
-      
-      <div class="print-hint">
-        <strong>Suggerimento:</strong> Usa Ctrl+P (o Cmd+P su Mac) per stampare questo documento come PDF, oppure salva come PDF dal tuo browser.
-      </div>
-  `;
-
-  // Aggiungi ogni ricetta
-  visibleRecipes.forEach((ricetta, index) => {
-    if (index > 0) {
-      html += '<div class="page-break"></div>';
-    }
-
-    html += generateRecipeHTML(ricetta);
-  });
-
-  html += `
-    </body>
-    </html>
-  `;
-
-  // Apri in una nuova finestra
-  const printWindow = window.open('', '_blank');
-  printWindow.document.write(html);
-  printWindow.document.close();
-
-  // Attendi che la pagina sia caricata prima di suggerire la stampa
-  printWindow.onload = function () {
-    setTimeout(() => {
-      printWindow.focus();
-      // Non chiamare automaticamente print() per dare all'utente il controllo
-    }, 500);
-  };
-}
 
 function printAllRecipes() {
   // Usa tutte le ricette del ricettario

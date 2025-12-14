@@ -60,3 +60,4 @@ recipes.forEach(element => {
 });
 
 fs.writeFileSync(__dirname + '/../RecipesApp/app/src/main/assets/recipes.json', JSON.stringify(nonnaGio, null, 2), 'utf8');
+fs.writeFileSync(__dirname + 'nonna.json', JSON.stringify(nonnaGio, null, 2), 'utf8');
