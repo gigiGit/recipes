@@ -4,9 +4,10 @@
   "description": "Inventario di ricette di cucina con backend Node.js e generazione pagine statiche.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "cd data && node ricostruisci_recipes.js && cd .. && node server.js",
     "build-android": "cd RecipesApp && _build.bat && cd .. ",
-    "prepara": "cd data && node ricostruisci_recipes.js && cd .."
+    "prepara": "cd data && node ricostruisci_recipes.js && cd ..",
+    "editor": "cd data && node server.js && cd .."
   },
   "author": "",
   "license": "MIT",

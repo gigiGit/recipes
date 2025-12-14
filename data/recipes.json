@@ -9,7 +9,7 @@
       "400 ml di caffè espresso (freddo)",
       "4 cucchiai di cacao amaro in polvere"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n2. Aggiungi burro fuso o olio al composto.<br>\n3. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 180°C.<br>\n2. Inforna e cuoci per 25-40 minuti, o fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
+    "Istruzioni": "<h3>Preparazione</h3><ol><li>Aggiungere i tuorli uno alla volta continuando a mescolare fino a incorporarli completamente.</li><li>A parte, montare gli albumi a neve ben ferma.</li><li>Preparare il caffè e lasciarlo raffreddare. </li><li>Inzuppare velocemente i biscotti nel caffè freddo. </li><li>In una pirofila rettangolare disporre un primo strato di biscotti inzuppati. </li><li>Spalmare sopra uno strato di crema al burro. </li><li>Spolverare con cacao amaro. </li><li>Ripetere gli strati (biscotti, crema, cacao) fino a esaurimento degli ingredienti, terminando con uno strato di biscotti. </li><li>Incorporare delicatamente gli albumi montati alla crema rimasta e distribuirla come ultimo strato. </li><li>Spolverare abbondantemente con cacao. </li><li>Lasciare riposare in frigorifero per almeno 4 ore (meglio una notte) prima di servire.</li><li>​</li></ol>",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -18,11 +18,11 @@
     "TempoCottura": null,
     "Quantita": 8,
     "MetodoCottura": "Senza cottura",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato",
       "Passito"
     ],
+    "TipoPiatto": "Dolce",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
@@ -35,7 +35,7 @@
       "1 kg di zucchero",
       "1 litro di acqua"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. Prepara tutti gli ingredienti necessari.<br>\n\n<h3>Cottura:</h3>\n1. Cucina seguendo il metodo tradizionale per questo piatto.<br>\n\n<h3>Post Cottura:</h3>\n1. Servi e gusta!<br>",
+    "Istruzioni": "<h3>Preparazione</h3><ol><li>Lavare accuratamente i limoni e asciugarli. </li><li>Con un pelapatate o un coltellino prelevare solo la parte gialla della scorza, evitando la parte bianca che è amara. </li><li>Mettere le scorze in un contenitore di vetro con l'alcool, chiudere ermeticamente e lasciare macerare in luogo fresco e buio per 15 giorni, agitando il contenitore ogni giorno. </li><li>Trascorso questo periodo, preparare uno sciroppo portando a bollore l'acqua con lo zucchero, mescolando fino a completo scioglimento.</li><li> Lasciare raffreddare completamente lo sciroppo.</li><li> Filtrare l'alcool aromatizzato eliminando le scorze, unirlo allo sciroppo freddo e mescolare bene.</li><li> Imbottigliare il limoncello in bottiglie di vetro scuro.</li><li> Lasciare riposare per almeno 30 giorni prima di consumare. </li><li>Conservare in freezer e servire ghiacciato in bicchierini freddi.</li></ol>",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -68,7 +68,7 @@
       "Sapore o marmellata a sufficienza per rendere l'impasto morbido",
       "1 bustina lievito"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. Prepara tutti gli ingredienti necessari.<br>\n\n<h3>Cottura:</h3>\n1. Cucina seguendo il metodo tradizionale per questo piatto.<br>\n\n<h3>Post Cottura:</h3>\n1. Servi e gusta!<br>",
+    "Istruzioni": "<h3>Preparazione</h3><ol><li>Mettere la buccia di arancia a bollire per 30 minuti in  un pentolino.</li><li>Sbriciolare la cioccolata .</li><li>Togliere la buccia di arancia e sminuzzarla in piccoli pezzi.</li><li>Impastare il tutto regolare la quantità di marmellata o sapore in base alla consistenza dell'impasto, deve essere morbido, ma non troppo liquido.</li><li>Porzionare l'impasto e metterlo in stampini adeguati portare il forno a 170°e cuocere per 40 minuti, ogni tanto controllare con lo stecchino per verificare la cottura</li></ol>",
     "DataInserimento": "2025-12-07",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -94,7 +94,7 @@
       "latte a sufficienza per avere impasto morbido",
       "1 limone grattugiato"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. Prepara tutti gli ingredienti necessari.<br>\n\n<h3>Cottura:</h3>\n1. Cucina seguendo il metodo tradizionale per questo piatto.<br>\n\n<h3>Post Cottura:</h3>\n1. Servi e gusta!<br>",
+    "Istruzioni": "Impastare.\nfare dei cerchi (come le tigelle) , riempire con marmellata, nutella, crema o....\nchiudere a metà\nmettere in forno 30 minutia 170°",
     "DataInserimento": "2025-12-07",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -120,7 +120,7 @@
       "3 cucchiai di cacao amaro in polvere",
       "2 cucchiai di marsala o liquore (facoltativo)"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n2. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 180°C.<br>\n2. Inforna e cuoci per 25-40 minuti, o fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
+    "Istruzioni": "Montare i tuorli con lo zucchero fino a ottenere una crema chiara e spumosa. \nIncorporare il mascarpone mescolando delicatamente. \nA parte, montare gli albumi a neve ben ferma e aggiungerli alla crema di mascarpone con movimenti dal basso verso l'alto. \nPreparare il caffè e lasciarlo raffreddare, eventualmente aggiungendo il marsala. \nInzuppare velocemente i savoiardi nel caffè e disporli in uno strato sul fondo di una pirofila. \nCoprire con uno strato di crema al mascarpone. \nRipetere con un altro strato di savoiardi e crema. \nSpolverare abbondantemente con cacao amaro. \nMettere in frigorifero per almeno 4 ore (meglio una notte) prima di servire.",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -152,7 +152,7 @@
       "Zucchero a velo per guarnire",
       "Cannella in polvere (facoltativa)"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. In una ciotola, mescola gli ingredienti secchi come farina o pane grattugiato.<br>\n2. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n3. Aggiungi burro fuso o olio al composto.<br>\n4. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 180°C.<br>\n2. Inforna e cuoci per 25-40 minuti, o fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
+    "Istruzioni": "Il burro va lasciato ammorbidire per poterlo lavorare meglio (tirarlo fruoi dal frigo)\nSbucciare le mele, tagliarle a fettine sottili e bagnarle con il sassolino. \nIn una ciotola mescolare le uova con lo zucchero, il burro e la scorza di limone. \nSetacciare la farina con il lievito, incorporarla al composto. \nAggiungere le mele tagliate (tenerne alcune da parte per decorare). \nVersare l'impasto in una tortiera imburrata e infarinata (diametro 24 cm). \nDisporre le fettine di mela tenute da parte sulla superficie a raggiera. \nSpolverare con un po' di zucchero e cannella. \nCuocere in forno preriscaldato a 180°C per 40-45 minuti. \nServire tiepida o fredda, spolverata con zucchero a velo.",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -218,7 +218,7 @@
       "100 ml di Marsala o Alchermes",
       "Burro e zucchero per la tortiera"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. In una ciotola, mescola gli ingredienti secchi come farina o pane grattugiato.<br>\n2. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n3. Aggiungi burro fuso o olio al composto.<br>\n4. Incorpora gradualmente il latte o la panna, mescolando bene.<br>\n5. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 180°C.<br>\n2. Inforna e cuoci per 25-40 minuti, o fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
+    "Istruzioni": "Preparare le tagliatelle con farina e uova, stenderle sottili e tagliarle a strisce. Lessarle brevemente in acqua bollente salata, scolarle e condirle con poco burro. Preparare una crema pasticcera con latte, tuorli, zucchero, farina e scorza di limone. Mescolare le tagliatelle raffreddate con la crema, mandorle, amaretti, cioccolato, pinoli, uvetta e Marsala. Imburrare e inzuccherare una tortiera, versare il composto e livellare. Cuocere in forno preriscaldato a 180°C per 45-50 minuti fino a doratura. Lasciare raffreddare prima di servire, spolverare con zucchero a velo.",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "Medio",
@@ -254,7 +254,7 @@
       "1 bicchiere olio",
       "50 grammi cioccolata"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. In una ciotola, mescola gli ingredienti secchi come farina o pane grattugiato.<br>\n2. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n3. Aggiungi burro fuso o olio al composto.<br>\n4. Incorpora gradualmente il latte o la panna, mescolando bene.<br>\n5. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 180°C.<br>\n2. Inforna e cuoci per 25-40 minuti, o fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
+    "Istruzioni": "non ci sono istruzioni, si deve desumere",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -281,7 +281,7 @@
       "50 g di farina 00",
       "Zucchero a velo per spolverizzare"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. In una ciotola, mescola gli ingredienti secchi come farina o pane grattugiato.<br>\n2. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n3. Aggiungi burro fuso o olio al composto.<br>\n4. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 180°C.<br>\n2. Inforna e cuoci per 25-40 minuti, o fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
+    "Istruzioni": "Tritare finemente il cioccolato e scioglierlo a bagnomaria mescolando continuamente. Quando il cioccolato è sciolto, aggiungere il burro a pezzetti e lasciarlo sciogliere mescolando. Lasciare intiepidire. Separare i tuorli dagli albumi in due ciotole. Montare gli albumi con metà dello zucchero fino a ottenere una consistenza ferma e spumosa. Montare i tuorli con lo zucchero restante fino a ottenere un composto chiaro e spumoso. Con le fruste in azione, versare a filo il cioccolato tiepido nei tuorli. Incorporare 1/3 degli albumi montati mescolando con una spatola, poi aggiungere gli albumi restanti con movimenti delicati dal basso verso l'alto. Setacciare la farina e incorporarla delicatamente. Versare l'impasto in uno stampo a cerniera da 24-26 cm imburrato e infarinato. Cuocere in forno statico preriscaldato a 180°C per 25 minuti. Lasciare raffreddare completamente prima di sformare. Spolverizzare con zucchero a velo e servire.",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
