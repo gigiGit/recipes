@@ -6,10 +6,13 @@ import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
 import android.view.View;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.text.Html;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipeDetailActivity extends AppCompatActivity {
@@ -61,7 +64,11 @@ public class RecipeDetailActivity extends AppCompatActivity {
         }
         
         // Istruzioni
-        setText(R.id.recipe_instructions, intent.getStringExtra("istruzioni"));
+        String istruzioni = intent.getStringExtra("istruzioni");
+        if (istruzioni != null) {
+            TextView tv = findViewById(R.id.recipe_instructions);
+            tv.setText(Html.fromHtml(istruzioni));
+        }
         
         // Vini
         String[] vini = intent.getStringArrayExtra("vini");
@@ -70,9 +77,9 @@ public class RecipeDetailActivity extends AppCompatActivity {
         }
         
         // Immagini
-        loadImageIfPresent(intent.getStringExtra("immagine1"), R.id.recipe_image1);
+        // loadImageIfPresent(intent.getStringExtra("immagine1"), R.id.recipe_image1);
         loadImageIfPresent(intent.getStringExtra("immagine2"), R.id.recipe_image2);
-        loadImageIfPresent(intent.getStringExtra("immagine3"), R.id.recipe_image3);
+        // loadImageIfPresent(intent.getStringExtra("immagine3"), R.id.recipe_image3);
     }
     
     private void loadImageIfPresent(String url, int imageViewId) {

@@ -161,13 +161,13 @@
     "TempoCottura": 45,
     "Quantita": 8,
     "MetodoCottura": "Forno",
+    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato",
       "Passito"
     ],
-    "TipoPiatto": "Dolce",
     "Immagine1": "recipe_icon.png",
-    "Immagine2": "Torta di Mele_2.png",
+    "Immagine2": "",
     "Immagine3": ""
   },
   {

@@ -30,16 +30,17 @@ function showRecipe(r) {
   li.querySelector('.recipe-wines').textContent = (r.VinoPreferibile || []).join(', ');
 
   // Immagini
-  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
-  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
-  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
-
+  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` : "";
+  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : "";
+  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : "";
+  
+  li.querySelector('#recipe-image-3').style.display = r.Immagine3 ? "block" : "none";
   // Ingredienti
   const ingredientiUl = li.querySelector('.ingredienti-list');
   ingredientiUl.innerHTML = (r.Ingredienti || []).map(i => `<li>${i}</li>`).join('');
 
   // Istruzioni
-  li.querySelector('.recipe-instructions').textContent = r.Istruzioni;
+  li.querySelector('.recipe-instructions').innerHTML = r.Istruzioni;
 
   // Bottoni
   li.querySelector('.edit-btn').onclick = () => editRicetta(r._globalIdx);
@@ -71,16 +72,18 @@ function generateRecipeHTML(r) {
   li.querySelector('.recipe-wines').textContent = (r.VinoPreferibile || []).join(', ');
 
   // Immagini
-  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
-  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
-  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
+  li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` :"";
+  li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : "";
+  li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : "";
+
+  li.querySelector('#recipe-image-3').style.display = r.Immagine3 ? "block" : "none";
 
   // Ingredienti
   const ingredientiUl = li.querySelector('.ingredienti-list');
   ingredientiUl.innerHTML = (r.Ingredienti || []).map(i => `<li>${i}</li>`).join('');
 
   // Istruzioni
-  li.querySelector('.recipe-instructions').textContent = r.Istruzioni;
+  li.querySelector('.recipe-instructions').innerHTML = r.Istruzioni;
 
   // Rimuovi i bottoni per la stampa
 

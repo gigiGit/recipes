@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo ========================================
 echo  BUILD APK - Ricette
 echo ========================================
@@ -31,25 +32,16 @@ if not exist "%ANDROID_HOME%" (
 echo Android SDK: %ANDROID_HOME%
 echo.
 
-REM Sincronizza recipes.json
-echo [1/3] Sincronizzazione recipes.json...
-if exist "..\data\recipes.json" (
-    echo   Copia recipes.json da app web...
-    copy /Y "..\data\recipes.json" "app\src\main\assets\recipes.json" >nul
-    echo   [OK] recipes.json aggiornato
+REM Prepara dati con leggi.js
+echo [1/3] Preparazione dati con leggi.js...
+cd ..\data\
+node leggi.js
+if %ERRORLEVEL% EQU 0 (
+    echo   [OK] Dati preparati
 ) else (
-    echo   [!] recipes.json non trovato in ..\data
+    echo   [!] Errore in leggi.js
 )
-
-REM Sincronizza immagini
-echo [1.5/3] Sincronizzazione immagini...
-if exist "..\data\images" (
-    echo   Copia immagini da app web...
-    xcopy /Y /E /I "..\data\images\*" "app\src\main\assets\images\" >nul 2>&1
-    echo   [OK] Immagini aggiornate
-) else (
-    echo   [!] Cartella immagini non trovata in ..\data
-)
+cd ..\RecipesApp\
 
 REM Clean build
 echo.
@@ -70,36 +62,6 @@ if %ERRORLEVEL% EQU 0 (
     echo APK creato in:
     echo app\build\outputs\apk\debug\app-debug.apk
     echo.
-    
-    REM Copia APK nella root
-    if exist "app\build\outputs\apk\debug\app-debug.apk" (
-        copy /Y app\build\outputs\apk\debug\app-debug.apk ..\recipes-android.apk >nul
-        echo Copiato anche in: ..\recipes-android.apk
-        echo.
-        
-        REM Chiedi se installare
-        echo Vuoi installare l'APK sul dispositivo connesso? (S/N)
-        choice /C SN /N /M "Premi S per installare, N per saltare: "
-        if errorlevel 2 goto :end
-        if errorlevel 1 goto :install
-        
-        :install
-        echo.
-        echo Verifica dispositivi connessi...
-        "%ANDROID_HOME%\platform-tools\adb.exe" devices
-        echo.
-        echo Installazione APK su dispositivo Android...
-        "%ANDROID_HOME%\platform-tools\adb.exe" install -r "..\recipes-android.apk"
-        
-        if %ERRORLEVEL% EQU 0 (
-            echo.
-            echo [OK] App installata con successo!
-        ) else (
-            echo.
-            echo [!] Errore installazione
-            echo Verifica che il dispositivo sia connesso via USB con Debug USB attivato.
-        )
-    )
 ) else (
     echo.
     echo ========================================
@@ -108,4 +70,4 @@ if %ERRORLEVEL% EQU 0 (
 )
 
 :end
-pause
+

@@ -24,7 +24,7 @@ body {
 }
 
 .recipe-section {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .recipe-section strong {
@@ -44,8 +44,9 @@ body {
 }
 
 .instructions {
-  line-height: 1.6;
-  margin: 15px 0;
+  line-height: 1.2;
+  margin: 5px 0;
+  font-size: 12px;
 }
 
 .recipe-images {
@@ -104,8 +105,9 @@ body {
 }
 
 .recipe-instructions {
-  line-height: 1.6;
-  margin: 15px 0;
+  line-height: 1.2;
+  margin: 5px 0;
+  font-size: 12px;
   display: block;
 }
 
@@ -119,4 +121,13 @@ body {
 .delete-btn, 
 .print-btn {
   display: none !important;
+}
+
+h4 {
+  margin-top: 1px;
+  margin-bottom: 2px;
+}
+h3 {
+  margin-top: 0px;
+  margin-bottom: 1px;
 }
