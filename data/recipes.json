@@ -77,8 +77,8 @@
     "TempoCottura": 40,
     "Quantita": null,
     "MetodoCottura": "Forno",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [],
+    "TipoPiatto": "Dolce",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
@@ -103,8 +103,8 @@
     "TempoCottura": null,
     "Quantita": null,
     "MetodoCottura": "Forno",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [],
+    "TipoPiatto": "Dolce",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
@@ -129,11 +129,11 @@
     "TempoCottura": null,
     "Quantita": 8,
     "MetodoCottura": "Senza cottura",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti",
       "Vin Santo"
     ],
+    "TipoPiatto": "Dolce",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
@@ -152,20 +152,20 @@
       "Zucchero a velo per guarnire",
       "Cannella in polvere (facoltativa)"
     ],
-    "Istruzioni": "Il burro va lasciato ammorbidire per poterlo lavorare meglio (tirarlo fruoi dal frigo)\nSbucciare le mele, tagliarle a fettine sottili e bagnarle con il sassolino. \nIn una ciotola mescolare le uova con lo zucchero, il burro e la scorza di limone. \nSetacciare la farina con il lievito, incorporarla al composto. \nAggiungere le mele tagliate (tenerne alcune da parte per decorare). \nVersare l'impasto in una tortiera imburrata e infarinata (diametro 24 cm). \nDisporre le fettine di mela tenute da parte sulla superficie a raggiera. \nSpolverare con un po' di zucchero e cannella. \nCuocere in forno preriscaldato a 180°C per 40-45 minuti. \nServire tiepida o fredda, spolverata con zucchero a velo.",
+    "Istruzioni": "<ol><li>Il burro va lasciato ammorbidire per poterlo lavorare meglio (tirarlo fruoi dal frigo)</li><li>Sbucciare le mele, tagliarle a fettine sottili e bagnarle con il sassolino. </li><li>In una ciotola mescolare le uova con lo zucchero, il burro e la scorza di limone.</li><li> Setacciare la farina con il lievito, incorporarla al composto. </li><li>Aggiungere le mele tagliate (tenerne alcune da parte per decorare). </li><li>Versare l'impasto in una tortiera imburrata e infarinata (diametro 24 cm). </li><li>Disporre le fettine di mela tenute da parte sulla superficie a raggiera. </li><li>Spolverare con un po' di zucchero e cannella. </li><li>Cuocere in forno preriscaldato a 180°C per 40-45 minuti. </li><li>Servire tiepida o fredda, spolverata con zucchero a velo.</li></ol>",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
     "Costo": "economico",
-    "TempoPreparazione": 20,
+    "TempoPreparazione": 30,
     "TempoCottura": 45,
     "Quantita": 8,
     "MetodoCottura": "Forno",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato",
       "Passito"
     ],
+    "TipoPiatto": "Dolce",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
@@ -190,10 +190,10 @@
     "TempoCottura": 30,
     "Quantita": 6,
     "MetodoCottura": "Forno",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Moscato d'Asti"
     ],
+    "TipoPiatto": "Dolce",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "TortaPaneGrattugiato.png",
     "Immagine3": ""
@@ -227,46 +227,12 @@
     "TempoCottura": 50,
     "Quantita": 10,
     "MetodoCottura": "Forno",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Recioto di Soave",
       "Passito di Pantelleria",
       "Moscato d'Asti"
     ],
-    "Immagine1": "nonna-gio.jpg",
-    "Immagine2": "",
-    "Immagine3": ""
-  },
-  {
-    "Nome": "Torta Tenera",
-    "Ingredienti": [
-      "7 uova",
-      "2 etti burro",
-      "500 Kg zucchero",
-      "1 Kg farina",
-      "buccia di limone (fatta tenera)",
-      "4 etti farina",
-      "3 etti zucchero",
-      "3 uova",
-      "2 cucchiai caffe",
-      "1 limone",
-      "1 bicchiere latte",
-      "1 bicchiere olio",
-      "50 grammi cioccolata"
-    ],
-    "Istruzioni": "non ci sono istruzioni, si deve desumere",
-    "DataInserimento": "2025-11-29",
-    "Autore": "Nonna Gio'",
-    "Difficolta": "facile",
-    "Costo": "economico",
-    "TempoPreparazione": 30,
-    "TempoCottura": 40,
-    "Quantita": 8,
-    "MetodoCottura": "Forno",
     "TipoPiatto": "Dolce",
-    "VinoPreferibile": [
-      "..."
-    ],
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
@@ -290,11 +256,11 @@
     "TempoCottura": 25,
     "Quantita": 8,
     "MetodoCottura": "Forno",
-    "TipoPiatto": "Dolce",
     "VinoPreferibile": [
       "Passito",
       "Moscato"
     ],
+    "TipoPiatto": "Dolce",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
@@ -312,11 +278,11 @@
       "4 uova",
       "1 chilo tra farina e semola (poca semola)"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n<h4>Ripieno</h4>\n1. Togliere il grasso al prosciutto.<br>\n2. Macinare tutte le carni, mescolandole bene. Passare due volte nel macinatore\n3. Aggiungere il formaggio e la noce moscata macinata.\n4. Reimpastare per rendero omogeneo il composto\n<h4>Sfoglia</h4>\n1. Metti la farina a fontana su una spianatoia.<br>\n2. Sbatti le uova con un po' di sale e versale al centro della farina.<br>\n3. Inizia a impastare incorporando gradualmente la farina fino a ottenere un impasto liscio ed elastico.<br>\n4. Copri l'impasto con un canovaccio e lascialo riposare per 30 minuti.<br>\n5. Stendi la sfoglia sottile con il matterello o la macchina per pasta.<br>\n<h4>Brodo</h4>\n1. Metti in una pentola grande la carne di manzo, la gallina, una carota, un gambo di sedano e una cipolla intera.<br>\n2. Copri abbondantemente con acqua fredda e aggiungi un pizzico di sale.<br>\n3. Porta a ebollizione a fuoco medio, schiumando via la schiuma che si forma in superficie.<br>\n4. Abbassa il fuoco e lascia cuocere a fuoco lento per 2-3 ore, fino a quando il brodo è saporito.<br>\n5. Filtra il brodo attraverso un colino fine, eliminando le verdure e la carne (che puoi utilizzare per altri scopi).<br>\n\n<h3>Cottura</h3>\n1. prepara un tegame grande a sufficienza. Un piatto sono 2 mestoli di brodo e due pugni di tortellini.\n2. Fai bollire il brodo.\n3. Aggiungi i tortellini, si cuociono in pochi minuti, non lasciarli troppo dentro al brodo altrimenti la sfoglia si spappola.\n\n<h3>Post Cottura:</h3>\n1. Servire subito, non lasciarli troppo tempo in attesa del servizio (sempre per la ipercottura della pasta)<br>",
+    "Istruzioni": "<h3>Preparazione:</h3><h4>Ripieno</h4><p>1. Togliere il grasso al prosciutto.<br>2. Macinare tutte le carni, mescolandole bene. Passare due volte nel macinatore3. Aggiungere il formaggio e la noce moscata macinata.4. Reimpastare per rendero omogeneo il composto</p><h4>Sfoglia</h4><p>1. Metti la farina a fontana su una spianatoia.<br>2. Sbatti le uova con un po' di sale e versale al centro della farina.<br>3. Inizia a impastare incorporando gradualmente la farina fino a ottenere un impasto liscio ed elastico.<br>4. Copri l'impasto con un canovaccio e lascialo riposare per 30 minuti.<br>5. Stendi la sfoglia sottile con il matterello o la macchina per pasta.<br></p><h4>Brodo</h4><p>1. Metti in una pentola grande la carne di manzo, la gallina, una carota, un gambo di sedano e una cipolla intera.<br>2. Copri abbondantemente con acqua fredda e aggiungi un pizzico di sale.<br>3. Porta a ebollizione a fuoco medio, schiumando via la schiuma che si forma in superficie.<br>4. Abbassa il fuoco e lascia cuocere a fuoco lento per 2-3 ore, fino a quando il brodo è saporito.<br>5. Filtra il brodo attraverso un colino fine, eliminando le verdure e la carne (che puoi utilizzare per altri scopi).<br></p><h3>Cottura</h3><p>1. prepara un tegame grande a sufficienza. Un piatto sono 2 mestoli di brodo e due pugni di tortellini.2. Fai bollire il brodo.3. Aggiungi i tortellini, si cuociono in pochi minuti, non lasciarli troppo dentro al brodo altrimenti la sfoglia si spappola.</p><h3>Post Cottura:</h3><p>1. Servire subito, non lasciarli troppo tempo in attesa del servizio (sempre per la ipercottura della pasta)<br></p>",
     "DataInserimento": "2025-11-29",
     "Autore": "Nonna Gio'",
     "Difficolta": "Medio",
-    "Costo": "",
+    "Costo": "costoso",
     "TempoPreparazione": 300,
     "TempoCottura": 300,
     "Quantita": 12,
@@ -327,6 +293,33 @@
     "TipoPiatto": "Primo",
     "Immagine1": "nonna-gio.jpg",
     "Immagine2": "Tortellini Emiliani_2.png",
+    "Immagine3": ""
+  },
+  {
+    "Nome": "Spaghetti alle Vongole",
+    "Ingredienti": [
+      "400g spaghetti",
+      "1kg vongole veraci fresche",
+      "2 spicchi d'aglio",
+      "Un mazzetto di prezzemolo fresco",
+      "4 cucchiai di olio d'oliva extravergine",
+      "Mezzo bicchiere di vino bianco secco",
+      "Peperoncino fresco o secco (opzionale)",
+      "Sale q.b."
+    ],
+    "Istruzioni": "<h3>Preparazione</h3><ol><li>Pulire le vongole: lavarle sotto acqua corrente fredda, strofinandole per rimuovere eventuali residui di sabbia. Eliminare quelle aperte che non si chiudono al tocco.</li><li>In una padella capiente, scaldare l'olio d'oliva con gli spicchi d'aglio schiacciati e il peperoncino (se usato). Quando l'aglio inizia a dorare, aggiungere le vongole.</li><li>Coprire la padella e cuocere a fuoco medio-alto per 5-7 minuti, fino a quando le vongole si aprono. Agitare occasionalmente.</li><li>Sfumare con il vino bianco e lasciare evaporare l'alcool per 1-2 minuti.</li><li>Nel frattempo, cuocere gli spaghetti in abbondante acqua salata seguendo le istruzioni sulla confezione, scolandoli al dente.</li><li>Aggiungere gli spaghetti alla padella con le vongole, mescolando bene per insaporire. Se necessario, aggiungere un po' d'acqua di cottura degli spaghetti.</li><li>Spolverare con prezzemolo tritato fresco e servire immediatamente.</li></ol>",
+    "DataInserimento": "2025-12-14",
+    "Autore": "Lollo",
+    "Difficolta": "media",
+    "Costo": "medio",
+    "TempoPreparazione": 30,
+    "TempoCottura": null,
+    "Quantita": null,
+    "MetodoCottura": "",
+    "VinoPreferibile": [],
+    "TipoPiatto": "Primo",
+    "Immagine1": "",
+    "Immagine2": "",
     "Immagine3": ""
   }
 ]

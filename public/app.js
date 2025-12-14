@@ -143,7 +143,7 @@ async function loadRicette() {
   ricetteGlobal = currentRecipes;
   renderSidebar(currentRecipes);
 }
-
+// Sostituire con la copia del template di modifica/aggiunta
 function showForm(ricetta = {}, index = null) {
   const form = document.createElement('form');
   form.innerHTML = `

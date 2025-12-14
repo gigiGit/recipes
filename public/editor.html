@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Editor</title>
+  <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="editor-style.css">
+   <link rel="stylesheet" href="screen-style.css" >
+  <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+      <h1>Recipe Editor</h1>
+  <nav style="margin-bottom: 20px;">
+    <a href="index.html" style="margin-right: 20px;">Home</a>
+    <a href="editor.html">Edit Recipes</a>
+  </nav>
+
+  <div id="main-layout">
+    <aside id="sidebar">
+      <h2>Recipes</h2>
+      <ul id="recipe-list"></ul>
+    </aside>
+    <main>
+      <form id="recipe-form">
+        <div class="row">
+          <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome">
+          </div>
+          <div>
+            <label for="autore">Autore:</label>
+            <input type="text" id="autore" name="autore">
+          </div>
+        </div>
+        
+        <label for="ingredienti">Ingredienti:</label>
+        <textarea id="ingredienti" name="ingredienti"></textarea>
+        
+        <label for="istruzioni">Istruzioni:</label>
+        <textarea id="istruzioni" name="istruzioni"></textarea>
+        
+        <div class="row">
+          <div>
+            <label for="difficolta">Difficolta:</label>
+            <select id="difficolta" name="difficolta">
+              <option value="">Seleziona</option>
+              <option value="facile">Facile</option>
+              <option value="medio">Medio</option>
+              <option value="difficile">Difficile</option>
+            </select>
+          </div>
+          <div>
+            <label for="costo">Costo:</label>
+            <select id="costo" name="costo">
+              <option value="">Seleziona</option>
+              <option value="economico">Economico</option>
+              <option value="medio">Medio</option>
+              <option value="costoso">Costoso</option>
+            </select>
+          </div>
+          <div>
+            <label for="tempo">Tempo Preparazione (min):</label>
+            <select id="tempo" name="tempo">
+              <option value="">Seleziona</option>
+              <option value="15">15 min</option>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">1 ora</option>
+              <option value="75">1 ora 15 min</option>
+              <option value="90">1 ora 30 min</option>
+              <option value="105">1 ora 45 min</option>
+              <option value="120">2 ore</option>
+            </select>
+          </div>
+        </div>
+        
+        <button type="button" id="save-btn">Save</button>
+      </form>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
+  <script src="editor-app.js"></script>
+</body>
+</html>

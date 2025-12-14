@@ -1,10 +1,1 @@
-Il burro va lasciato ammorbidire per poterlo lavorare meglio (tirarlo fruoi dal frigo)
-Sbucciare le mele, tagliarle a fettine sottili e bagnarle con il sassolino. 
-In una ciotola mescolare le uova con lo zucchero, il burro e la scorza di limone. 
-Setacciare la farina con il lievito, incorporarla al composto. 
-Aggiungere le mele tagliate (tenerne alcune da parte per decorare). 
-Versare l'impasto in una tortiera imburrata e infarinata (diametro 24 cm). 
-Disporre le fettine di mela tenute da parte sulla superficie a raggiera. 
-Spolverare con un po' di zucchero e cannella. 
-Cuocere in forno preriscaldato a 180°C per 40-45 minuti. 
-Servire tiepida o fredda, spolverata con zucchero a velo.
+<ol><li>Il burro va lasciato ammorbidire per poterlo lavorare meglio (tirarlo fruoi dal frigo)</li><li>Sbucciare le mele, tagliarle a fettine sottili e bagnarle con il sassolino. </li><li>In una ciotola mescolare le uova con lo zucchero, il burro e la scorza di limone.</li><li> Setacciare la farina con il lievito, incorporarla al composto. </li><li>Aggiungere le mele tagliate (tenerne alcune da parte per decorare). </li><li>Versare l'impasto in una tortiera imburrata e infarinata (diametro 24 cm). </li><li>Disporre le fettine di mela tenute da parte sulla superficie a raggiera. </li><li>Spolverare con un po' di zucchero e cannella. </li><li>Cuocere in forno preriscaldato a 180°C per 40-45 minuti. </li><li>Servire tiepida o fredda, spolverata con zucchero a velo.</li></ol>
