@@ -8,6 +8,7 @@ body {
   margin-bottom: 30px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 20px;
+  page-break-after: always;
 }
 
 .recipe-title {
@@ -47,21 +48,6 @@ body {
   line-height: 1.2;
   margin: 5px 0;
   font-size: 12px;
-}
-
-.recipe-images {
-  margin: 10px 0;
-}
-
-.recipe-images img {
-  max-width: 150px;
-  margin-right: 10px;
-  height: auto;
-}
-
-#recipe-image-2 img {
-  width: 200px;
-  height: auto;
 }
 
 .header {

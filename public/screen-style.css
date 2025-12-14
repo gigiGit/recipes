@@ -93,28 +93,4 @@ li ul.ingredienti-list li { margin-bottom: 0.2em; padding: 0.2em 0.2em; backgrou
 #container2 { display: flex; align-items: stretch; gap: 1em; }
 
 #recipe-ingredients { flex: 1; }
-#recipe-image-2 { flex: 1; height: 100%; }
-#recipe-image-2 img { height: 200px; width: auto; object-fit: contain; }
 
-/* Stile per le immagini delle ricette */
-.recipe-images img {
-  max-width: 100px;
-  height: auto;
-  margin: 5px;
-}
-
-/* Stile specifico per immagine del piatto */
-#recipe-image-2 img {
-  width: 200px;
-  height: auto;
-}
-
-/* Stile per il titolo della ricetta */
-.recipe-name {
-  color: #2c3e50;
-  font-size: 1.8em;
-  display: block;
-  margin-bottom: 0.5em;
-  padding-bottom: 0.3em;
-  border-bottom: 3px solid #3498db;
-}

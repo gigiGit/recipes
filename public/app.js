@@ -1,6 +1,14 @@
 
 // --- Versione coerente e senza duplicati ---
 let currentRecipes = [];
+const plurale = {
+    'Antipasto': 'Antipasti',
+    'Primo': 'Primi', 
+    'Piatto Unico': 'Piatti Unici',
+    'Contorno': 'Contorni',
+    'Dolce': 'Dolci',
+    'Liquore': 'Liquori'
+}
 
 async function fetchRicette() {
   const res = await fetch('/api/ricette');
@@ -378,7 +386,8 @@ function renderSidebar(ricette) {
 
     const headerDiv = document.createElement('div');
     headerDiv.className = 'tree-category-header';
-    headerDiv.textContent = `${tipo} (${gruppiTipo[tipo].length})`;
+    //headerDiv.textContent = `${tipo} (${gruppiTipo[tipo].length})`;
+    headerDiv.textContent = `${plurale[tipo]}`;
     headerDiv.onclick = () => toggleCategory(headerDiv);
 
     const contentDiv = document.createElement('div');
@@ -540,7 +549,6 @@ function printAllRecipes() {
     'Dolce',
     'Liquore'
   ];
-
   // Riordina secondo l'ordine canonico
   const tipiOrdinati = Object.keys(gruppiTipo).sort((a, b) => {
     const ia = ordinePortate.indexOf(a);
@@ -563,18 +571,13 @@ function printAllRecipes() {
 <link rel="stylesheet" href="style.css" >   </head>
     <body>
       <div class="header">
-        <h1>Ricettario Completo</h1>
+        <h1>Ricettario Completo </h1>
         <p>Stampato il ${new Date().toLocaleDateString('it-IT')} - ${allRecipes.length} ricette totali</p>
-      </div>
-      
-      <div class="print-hint">
-        <strong>Suggerimento:</strong> Usa Ctrl+P (o Cmd+P su Mac) per stampare questo documento come PDF, oppure salva come PDF dal tuo browser.
-      </div>
-  `;
+      </div>  `;
 
   // Aggiungi ogni categoria e le sue ricette
   tipiOrdinati.forEach(tipo => {
-    html += `<div class="category-title">${tipo} (${gruppiTipo[tipo].length} ricette)</div>`;
+    html += `<div class="category-title">${plurale[tipo]}</div>`;
 
     gruppiTipo[tipo].forEach(ricetta => {
       html += generateRecipeHTML(ricetta);

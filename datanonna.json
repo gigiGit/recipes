@@ -23,7 +23,7 @@
       "Moscato",
       "Passito"
     ],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -46,7 +46,7 @@
     "MetodoCottura": "Fornello",
     "TipoPiatto": "Liquore",
     "VinoPreferibile": [],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -79,7 +79,7 @@
     "MetodoCottura": "Forno",
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -105,7 +105,7 @@
     "MetodoCottura": "Forno",
     "TipoPiatto": "Dolce",
     "VinoPreferibile": [],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -134,7 +134,7 @@
       "Moscato d'Asti",
       "Vin Santo"
     ],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -166,7 +166,7 @@
       "Moscato",
       "Passito"
     ],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -181,7 +181,7 @@
       "1 etto di zucchero",
       "Mezzo cucchiaino di lievito in polvere"
     ],
-    "Istruzioni": "<h3>Preparazione:</h3>\n1. In una ciotola, mescola gli ingredienti secchi come farina o pane grattugiato.<br>\n2. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n3. Incorpora gradualmente il latte o la panna, mescolando bene.<br>\n4. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 170°C.<br>\n2. Inforna e cuoci per 25-40 minuti, o fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
+    "Istruzioni": "<h3>Preparazione:</h3>\n1. In una ciotola, mescola il pane grattugiato gli amaretti e la cioccolata sbriciolati .<br>\n2. Sbatti le uova con lo zucchero fino a ottenere un composto spumoso.<br>\n3. Incorpora gradualmente con la panna, mescolando bene.<br>\n4. Versa il composto in una teglia imburrata e infarinata.<br>\n\n<h3>Cottura:</h3>\n1. Preriscalda il forno a 170°C.<br>\n2. Inforna e cuoci per 30 minuti, fino a quando uno stuzzicadenti inserito al centro esce pulito.<br>\n\n<h3>Post Cottura:</h3>\n1. Sforna e lascia raffreddare prima di servire.<br>",
     "DataInserimento": "2025-11-27",
     "Autore": "Nonna Gio'",
     "Difficolta": "facile",
@@ -194,7 +194,7 @@
     "VinoPreferibile": [
       "Moscato d'Asti"
     ],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "TortaPaneGrattugiato.png",
     "Immagine3": ""
   },
@@ -233,7 +233,7 @@
       "Passito di Pantelleria",
       "Moscato d'Asti"
     ],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -267,7 +267,7 @@
     "VinoPreferibile": [
       "..."
     ],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -295,7 +295,7 @@
       "Passito",
       "Moscato"
     ],
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "",
     "Immagine3": ""
   },
@@ -325,7 +325,7 @@
       "Lambrusco secco, Grasparossa castelvetro, Lambruscone"
     ],
     "TipoPiatto": "Primo",
-    "Immagine1": "recipe_icon.png",
+    "Immagine1": "nonna-gio.jpg",
     "Immagine2": "Tortellini Emiliani_2.png",
     "Immagine3": ""
   }
