@@ -321,5 +321,36 @@
     "Immagine1": "",
     "Immagine2": "",
     "Immagine3": ""
+  },
+  {
+    "Nome": "Pollo alla Cacciatora",
+    "Ingredienti": [
+      "1 pollo intero (circa 1,2 kg)",
+      "400 g di pomodori pelati",
+      "1 cipolla dorata",
+      "1 carota",
+      "1 costa di sedano",
+      "1 spicchio d'aglio",
+      "100 g di vino rosso",
+      "1 rametto di rosmarino",
+      "1 ciuffo di prezzemolo tritato",
+      "Olio extravergine d'oliva q.b.",
+      "Sale fino q.b.",
+      "Pepe nero q.b."
+    ],
+    "Istruzioni": "<h3>Preparazione</h3><ol><li>pelate e tritate la carota,</li><li> mondate e tritate la cipolla e il sedano. </li><li>Tagliate il pollo in 8 parti (petto, cosce, sovracosce e alette). <br> </li></ol><h3>Cottura</h3><ol><li>In una padella ampia preriscaldata versate l'olio e adagiate il pollo dalla parte della pelle, condite con sale e pepe. </li><li>Rosolate il pollo a temperatura medio-alta senza toccarlo per circa 6 minuti per ottenere una crosticina, poi giratelo e fatelo dorare anche dall'altro lato.</li><li> Sfumate con il vino rosso e lasciate evaporare l'alcol. </li><li>Trasferite il pollo in una teglia e copritelo con pellicola. </li><li>Nella stessa padella aggiungete le verdure tritate, l'aglio e il rametto di rosmarino.</li><li> Abbassate la fiamma e lasciate stufare per circa 10 minuti.</li><li> Rimettete il pollo in padella, versate i pomodori pelati, coprite con il coperchio e lasciate cuocere per 30 minuti a fuoco basso. </li><li>Nel frattempo, lavate e tritate il prezzemolo fresco.</li><li> Dopo 30 minuti, spegnete il fuoco e insaporite con il prezzemolo. </li><li>Eliminate l'aglio e il rosmarino dalla padella. Servite il pollo alla cacciatora ben caldo.</li></ol>",
+    "DataInserimento": "2025-12-14",
+    "Autore": "Nonna Gio'",
+    "Difficolta": "facile",
+    "Costo": "medio",
+    "TempoPreparazione": 70,
+    "TempoCottura": null,
+    "Quantita": null,
+    "MetodoCottura": "",
+    "VinoPreferibile": [],
+    "TipoPiatto": "Secondo",
+    "Immagine1": "",
+    "Immagine2": "",
+    "Immagine3": ""
   }
 ]

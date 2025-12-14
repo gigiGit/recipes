@@ -4,6 +4,51 @@ body {
   padding: 20px;
 }
 
+.cover-page {
+  text-align: center;
+  padding: 100px 20px;
+  page-break-after: always;
+}
+
+.cover-page h1 {
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.cover-page h2 {
+  font-size: 24px;
+  color: #34495e;
+  margin-bottom: 40px;
+}
+
+.cover-page p {
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.cover-footer {
+  margin-top: 100px;
+  font-style: italic;
+  color: #7f8c8d;
+}
+
+.category-page {
+  text-align: center;
+  padding: 100px 20px;
+  page-break-after: always;
+}
+
+.category-page h1 {
+  font-size: 32px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.page-break {
+  page-break-after: always;
+}
+
 .recipe {
   margin-bottom: 30px;
   border-bottom: 1px solid #ccc;

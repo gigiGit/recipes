@@ -4,6 +4,7 @@ let currentRecipes = [];
 const plurale = {
     'Antipasto': 'Antipasti',
     'Primo': 'Primi', 
+    'Secondo': 'Secondi', 
     'Piatto Unico': 'Piatti Unici',
     'Contorno': 'Contorni',
     'Dolce': 'Dolci',
@@ -536,6 +537,17 @@ function printAllRecipes() {
     return;
   }
 
+  // Immagini per categoria
+  const categoryImages = {
+    'Antipasto': 'static/antipasti.png',
+    'Primo': 'static/primi.png',
+    'Secondo': 'static/secondi.jpg',
+    'Piatto Unico': 'static/piatti-unici.jpg',
+    'Contorno': 'static/contorni.jpg',
+    'Dolce': 'static/dolci.jpg',
+    'Liquore': 'static/liquori.jpg'
+  };
+
   // Ordina le ricette per tipo piatto e poi per nome (come nell'albero)
   const gruppiTipo = groupByTipoPiatto(allRecipes);
 
@@ -570,6 +582,17 @@ function printAllRecipes() {
 <link rel="stylesheet" href="print-style.css" > 
 <link rel="stylesheet" href="style.css" >   </head>
     <body>
+      <div class="cover-page">
+        <h1>Ricettario di Nonna Gio'</h1>
+        <img src="static/nonna-gio.jpg" alt="Logo Nonna Gio'" style="max-width: 200px; height: auto; margin: 20px auto; display: block;">
+        <h2>Raccolta di Ricette Familiari</h2>
+        <p>Stampato il ${new Date().toLocaleDateString('it-IT')}</p>
+        <p>Totale ricette: ${allRecipes.length}</p>
+        <div class="cover-footer">
+          <p>Preparato con amore per la famiglia</p>
+        </div>
+      </div>
+      <div class="page-break"></div>
       <div class="header">
         <h1>Ricettario Completo </h1>
         <p>Stampato il ${new Date().toLocaleDateString('it-IT')} - ${allRecipes.length} ricette totali</p>
@@ -577,7 +600,15 @@ function printAllRecipes() {
 
   // Aggiungi ogni categoria e le sue ricette
   tipiOrdinati.forEach(tipo => {
-    html += `<div class="category-title">${plurale[tipo]}</div>`;
+    // Pagina categoria
+    const imageSrc = categoryImages[tipo] || 'static/nonna-gio.jpg';
+    html += `
+      <div class="category-page">
+        <h1>${plurale[tipo]}</h1>
+        <img src="${imageSrc}" alt="Categoria ${plurale[tipo]}" style="max-width: 150px; height: auto; margin: 20px auto; display: block;">
+      </div>
+      <div class="page-break"></div>
+    `;
 
     gruppiTipo[tipo].forEach(ricetta => {
       html += generateRecipeHTML(ricetta);

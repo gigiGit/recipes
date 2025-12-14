@@ -1,5 +1,6 @@
 package com.recipes.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,8 +8,15 @@ import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintJob;
+import android.print.PrintManager;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -16,6 +24,7 @@ import androidx.core.content.FileProvider;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -219,18 +228,78 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Genera contenuto del libro ricette
-        String bookContent = generateRecipeBookContent(selectedAuthor, recipesByType);
+        try {
+            String bookContent = generateRecipeBookContent(selectedAuthor, recipesByType);
 
-        // Crea il PDF direttamente
-        createRecipeBookPdf(bookContent, selectedAuthor);
+            // Crea il PDF direttamente
+            createRecipeBookPdf(bookContent, selectedAuthor);
+        } catch (IOException e) {
+            Toast.makeText(this, "Errore nel caricamento delle immagini: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
     
-    private String generateRecipeBookContent(String author, Map<String, List<Recipe>> recipesByType) {
+    private String generateRecipeBookContent(String author, Map<String, List<Recipe>> recipesByType) throws IOException {
         StringBuilder content = new StringBuilder();
 
-        // Titolo del libro
-        content.append("LIBRO DELLE RICETTE\n");
-        content.append("di ").append(author).append("\n\n");
+        String imageBase64 = getImageAsBase64("nonna-gio.jpg");
+
+        // Carica immagini per categorie
+        String antipastiBase64 = imageBase64;
+        String primiBase64 = imageBase64;
+        String secondiBase64 = imageBase64;
+        String piattiUniciBase64 = imageBase64;
+        String contorniBase64 = imageBase64;
+        String dolciBase64 = imageBase64;
+        String liquoriBase64 = imageBase64;
+
+        try { antipastiBase64 = getImageAsBase64("antipasti.png"); } catch (IOException e) {}
+        try { primiBase64 = getImageAsBase64("primi.png"); } catch (IOException e) {}
+        try { secondiBase64 = getImageAsBase64("secondi.jpg"); } catch (IOException e) {}
+        // Altri usano default
+
+        // HTML per il libro
+        content.append("<!DOCTYPE html><html><head><meta charset='UTF-8'><style>");
+        content.append("body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }");
+        content.append(".cover-page { text-align: center; padding: 100px 20px; page-break-after: always; }");
+        content.append(".cover-page h1 { font-size: 36px; color: #2c3e50; margin-bottom: 20px; }");
+        content.append(".cover-page img { max-width: 200px; height: auto; margin: 20px auto; display: block; }");
+        content.append(".cover-page h2 { font-size: 24px; color: #34495e; margin-bottom: 40px; }");
+        content.append(".cover-page p { font-size: 18px; margin: 20px 0; }");
+        content.append(".cover-footer { margin-top: 100px; font-style: italic; color: #7f8c8d; }");
+        content.append(".category-page { text-align: center; padding: 100px 20px; page-break-after: always; }");
+        content.append(".category-page h1 { font-size: 32px; color: #2c3e50; margin-bottom: 20px; }");
+        content.append(".category-page img { max-width: 150px; height: auto; margin: 20px auto; display: block; }");
+        content.append(".page-break { page-break-after: always; }");
+        content.append(".recipe { margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; page-break-inside: avoid; }");
+        content.append(".recipe-title { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; }");
+        content.append(".recipe-meta { font-size: 12px; color: #7f8c8d; margin-bottom: 15px; }");
+        content.append(".recipe-section { margin: 5px 0; }");
+        content.append(".recipe-section strong { color: #2980b9; }");
+        content.append(".ingredients { background: #f8f9fa; padding: 10px; border-left: 4px solid #f39c12; margin: 10px 0; }");
+        content.append(".ingredients ul { margin: 0; padding-left: 20px; }");
+        content.append(".instructions { line-height: 1.2; margin: 5px 0; font-size: 12px; }");
+        content.append("</style></head><body>");
+
+        // Copertina
+        content.append("<div class='cover-page'>");
+        content.append("<h1>Libro delle Ricette</h1>");
+        content.append("<img src='data:image/jpeg;base64,").append(imageBase64).append("' alt='Logo'>");
+        content.append("<h2>di ").append(author).append("</h2>");
+        content.append("<p>Stampato il ").append(java.text.DateFormat.getDateInstance().format(new java.util.Date())).append("</p>");
+        int totalRecipes = recipesByType.values().stream().mapToInt(List::size).sum();
+        content.append("<p>Totale ricette: ").append(totalRecipes).append("</p>");
+        content.append("<div class='cover-footer'><p>Preparato con amore</p></div>");
+        content.append("</div><div class='page-break'></div>");
+
+        // Immagini per categoria
+        java.util.Map<String, String> categoryImages = new java.util.HashMap<>();
+        categoryImages.put("Antipasto", "data:image/png;base64," + antipastiBase64);
+        categoryImages.put("Primo", "data:image/png;base64," + primiBase64);
+        categoryImages.put("Secondo", "data:image/jpeg;base64," + secondiBase64);
+        categoryImages.put("Piatto Unico", "data:image/jpeg;base64," + piattiUniciBase64);
+        categoryImages.put("Contorno", "data:image/jpeg;base64," + contorniBase64);
+        categoryImages.put("Dolce", "data:image/jpeg;base64," + dolciBase64);
+        categoryImages.put("Liquore", "data:image/jpeg;base64," + liquoriBase64);
 
         // Genera contenuto per ogni tipo di piatto
         for (Map.Entry<String, List<Recipe>> entry : recipesByType.entrySet()) {
@@ -239,159 +308,97 @@ public class MainActivity extends AppCompatActivity {
 
             if (recipes.isEmpty()) continue;
 
-            content.append("\n").append(tipoPiatto.toUpperCase()).append("\n");
-            content.append("=".repeat(tipoPiatto.length())).append("\n\n");
+            // Pagina categoria
+            String imageSrc = categoryImages.getOrDefault(tipoPiatto, "data:image/jpeg;base64," + imageBase64);
+            content.append("<div class='category-page'>");
+            content.append("<h1>").append(tipoPiatto).append("</h1>");
+            content.append("<img src='").append(imageSrc).append("' alt='Categoria ").append(tipoPiatto).append("'>");
+            content.append("</div><div class='page-break'></div>");
 
             for (Recipe recipe : recipes) {
-                content.append(recipe.getNome()).append("\n");
-                content.append("-".repeat(recipe.getNome().length())).append("\n\n");
+                content.append("<div class='recipe'>");
+                content.append("<div class='recipe-title'>").append(recipe.getNome()).append("</div>");
 
-                // Info generali
-                StringBuilder info = new StringBuilder();
-                if (recipe.getDifficolta() != null && !recipe.getDifficolta().isEmpty())
-                    info.append("Difficoltà: ").append(recipe.getDifficolta()).append(" | ");
-                if (recipe.getCosto() != null && !recipe.getCosto().isEmpty())
-                    info.append("Costo: ").append(recipe.getCosto()).append(" | ");
-                if (recipe.getTempoPreparazione() != null && recipe.getTempoPreparazione() > 0)
-                    info.append("Prep: ").append(recipe.getTempoPreparazione()).append(" min | ");
-                if (recipe.getTempoCottura() != null && recipe.getTempoCottura() > 0)
-                    info.append("Cottura: ").append(recipe.getTempoCottura()).append(" min | ");
-                if (recipe.getQuantita() != null && recipe.getQuantita() > 0)
-                    info.append("Porzioni: ").append(recipe.getQuantita()).append(" | ");
-                if (recipe.getMetodoCottura() != null && !recipe.getMetodoCottura().isEmpty())
-                    info.append("Metodo: ").append(recipe.getMetodoCottura());
-
-                if (info.length() > 0) {
-                    content.append(info.toString().trim()).append("\n\n");
-                }
+                // Meta info
+                content.append("<div class='recipe-meta'>");
+                if (recipe.getAutore() != null) content.append("Autore: ").append(recipe.getAutore()).append(" | ");
+                if (recipe.getDifficolta() != null) content.append("Difficoltà: ").append(recipe.getDifficolta()).append(" | ");
+                if (recipe.getCosto() != null) content.append("Costo: ").append(recipe.getCosto()).append(" | ");
+                if (recipe.getTempoPreparazione() != null) content.append("Tempo: ").append(recipe.getTempoPreparazione()).append(" min");
+                content.append("</div>");
 
                 // Ingredienti
                 if (recipe.getIngredienti() != null && recipe.getIngredienti().length > 0) {
-                    content.append("INGREDIENTI:\n");
+                    content.append("<div class='recipe-section ingredients'>");
+                    content.append("<strong>Ingredienti:</strong><ul>");
                     for (String ing : recipe.getIngredienti()) {
-                        content.append("• ").append(ing).append("\n");
+                        content.append("<li>").append(ing).append("</li>");
                     }
-                    content.append("\n");
+                    content.append("</ul></div>");
                 }
 
                 // Istruzioni
-                if (recipe.getIstruzioni() != null && !recipe.getIstruzioni().isEmpty()) {
-                    content.append("PREPARAZIONE:\n");
-                    content.append(recipe.getIstruzioni()).append("\n\n");
+                if (recipe.getIstruzioni() != null && !recipe.getIstruzioni().trim().isEmpty()) {
+                    content.append("<div class='recipe-section instructions'>");
+                    content.append("<strong>Istruzioni:</strong><br>");
+                    content.append(recipe.getIstruzioni().replace("\n", "<br>"));
+                    content.append("</div>");
                 }
 
-                // Vini consigliati
-                if (recipe.getVinoPreferibile() != null && recipe.getVinoPreferibile().length > 0) {
-                    content.append("VINI CONSIGLIATI:\n");
-                    content.append(String.join(", ", recipe.getVinoPreferibile())).append("\n\n");
-                }
-
-                content.append("\n");
+                content.append("</div>");
             }
+
+            // Page break dopo categoria
+            content.append("<div class='page-break'></div>");
         }
 
+        content.append("</body></html>");
         return content.toString();
     }
 
-    private void createRecipeBookPdf(String content, String author) {
-        try {
-            // Crea il nome del file con timestamp
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-            String timestamp = sdf.format(new Date());
-            String fileName = "Libro_Ricette_" + author.replaceAll("[^a-zA-Z0-9]", "_") + "_" + timestamp + ".pdf";
-
-            // Usa la directory esterna privata dell'app (non richiede permessi speciali)
-            File downloadsDir = new File(getExternalFilesDir(null), "Downloads");
-            if (!downloadsDir.exists()) {
-                downloadsDir.mkdirs();
-            }
-            File pdfFile = new File(downloadsDir, fileName);
-
-            // Crea il documento PDF
-            PdfDocument document = new PdfDocument();
-            Paint paint = new Paint();
-            paint.setColor(Color.BLACK);
-            paint.setTextSize(12);
-
-            // Dimensioni pagina A4
-            int pageWidth = 595; // A4 width in points (72 DPI)
-            int pageHeight = 842; // A4 height in points (72 DPI)
-            int margin = 50;
-            int contentWidth = pageWidth - (margin * 2);
-
-            String[] lines = content.split("\n");
-            int currentLine = 0;
-            int pageNumber = 1;
-
-            while (currentLine < lines.length) {
-                // Crea una nuova pagina
-                PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNumber).create();
-                PdfDocument.Page page = document.startPage(pageInfo);
-                Canvas canvas = page.getCanvas();
-
-                int yPosition = margin + 20;
-
-                // Disegna le linee per questa pagina
-                while (currentLine < lines.length && yPosition < pageHeight - margin) {
-                    String line = lines[currentLine];
-
-                    // Gestisci linee vuote
-                    if (line.trim().isEmpty()) {
-                        yPosition += 15;
-                        currentLine++;
-                        continue;
-                    }
-
-                    // Verifica se la linea è un titolo (tutto maiuscolo)
-                    if (line.equals(line.toUpperCase()) && line.length() > 3) {
-                        paint.setTextSize(16);
-                        paint.setFakeBoldText(true);
-                    } else if (line.contains("-") && line.replace("-", "").trim().isEmpty()) {
-                        // Linea di separazione
-                        paint.setTextSize(12);
-                        paint.setFakeBoldText(false);
-                    } else {
-                        paint.setTextSize(12);
-                        paint.setFakeBoldText(false);
-                    }
-
-                    // Gestisci il text wrapping in modo sicuro
-                    drawWrappedText(canvas, paint, line, margin, yPosition, contentWidth);
-                    yPosition += paint.getTextSize() + 5;
-
-                    currentLine++;
-
-                    // Se non c'è più spazio per almeno una riga, interrompi
-                    if (yPosition + 20 > pageHeight - margin) {
-                        break;
-                    }
-                }
-
-                document.finishPage(page);
-                pageNumber++;
-            }
-
-            // Salva il documento
-            FileOutputStream fos = new FileOutputStream(pdfFile);
-            document.writeTo(fos);
-            document.close();
-            fos.close();
-
-            // Mostra messaggio di successo con percorso relativo
-            String relativePath = "Android/data/com.recipes.app/files/Downloads/" + fileName;
-            Toast.makeText(this, "PDF salvato in: " + relativePath, Toast.LENGTH_LONG).show();
-
-            // Apri il file con un visualizzatore PDF
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            Uri uri = FileProvider.getUriForFile(this, "com.recipes.app.fileprovider", pdfFile);
-            intent.setDataAndType(uri, "application/pdf");
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            startActivity(intent);
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Errore nella generazione del PDF: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            e.printStackTrace();
+    private String getImageAsBase64(String assetPath) throws IOException {
+        InputStream inputStream = getAssets().open(assetPath);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = inputStream.read(buffer)) != -1) {
+            byteArrayOutputStream.write(buffer, 0, length);
         }
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+        inputStream.close();
+        byteArrayOutputStream.close();
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+    }
+
+    private void createRecipeBookPdf(String htmlContent, String author) {
+        // Crea WebView invisibile per renderizzare HTML
+        WebView webView = new WebView(this);
+        webView.setVisibility(View.GONE);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowFileAccessFromFileURLs(true);
+        webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+
+        // Carica il contenuto HTML
+        webView.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null);
+
+        // Crea il nome del file con timestamp
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String timestamp = sdf.format(new Date());
+        String fileName = "Libro_Ricette_" + author.replaceAll("[^a-zA-Z0-9]", "_") + "_" + timestamp + ".pdf";
+
+        // Configura PrintManager
+        PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+        PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter(fileName);
+
+        // Crea job di stampa
+        PrintAttributes.Builder builder = new PrintAttributes.Builder();
+        builder.setMediaSize(PrintAttributes.MediaSize.ISO_A4);
+        builder.setResolution(new PrintAttributes.Resolution("pdf", "pdf", 600, 600));
+        builder.setMinMargins(PrintAttributes.Margins.NO_MARGINS);
+
+        PrintJob printJob = printManager.print(fileName, printAdapter, builder.build());
     }
 
     private void drawWrappedText(Canvas canvas, Paint paint, String text, float x, float y, float maxWidth) {

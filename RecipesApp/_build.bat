@@ -7,6 +7,7 @@ echo.
 
 REM Imposta JAVA_HOME a JDK 17
 set "JAVA_HOME=C:\Program Files\Java\jdk-17"
+REM set "JAVA_HOME=c:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\"
 if not exist "%JAVA_HOME%" (
     echo [ERRORE] JDK 17 non trovato in %JAVA_HOME%
     echo Installa JDK 17 prima di procedere.
@@ -42,6 +43,10 @@ if %ERRORLEVEL% EQU 0 (
     echo   [!] Errore in leggi.js
 )
 cd ..\RecipesApp\
+
+REM copia delle immagini statiche
+copy ..\data\static\*.jpg app\src\main\assets\
+copy ..\data\static\*.png app\src\main\assets\
 
 REM Clean build
 echo.
