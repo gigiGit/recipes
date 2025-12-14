@@ -8,15 +8,15 @@ async function fetchRicette() {
 }
 function showRecipe(r) {
   if (!r) return;
-  
+
   const template = document.getElementById('recipe-template');
   const contentDiv = document.getElementById('selected-recipe-content');
   contentDiv.innerHTML = '';
-  
+
   const li = template.cloneNode(true);
   li.id = '';
   li.style.display = 'block';
-  
+
   // Popola i campi
   li.querySelector('.recipe-name').textContent = r.Nome;
   li.querySelector('.recipe-meta').textContent = `Inserita il: ${r.DataInserimento || ''} da ${r.Autore || ''}`;
@@ -28,25 +28,26 @@ function showRecipe(r) {
   li.querySelector('.recipe-method').textContent = r.MetodoCottura || '';
   li.querySelector('.recipe-type').textContent = r.TipoPiatto || '';
   li.querySelector('.recipe-wines').textContent = (r.VinoPreferibile || []).join(', ');
-  
+
   // Immagini
   li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
   li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
   li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
-  
+
   // Ingredienti
   const ingredientiUl = li.querySelector('.ingredienti-list');
   ingredientiUl.innerHTML = (r.Ingredienti || []).map(i => `<li>${i}</li>`).join('');
-  
+
   // Istruzioni
   li.querySelector('.recipe-instructions').textContent = r.Istruzioni;
-  
+
   // Bottoni
   li.querySelector('.edit-btn').onclick = () => editRicetta(r._globalIdx);
   li.querySelector('.delete-btn').onclick = () => deleteRicetta(r._globalIdx);
   li.querySelector('.print-btn').onclick = () => printSingleRecipe(r);
-  
+
   contentDiv.appendChild(li);
+
   document.getElementById('selected-recipe').style.display = 'block';
 }
 
@@ -56,7 +57,7 @@ function generateRecipeHTML(r) {
   const li = template.cloneNode(true);
   li.id = '';
   li.style.display = 'block';
-  
+
   // Popola i campi
   li.querySelector('.recipe-name').textContent = r.Nome;
   li.querySelector('.recipe-meta').textContent = `Inserita il: ${r.DataInserimento || ''} da ${r.Autore || ''}`;
@@ -68,24 +69,22 @@ function generateRecipeHTML(r) {
   li.querySelector('.recipe-method').textContent = r.MetodoCottura || '';
   li.querySelector('.recipe-type').textContent = r.TipoPiatto || '';
   li.querySelector('.recipe-wines').textContent = (r.VinoPreferibile || []).join(', ');
-  
+
   // Immagini
   li.querySelector('#recipe-image-1').innerHTML = r.Immagine1 ? `<img src="/images/${r.Immagine1.replace(/^\/images\//, '')}" alt="Foto autore">` : `<img src="/images/placeholder.jpg" alt="Foto autore">`;
   li.querySelector('#recipe-image-2').innerHTML = r.Immagine2 ? `<img src="/images/${r.Immagine2.replace(/^\/images\//, '')}" alt="Foto piatto">` : `<img src="/images/placeholder.jpg" alt="Foto piatto">`;
   li.querySelector('#recipe-image-3').innerHTML = r.Immagine3 ? `<img src="/images/${r.Immagine3.replace(/^\/images\//, '')}" alt="Foto passaggio">` : `<img src="/images/placeholder.jpg" alt="Foto passaggio">`;
-  
+
   // Ingredienti
   const ingredientiUl = li.querySelector('.ingredienti-list');
   ingredientiUl.innerHTML = (r.Ingredienti || []).map(i => `<li>${i}</li>`).join('');
-  
+
   // Istruzioni
   li.querySelector('.recipe-instructions').textContent = r.Istruzioni;
-  
+
   // Rimuovi i bottoni per la stampa
-  li.querySelector('.edit-btn').remove();
-  li.querySelector('.delete-btn').remove();
-  li.querySelector('.print-btn').remove();
-  
+
+
   return li.outerHTML;
 }
 
@@ -98,32 +97,9 @@ function printSingleRecipe(r) {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>${r.Nome} - Ricetta</title>
-      <style>
-        @media print {
-          body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-          .recipe { margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
-          .recipe-title { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; }
-          .recipe-meta { font-size: 12px; color: #7f8c8d; margin-bottom: 15px; }
-          .recipe-section { margin: 10px 0; }
-          .recipe-section strong { color: #2980b9; }
-          .ingredients { background: #f8f9fa; padding: 10px; border-left: 4px solid #f39c12; margin: 10px 0; }
-          .ingredients ul { margin: 0; padding-left: 20px; }
-          .instructions { line-height: 1.6; margin: 15px 0; }
-          .recipe-images { margin: 10px 0; }
-          .recipe-images img { max-width: 150px; margin-right: 10px; height: auto; }
-          #recipe-image-2 img { width: 200px; height: auto; }
-          .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; }
-          .header h1 { color: #2c3e50; margin: 0; }
-          .header p { color: #7f8c8d; margin: 5px 0 0 0; }
-          /* Stili per il template */
-          .recipe-name { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; display: block; }
-          #container1, #container2 { margin: 10px 0; }
-          #pannello1 { margin-bottom: 10px; }
-          .ingredienti-list { margin: 0; padding-left: 20px; }
-          .recipe-instructions { line-height: 1.6; margin: 15px 0; display: block; }
-          .edit-btn, .delete-btn, .print-btn { display: none !important; }
-        }
-      </style>
+      <link rel="stylesheet" href="print-style.css" >
+      <link rel="stylesheet" href="style.css" >
+
     </head>
     <body>
       <div class="header">
@@ -135,14 +111,14 @@ function printSingleRecipe(r) {
     </body>
     </html>
   `;
-  
+
   // Apri in una nuova finestra
   const printWindow = window.open('', '_blank');
   printWindow.document.write(html);
   printWindow.document.close();
-  
+
   // Attendi che la pagina sia caricata
-  printWindow.onload = function() {
+  printWindow.onload = function () {
     setTimeout(() => {
       printWindow.focus();
       printWindow.print();
@@ -165,30 +141,30 @@ function showForm(ricetta = {}, index = null) {
     <label>Data inserimento:<br><input name="DataInserimento" type="date" value="${ricetta.DataInserimento || ''}"></label><br>
     <label>Difficoltà:<br><select name="Difficolta">
       <option value="">Scegli difficoltà</option>
-      <option value="facile" ${ricetta.Difficolta==='facile'?'selected':''}>Facile</option>
-      <option value="Medio" ${ricetta.Difficolta==='Medio'?'selected':''}>Medio</option>
-      <option value="Difficile" ${ricetta.Difficolta==='Difficile'?'selected':''}>Difficile</option>
-      <option value="veri esperti" ${ricetta.Difficolta==='veri esperti'?'selected':''}>Veri esperti</option>
+      <option value="facile" ${ricetta.Difficolta === 'facile' ? 'selected' : ''}>Facile</option>
+      <option value="Medio" ${ricetta.Difficolta === 'Medio' ? 'selected' : ''}>Medio</option>
+      <option value="Difficile" ${ricetta.Difficolta === 'Difficile' ? 'selected' : ''}>Difficile</option>
+      <option value="veri esperti" ${ricetta.Difficolta === 'veri esperti' ? 'selected' : ''}>Veri esperti</option>
     </select></label><br>
     <label>Costo:<br><select name="Costo">
       <option value="">Scegli costo</option>
-      <option value="economico" ${ricetta.Costo==='economico'?'selected':''}>Economico</option>
-      <option value="medio" ${ricetta.Costo==='medio'?'selected':''}>Medio</option>
-      <option value="costoso" ${ricetta.Costo==='costoso'?'selected':''}>Costoso</option>
+      <option value="economico" ${ricetta.Costo === 'economico' ? 'selected' : ''}>Economico</option>
+      <option value="medio" ${ricetta.Costo === 'medio' ? 'selected' : ''}>Medio</option>
+      <option value="costoso" ${ricetta.Costo === 'costoso' ? 'selected' : ''}>Costoso</option>
     </select></label><br>
     <label>Tempo preparazione (min):<br><input name="TempoPreparazione" type="number" placeholder="Tempo preparazione (min)" value="${ricetta.TempoPreparazione || ''}"></label><br>
     <label>Tempo cottura (min):<br><input name="TempoCottura" type="number" placeholder="Tempo cottura (min)" value="${ricetta.TempoCottura || ''}"></label><br>
     <label>Quantità (porzioni):<br><input name="Quantita" type="number" placeholder="Quantità (porzioni)" value="${ricetta.Quantita || ''}"></label><br>
     <label>Metodo di cottura:<br><select name="MetodoCottura">
       <option value="">Scegli metodo</option>
-      <option value="Forno" ${ricetta.MetodoCottura==='Forno'?'selected':''}>Forno</option>
-      <option value="Fornello" ${ricetta.MetodoCottura==='Fornello'?'selected':''}>Fornello</option>
-      <option value="Nessuna" ${ricetta.MetodoCottura==='Nessuna'?'selected':''}>Nessuna</option>
-      <option value="Microonde" ${ricetta.MetodoCottura==='Microonde'?'selected':''}>Microonde</option>
-      <option value="Induzione" ${ricetta.MetodoCottura==='Induzione'?'selected':''}>Induzione</option>
-      <option value="friggitrice" ${ricetta.MetodoCottura==='friggitrice'?'selected':''}>Friggitrice</option>
-      <option value="Friggitrice" ${ricetta.MetodoCottura==='Friggitrice'?'selected':''}>Friggitrice</option>
-      <option value="tostapane" ${ricetta.MetodoCottura==='tostapane'?'selected':''}>Tostapane</option>
+      <option value="Forno" ${ricetta.MetodoCottura === 'Forno' ? 'selected' : ''}>Forno</option>
+      <option value="Fornello" ${ricetta.MetodoCottura === 'Fornello' ? 'selected' : ''}>Fornello</option>
+      <option value="Nessuna" ${ricetta.MetodoCottura === 'Nessuna' ? 'selected' : ''}>Nessuna</option>
+      <option value="Microonde" ${ricetta.MetodoCottura === 'Microonde' ? 'selected' : ''}>Microonde</option>
+      <option value="Induzione" ${ricetta.MetodoCottura === 'Induzione' ? 'selected' : ''}>Induzione</option>
+      <option value="friggitrice" ${ricetta.MetodoCottura === 'friggitrice' ? 'selected' : ''}>Friggitrice</option>
+      <option value="Friggitrice" ${ricetta.MetodoCottura === 'Friggitrice' ? 'selected' : ''}>Friggitrice</option>
+      <option value="tostapane" ${ricetta.MetodoCottura === 'tostapane' ? 'selected' : ''}>Tostapane</option>
     </select></label><br>
     <label>Tipo piatto:<br><input name="TipoPiatto" placeholder="Tipo piatto (es. Primo, Secondo, Dolce)" value="${ricetta.TipoPiatto || ''}"></label><br>
     <label>Vini preferibili (uno per riga):<br><textarea name="VinoPreferibile" placeholder="Vini preferibili (uno per riga)">${Array.isArray(ricetta.VinoPreferibile) ? ricetta.VinoPreferibile.join('\n') : ''}</textarea></label><br>
@@ -204,7 +180,7 @@ function showForm(ricetta = {}, index = null) {
     e.preventDefault();
     const formData = new FormData(form);
     const data = {};
-    
+
     // Converti FormData in oggetto gestendo correttamente i duplicati
     for (const [key, value] of formData.entries()) {
       if (data[key]) {
@@ -214,11 +190,11 @@ function showForm(ricetta = {}, index = null) {
         data[key] = value;
       }
     }
-    
+
     // Ingredienti e vini come array
     data.Ingredienti = data.Ingredienti.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
     data.VinoPreferibile = data.VinoPreferibile.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
-    
+
     try {
       if (index !== null) {
         const response = await fetch(`/api/ricette/${index}`, {
@@ -242,7 +218,7 @@ function showForm(ricetta = {}, index = null) {
       alert('❌ Errore: ' + error.message);
     }
   };
-  
+
   // Funzione per upload immagine
   async function uploadImage(file, urlInput, imageIndex) {
     if (!file) return;
@@ -273,12 +249,12 @@ function showForm(ricetta = {}, index = null) {
       alert('Errore upload immagine: ' + error.message);
     }
   }
-  
+
   // Event listeners per upload
   form.querySelector('#file1').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url1'), 1));
   form.querySelector('#file2').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url2'), 2));
   form.querySelector('#file3').addEventListener('change', (e) => uploadImage(e.target.files[0], form.querySelector('#url3'), 3));
-  
+
   // Event listener per incollare immagini
   form.addEventListener('paste', async (e) => {
     const items = e.clipboardData.items;
@@ -306,7 +282,7 @@ function showForm(ricetta = {}, index = null) {
       }
     }
   });
-  
+
   document.getElementById('form-container').innerHTML = '';
   document.getElementById('form-container').appendChild(form);
   document.getElementById('form-container').style.display = 'block';
@@ -342,12 +318,12 @@ function groupByTipoPiatto(ricette) {
     if (!gruppi[tipo]) gruppi[tipo] = [];
     gruppi[tipo].push({ ...r, _idx: r.id });
   });
-  
+
   // Ordina alfabeticamente ogni gruppo
   Object.keys(gruppi).forEach(tipo => {
     gruppi[tipo].sort((a, b) => a.Nome.localeCompare(b.Nome, 'it'));
   });
-  
+
   return gruppi;
 }
 
@@ -356,7 +332,7 @@ function renderSidebar(ricette) {
   const authorSelect = document.getElementById('author-select');
   const recipeFilter = document.getElementById('recipe-filter');
   const treeContent = document.getElementById('tree-content');
-  
+
   // Popola il combo box degli autori
   const autori = [...new Set(ricette.map(r => r.Autore).filter(a => a && a.trim()))].sort((a, b) => a.localeCompare(b, 'it'));
   authorSelect.innerHTML = '<option value="">Tutti gli autori</option>';
@@ -366,21 +342,21 @@ function renderSidebar(ricette) {
     option.textContent = autore;
     authorSelect.appendChild(option);
   });
-  
+
   // Crea l'albero organizzato per tipo piatti
   const gruppiTipo = groupByTipoPiatto(ricette);
-  
+
   // Ordine canonico dei tipi di portata italiani
   const ordinePortate = [
     'Antipasto',
     'Primo',
-    'Secondo', 
+    'Secondo',
     'Piatto Unico',
     'Contorno',
     'Dolce',
     'Liquore'
   ];
-  
+
   // Ordina i tipi secondo l'ordine canonico
   const tipiOrdinati = Object.keys(gruppiTipo).sort((a, b) => {
     const ia = ordinePortate.indexOf(a);
@@ -390,21 +366,21 @@ function renderSidebar(ricette) {
     if (ib === -1) return -1;
     return ia - ib;
   });
-  
+
   treeContent.innerHTML = '';
-  
+
   tipiOrdinati.forEach(tipo => {
     const categoryDiv = document.createElement('div');
     categoryDiv.className = 'tree-category';
-    
+
     const headerDiv = document.createElement('div');
     headerDiv.className = 'tree-category-header';
     headerDiv.textContent = `${tipo} (${gruppiTipo[tipo].length})`;
     headerDiv.onclick = () => toggleCategory(headerDiv);
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.className = 'tree-category-content expanded';
-    
+
     gruppiTipo[tipo].forEach(ricetta => {
       const recipeDiv = document.createElement('div');
       recipeDiv.className = 'tree-recipe';
@@ -412,20 +388,20 @@ function renderSidebar(ricette) {
       recipeDiv.onclick = () => showRecipe(ricetta);
       contentDiv.appendChild(recipeDiv);
     });
-    
+
     categoryDiv.appendChild(headerDiv);
     categoryDiv.appendChild(contentDiv);
     treeContent.appendChild(categoryDiv);
   });
-  
+
   // Gestisci gli eventi dei filtri
   authorSelect.onchange = applyFilters;
   recipeFilter.oninput = applyFilters;
-  
+
   // Gestisci i pulsanti di stampa
   document.getElementById('print-filtered').onclick = printFilteredRecipes;
   document.getElementById('print-all').onclick = printAllRecipes;
-  
+
   // Inizializza il contatore
   updateTotalCounter(ricette.length);
 }
@@ -440,25 +416,25 @@ function applyFilters() {
   const recipeFilter = document.getElementById('recipe-filter');
   const selectedAuthor = authorSelect.value;
   const filterText = recipeFilter.value.toLowerCase().trim();
-  
+
   const treeRecipes = document.querySelectorAll('.tree-recipe');
   const treeCategories = document.querySelectorAll('.tree-category');
-  
+
   let totalVisible = 0;
-  
+
   treeRecipes.forEach(recipeDiv => {
     const recipeName = recipeDiv.textContent;
     const ricetta = ricetteGlobal.find(r => r.Nome === recipeName);
     if (!ricetta) return;
-    
+
     const matchesAuthor = !selectedAuthor || ricetta.Autore === selectedAuthor;
-    const matchesText = !filterText || 
-                       ricetta.Nome.toLowerCase().includes(filterText) || 
-                       (ricetta.Ingredienti && ricetta.Ingredienti.some(i => i.toLowerCase().includes(filterText))) ||
-                       (ricetta.Istruzioni && ricetta.Istruzioni.toLowerCase().includes(filterText)) ||
-                       (ricetta.Autore && ricetta.Autore.toLowerCase().includes(filterText)) ||
-                       (ricetta.TipoPiatto && ricetta.TipoPiatto.toLowerCase().includes(filterText));
-    
+    const matchesText = !filterText ||
+      ricetta.Nome.toLowerCase().includes(filterText) ||
+      (ricetta.Ingredienti && ricetta.Ingredienti.some(i => i.toLowerCase().includes(filterText))) ||
+      (ricetta.Istruzioni && ricetta.Istruzioni.toLowerCase().includes(filterText)) ||
+      (ricetta.Autore && ricetta.Autore.toLowerCase().includes(filterText)) ||
+      (ricetta.TipoPiatto && ricetta.TipoPiatto.toLowerCase().includes(filterText));
+
     if (matchesAuthor && matchesText) {
       recipeDiv.style.display = 'block';
       totalVisible++;
@@ -466,13 +442,13 @@ function applyFilters() {
       recipeDiv.style.display = 'none';
     }
   });
-  
+
   // Mostra/nascondi le categorie se hanno ricette visibili
   treeCategories.forEach(category => {
     const visibleRecipes = category.querySelectorAll('.tree-recipe[style*="block"]');
     const header = category.querySelector('.tree-category-header');
     const categoryName = header.textContent.replace(/\(\d+\)$/, '').trim();
-    
+
     if (visibleRecipes.length > 0) {
       category.style.display = 'block';
       header.textContent = `${categoryName} (${visibleRecipes.length})`;
@@ -480,7 +456,7 @@ function applyFilters() {
       category.style.display = 'none';
     }
   });
-  
+
   // Aggiorna il contatore totale
   updateTotalCounter(totalVisible);
 }
@@ -513,7 +489,7 @@ function copiaRicettaInClipboard(testo) {
 
 function filterRicette() {
   let ricette = ricetteGlobal;
-  if (filtroTipo) ricette = ricette.filter(r => (r.TipoPiatto||'Liquore') === filtroTipo);
+  if (filtroTipo) ricette = ricette.filter(r => (r.TipoPiatto || 'Liquore') === filtroTipo);
   if (filtroTesto) {
     const t = filtroTesto.toLowerCase();
     ricette = ricette.filter(r =>
@@ -522,7 +498,7 @@ function filterRicette() {
       )
     );
   }
-  
+
   // Mostra tutte le ricette filtrate
   renderSidebar(ricette);
 }
@@ -545,7 +521,7 @@ function printFilteredRecipes() {
   // Raccogli tutte le ricette filtrate (visibili)
   const visibleRecipes = [];
   const treeRecipes = document.querySelectorAll('.tree-recipe[style*="block"]');
-  
+
   treeRecipes.forEach(recipeDiv => {
     const recipeName = recipeDiv.textContent;
     const ricetta = ricetteGlobal.find(r => r.Nome === recipeName);
@@ -553,12 +529,12 @@ function printFilteredRecipes() {
       visibleRecipes.push(ricetta);
     }
   });
-  
+
   if (visibleRecipes.length === 0) {
     alert('Nessuna ricetta da stampare. Applica dei filtri per selezionare le ricette desiderate.');
     return;
   }
-  
+
   // Genera HTML per la stampa
   let html = `
     <!DOCTYPE html>
@@ -567,38 +543,8 @@ function printFilteredRecipes() {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Ricette Filtrate - ${new Date().toLocaleDateString('it-IT')}</title>
-      <style>
-        @media print {
-          body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-          .page-break { page-break-before: always; }
-          .recipe { margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
-          .recipe-title { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; }
-          .recipe-meta { font-size: 12px; color: #7f8c8d; margin-bottom: 15px; }
-          .recipe-section { margin: 10px 0; }
-          .recipe-section strong { color: #2980b9; }
-          .ingredients { background: #f8f9fa; padding: 10px; border-left: 4px solid #f39c12; margin: 10px 0; }
-          .ingredients ul { margin: 0; padding-left: 20px; }
-          .instructions { line-height: 1.6; margin: 15px 0; }
-          .recipe-images { margin: 10px 0; }
-          .recipe-images img { max-width: 150px; margin-right: 10px; height: auto; }
-          #recipe-image-2 img { width: 200px; height: auto; }
-          .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; }
-          .header h1 { color: #2c3e50; margin: 0; }
-          .header p { color: #7f8c8d; margin: 5px 0 0 0; }
-          /* Stili per il template */
-          .recipe-name { font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 10px; display: block; }
-          #container1, #container2 { margin: 10px 0; }
-          #pannello1 { margin-bottom: 10px; }
-          .ingredienti-list { margin: 0; padding-left: 20px; }
-          .recipe-instructions { line-height: 1.6; margin: 15px 0; display: block; }
-          .edit-btn, .delete-btn, .print-btn { display: none !important; }
-        }
-        
-        @media screen {
-          body { font-family: Arial, sans-serif; margin: 20px; }
-          .print-hint { background: #e8f4f8; padding: 15px; border-radius: 8px; border-left: 4px solid #3498db; margin-bottom: 20px; }
-        }
-      </style>
+      <link rel="stylesheet" href="print-style.css" >
+      <link rel="stylesheet" href="style.css" >
     </head>
     <body>
       <div class="header">
@@ -610,28 +556,28 @@ function printFilteredRecipes() {
         <strong>Suggerimento:</strong> Usa Ctrl+P (o Cmd+P su Mac) per stampare questo documento come PDF, oppure salva come PDF dal tuo browser.
       </div>
   `;
-  
+
   // Aggiungi ogni ricetta
   visibleRecipes.forEach((ricetta, index) => {
     if (index > 0) {
       html += '<div class="page-break"></div>';
     }
-    
+
     html += generateRecipeHTML(ricetta);
   });
-  
+
   html += `
     </body>
     </html>
   `;
-  
+
   // Apri in una nuova finestra
   const printWindow = window.open('', '_blank');
   printWindow.document.write(html);
   printWindow.document.close();
-  
+
   // Attendi che la pagina sia caricata prima di suggerire la stampa
-  printWindow.onload = function() {
+  printWindow.onload = function () {
     setTimeout(() => {
       printWindow.focus();
       // Non chiamare automaticamente print() per dare all'utente il controllo
@@ -642,26 +588,26 @@ function printFilteredRecipes() {
 function printAllRecipes() {
   // Usa tutte le ricette del ricettario
   const allRecipes = [...ricetteGlobal];
-  
+
   if (allRecipes.length === 0) {
     alert('Nessuna ricetta da stampare.');
     return;
   }
-  
+
   // Ordina le ricette per tipo piatto e poi per nome (come nell'albero)
   const gruppiTipo = groupByTipoPiatto(allRecipes);
-  
+
   // Ordine canonico dei tipi di portata italiani
   const ordinePortate = [
     'Antipasto',
     'Primo',
-    'Secondo', 
+    'Secondo',
     'Piatto Unico',
     'Contorno',
     'Dolce',
     'Liquore'
   ];
-  
+
   // Riordina secondo l'ordine canonico
   const tipiOrdinati = Object.keys(gruppiTipo).sort((a, b) => {
     const ia = ordinePortate.indexOf(a);
@@ -671,7 +617,7 @@ function printAllRecipes() {
     if (ib === -1) return -1;
     return ia - ib;
   });
-  
+
   // Genera HTML per la stampa
   let html = `
     <!DOCTYPE html>
@@ -680,40 +626,8 @@ function printAllRecipes() {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Ricettario Completo - ${new Date().toLocaleDateString('it-IT')}</title>
-      <style>
-        @media print {
-          body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-          .page-break { page-break-before: always; }
-          .category-title { font-size: 16px; font-weight: bold; color: #2980b9; margin: 20px 0 10px 0; border-bottom: 1px solid #bdc3c7; padding-bottom: 5px; }
-          .recipe { margin-bottom: 25px; border-bottom: 1px solid #ecf0f1; padding-bottom: 15px; }
-          .recipe-title { font-size: 16px; font-weight: bold; color: #2c3e50; margin-bottom: 8px; }
-          .recipe-meta { font-size: 11px; color: #7f8c8d; margin-bottom: 12px; }
-          .recipe-section { margin: 8px 0; font-size: 12px; }
-          .recipe-section strong { color: #2980b9; }
-          .ingredients { background: #f8f9fa; padding: 8px; border-left: 3px solid #f39c12; margin: 8px 0; }
-          .ingredients ul { margin: 0; padding-left: 18px; }
-          .instructions { line-height: 1.5; margin: 12px 0; font-size: 12px; }
-          .recipe-images { margin: 8px 0; }
-          .recipe-images img { max-width: 150px; margin-right: 8px; height: auto; }
-          #recipe-image-2 img { width: 200px; height: auto; }
-          .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 15px; margin-bottom: 25px; }
-          .header h1 { color: #2c3e50; margin: 0; font-size: 24px; }
-          .header p { color: #7f8c8d; margin: 5px 0 0 0; font-size: 14px; }
-          /* Stili per il template */
-          .recipe-name { font-size: 16px; font-weight: bold; color: #2c3e50; margin-bottom: 8px; display: block; }
-          #container1, #container2 { margin: 8px 0; }
-          #pannello1 { margin-bottom: 8px; }
-          .ingredienti-list { margin: 0; padding-left: 18px; }
-          .recipe-instructions { line-height: 1.5; margin: 12px 0; font-size: 12px; display: block; }
-          .edit-btn, .delete-btn, .print-btn { display: none !important; }
-        }
-        
-        @media screen {
-          body { font-family: Arial, sans-serif; margin: 20px; }
-          .print-hint { background: #e8f4f8; padding: 15px; border-radius: 8px; border-left: 4px solid #3498db; margin-bottom: 20px; }
-        }
-      </style>
-    </head>
+<link rel="stylesheet" href="print-style.css" > 
+<link rel="stylesheet" href="style.css" >   </head>
     <body>
       <div class="header">
         <h1>Ricettario Completo</h1>
@@ -724,33 +638,33 @@ function printAllRecipes() {
         <strong>Suggerimento:</strong> Usa Ctrl+P (o Cmd+P su Mac) per stampare questo documento come PDF, oppure salva come PDF dal tuo browser.
       </div>
   `;
-  
+
   // Aggiungi ogni categoria e le sue ricette
   tipiOrdinati.forEach(tipo => {
     html += `<div class="category-title">${tipo} (${gruppiTipo[tipo].length} ricette)</div>`;
-    
+
     gruppiTipo[tipo].forEach(ricetta => {
       html += generateRecipeHTML(ricetta);
     });
-    
+
     // Aggiungi un'interruzione di pagina dopo ogni categoria (eccetto l'ultima)
     if (tipo !== tipiOrdinati[tipiOrdinati.length - 1]) {
       html += '<div class="page-break"></div>';
     }
   });
-  
+
   html += `
     </body>
     </html>
   `;
-  
+
   // Apri in una nuova finestra
   const printWindow = window.open('', '_blank');
   printWindow.document.write(html);
   printWindow.document.close();
-  
+
   // Attendi che la pagina sia caricata
-  printWindow.onload = function() {
+  printWindow.onload = function () {
     setTimeout(() => {
       printWindow.focus();
     }, 500);
